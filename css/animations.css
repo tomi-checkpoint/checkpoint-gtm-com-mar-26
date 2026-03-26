@@ -1,0 +1,121 @@
+/* ==========================================================================
+   Checkpoint GTM — Animations
+   Keyframes, scroll reveals, entrance animations
+   ========================================================================== */
+
+/* --- Scroll Reveal --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays for grid children */
+.reveal-stagger > .reveal:nth-child(1) { transition-delay: 0ms; }
+.reveal-stagger > .reveal:nth-child(2) { transition-delay: 80ms; }
+.reveal-stagger > .reveal:nth-child(3) { transition-delay: 160ms; }
+.reveal-stagger > .reveal:nth-child(4) { transition-delay: 240ms; }
+.reveal-stagger > .reveal:nth-child(5) { transition-delay: 320ms; }
+.reveal-stagger > .reveal:nth-child(6) { transition-delay: 400ms; }
+.reveal-stagger > .reveal:nth-child(7) { transition-delay: 480ms; }
+
+/* --- Hero Card Entrance --- */
+.hero-card {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero-card.is-entered {
+  opacity: 1;
+  transform:
+    translate3d(
+      calc(var(--cursor-x, 0px) + var(--float-x, 0px) + var(--parallax-x, 0px)),
+      calc(var(--cursor-y, 0px) + var(--float-y, 0px) + var(--parallax-y, 0px)),
+      0
+    )
+    rotate(var(--base-rotation, 0deg));
+}
+
+/* --- Hero Text Entrance --- */
+.hero__content {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFadeIn 0.8s ease forwards;
+  animation-delay: 100ms;
+}
+
+@keyframes heroFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Nav Transition --- */
+.nav {
+  transition: background-color var(--transition-base),
+              box-shadow var(--transition-base),
+              backdrop-filter var(--transition-base);
+}
+
+/* --- Stat Counter Animation --- */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.stat-block.is-visible .stat-block__number {
+  animation: countUp 0.5s ease forwards;
+}
+
+/* --- Subtle Float (for hero cards idle state) --- */
+@keyframes subtleFloat {
+  0%, 100% { transform: var(--base-transform) translateY(0px); }
+  50% { transform: var(--base-transform) translateY(-6px); }
+}
+
+/* --- Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .hero-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .hero__content {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* Image bank animations are scroll-driven via JS */
+
+/* --- Logo Scroll Marquee --- */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

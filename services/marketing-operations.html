@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Marketing Operations & Attribution — Build the marketing operations infrastructure that connects campaigns to pipeline and pipeline to revenue. Checkpoint GTM.">
+  <meta name="theme-color" content="#FAFAF8">
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+  <title>Marketing Operations & Attribution — Checkpoint GTM</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Slab:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="../js/theme-toggle.js"></script>
+
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+
+  <style>
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-height);display:flex;align-items:center;background:transparent}.nav--scrolled{background:rgba(250,250,248,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--border)}[data-theme="dark"] .nav--scrolled{background:rgba(15,15,15,0.85)}.nav__inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:var(--container-max);margin-inline:auto;padding-inline:var(--container-padding)}.nav__logo{font-family:var(--font-display);font-weight:700;font-size:1.125rem;color:var(--text-primary);letter-spacing:-0.01em;display:flex;align-items:center;gap:0.5rem}.nav__logo-mark{width:28px;height:28px;background:var(--accent);border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.75rem;font-weight:700}.nav__links{display:flex;align-items:center;gap:var(--space-xl)}.nav__link{font-size:0.9375rem;color:var(--text-secondary);transition:color var(--transition-fast)}.nav__link:hover{color:var(--text-primary)}.nav__actions{display:flex;align-items:center;gap:var(--space-md)}.theme-toggle{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;color:var(--text-secondary);transition:all var(--transition-fast);cursor:pointer;background:none;border:none}.theme-toggle:hover{color:var(--text-primary);background:var(--bg-secondary)}.theme-toggle svg{width:18px;height:18px}.nav__mobile-toggle{display:none;width:36px;height:36px;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;background:none;border:none}.nav__mobile-toggle span{display:block;width:20px;height:1.5px;background:var(--text-primary);transition:all var(--transition-fast)}.nav__mobile-toggle.is-active span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}.nav__mobile-toggle.is-active span:nth-child(2){opacity:0}.nav__mobile-toggle.is-active span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}.nav__mobile-menu{display:none;position:fixed;inset:0;top:var(--nav-height);background:var(--bg-primary);padding:var(--space-xl) var(--container-padding);flex-direction:column;gap:var(--space-md);z-index:99}.nav__mobile-menu.is-open{display:flex}.nav__mobile-link{font-size:1.125rem;padding:var(--space-md) 0;border-bottom:1px solid var(--border);color:var(--text-primary)}@media(max-width:768px){.nav__links{display:none}.nav__mobile-toggle{display:flex}.nav__actions .btn{display:none}}
+
+    /* Service Hero — centered */
+    .service-hero {
+      padding-top: calc(var(--nav-height) + var(--space-4xl));
+      padding-bottom: var(--space-4xl);
+      text-align: center;
+    }
+    .service-hero__overline {
+      display: inline-block;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: var(--space-md);
+    }
+    .service-hero__title {
+      max-width: 780px;
+      margin-inline: auto;
+      margin-bottom: var(--space-lg);
+    }
+    .service-hero__subtitle {
+      font-size: 1.1875rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      max-width: 660px;
+      margin-inline: auto;
+      margin-bottom: var(--space-xl);
+    }
+    .service-hero__actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+    }
+
+    /* Cards grid for What We Deliver */
+    .deliver-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+    }
+    .deliver-card {
+      padding: var(--space-xl);
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+    }
+    .deliver-card:hover {
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+      transform: translateY(-2px);
+    }
+    .deliver-card__icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(45, 106, 79, 0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-md);
+      color: var(--accent);
+    }
+    .deliver-card__title {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: var(--space-sm);
+      color: var(--text-primary);
+    }
+    .deliver-card__desc {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+    @media (max-width: 900px) { .deliver-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .deliver-grid { grid-template-columns: 1fr; } }
+
+    /* Process steps */
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+      max-width: 720px;
+      margin-inline: auto;
+      margin-top: var(--space-xl);
+    }
+    .process-step {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-lg);
+    }
+    .process-step__number {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.125rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .process-step__content {
+      flex: 1;
+    }
+    .process-step__title {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+    .process-step__desc {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    /* Who This Is For */
+    .fit-list {
+      max-width: 680px;
+      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .fit-list__item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 1.0625rem;
+      line-height: 1.5;
+      color: var(--text-primary);
+    }
+    .fit-list__icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      color: var(--accent);
+      margin-top: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo" aria-label="Checkpoint GTM Home"><img src="/images/logo-dark.png" alt="Checkpoint GTM" class="nav__logo-img"><img src="/images/logo-white.png" alt="Checkpoint GTM" class="nav__logo-img nav__logo-img--dark"></a>
+      <div class="nav__links">
+        <a href="/services" class="nav__link">Services</a>
+        <a href="/case-studies" class="nav__link">Case Studies</a>
+        <a href="/about" class="nav__link">About</a>
+        <a href="/contact" class="nav__link">Contact</a>
+      </div>
+      <div class="nav__actions">
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <svg class="theme-toggle__moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="theme-toggle__sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <a href="/contact" class="btn btn--primary btn--small">Book a Call</a>
+        <button class="nav__mobile-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="nav__mobile-menu">
+    <a href="/services" class="nav__mobile-link">Services</a>
+    <a href="/case-studies" class="nav__mobile-link">Case Studies</a>
+    <a href="/about" class="nav__mobile-link">About</a>
+    <a href="/contact" class="nav__mobile-link">Contact</a>
+    <a href="/contact" class="btn btn--primary" style="margin-top:var(--space-md);">Book a Call</a>
+  </div>
+
+  <main>
+    <!-- ========== HERO ========== -->
+    <section class="service-hero">
+      <div class="container reveal">
+        <span class="service-hero__overline">Marketing Operations &amp; Attribution</span>
+        <h1 class="service-hero__title">Know what&rsquo;s working. Kill what isn&rsquo;t.</h1>
+        <p class="service-hero__subtitle">We build the marketing operations infrastructure that connects campaigns to pipeline and pipeline to revenue. No more vanity metrics. No more attribution black holes.</p>
+        <div class="service-hero__actions">
+          <a href="/contact" class="btn btn--primary btn--large">Book a Discovery Call</a>
+          <a href="#deliver" class="btn btn--ghost btn--large">See What We Build</a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========== WHAT WE DELIVER ========== -->
+    <section id="deliver" class="section section--alt">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="overline">What We Deliver</span>
+          <h2>The infrastructure behind high-performance marketing</h2>
+        </div>
+
+        <div class="deliver-grid reveal-stagger" style="margin-top:var(--space-xl);">
+          <div class="deliver-card reveal">
+            <div class="deliver-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <h3 class="deliver-card__title">Campaign Operations</h3>
+            <p class="deliver-card__desc">End-to-end campaign execution infrastructure: UTM frameworks, landing page systems, form strategies, and nurture workflows that actually convert.</p>
+          </div>
+
+          <div class="deliver-card reveal">
+            <div class="deliver-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+            </div>
+            <h3 class="deliver-card__title">Attribution Modeling</h3>
+            <p class="deliver-card__desc">Multi-touch attribution models that show which marketing activities drive pipeline &mdash; not just clicks. First-touch, last-touch, linear, and custom models.</p>
+          </div>
+
+          <div class="deliver-card reveal">
+            <div class="deliver-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 class="deliver-card__title">Lifecycle Management</h3>
+            <p class="deliver-card__desc">Define and automate lifecycle stages, lead scoring, MQL criteria, and marketing-to-sales handoffs that both teams actually trust.</p>
+          </div>
+
+          <div class="deliver-card reveal">
+            <div class="deliver-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <h3 class="deliver-card__title">Email Operations</h3>
+            <p class="deliver-card__desc">Deliverability optimization, template systems, segmentation frameworks, and send-time intelligence. Stop blasting. Start converting.</p>
+          </div>
+
+          <div class="deliver-card reveal">
+            <div class="deliver-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <h3 class="deliver-card__title">Marketing Analytics</h3>
+            <p class="deliver-card__desc">Dashboards that answer real questions: CAC by channel, content ROI, campaign influence on pipeline, and cohort-based conversion analysis.</p>
+          </div>
+
+          <div class="deliver-card reveal">
+            <div class="deliver-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h3 class="deliver-card__title">MarTech Stack Design</h3>
+            <p class="deliver-card__desc">Audit, rationalize, and connect your marketing tools. Eliminate redundancy, close data gaps, and build a stack that talks to your CRM.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========== PROCESS ========== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="overline">Our Process</span>
+          <h2>From audit to optimization in five phases</h2>
+        </div>
+
+        <div class="process-steps reveal">
+          <div class="process-step">
+            <div class="process-step__number">1</div>
+            <div class="process-step__content">
+              <div class="process-step__title">Audit</div>
+              <p class="process-step__desc">Evaluate your current marketing ops: tools, data flow, attribution, and team workflows.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step__number">2</div>
+            <div class="process-step__content">
+              <div class="process-step__title">Design</div>
+              <p class="process-step__desc">Build the architecture: tracking, attribution model, lifecycle rules, and reporting framework.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step__number">3</div>
+            <div class="process-step__content">
+              <div class="process-step__title">Implement</div>
+              <p class="process-step__desc">Configure systems, build automations, deploy tracking, and connect your stack.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step__number">4</div>
+            <div class="process-step__content">
+              <div class="process-step__title">Validate</div>
+              <p class="process-step__desc">Test every flow, verify data accuracy, and ensure attribution is capturing reality.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step__number">5</div>
+            <div class="process-step__content">
+              <div class="process-step__title">Optimize</div>
+              <p class="process-step__desc">Ongoing analysis, A/B testing frameworks, and monthly performance reviews.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========== WHO THIS IS FOR ========== -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="overline">Who This Is For</span>
+          <h2>Is this the right engagement for you?</h2>
+        </div>
+
+        <div class="fit-list reveal" style="margin-top:var(--space-xl);">
+          <div class="fit-list__item">
+            <svg class="fit-list__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>Marketing teams that can&rsquo;t prove ROI to the board</span>
+          </div>
+          <div class="fit-list__item">
+            <svg class="fit-list__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>CMOs who need attribution beyond last-click</span>
+          </div>
+          <div class="fit-list__item">
+            <svg class="fit-list__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>Demand gen teams scaling campaigns without operational infrastructure</span>
+          </div>
+          <div class="fit-list__item">
+            <svg class="fit-list__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>Companies with marketing and sales alignment problems</span>
+          </div>
+          <div class="fit-list__item">
+            <svg class="fit-list__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>Teams drowning in tools but starving for insight</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========== CTA BANNER ========== -->
+    <section class="section section--dark" style="padding-block:var(--space-5xl);">
+      <div class="container text-center">
+        <div class="reveal" style="max-width:640px;margin-inline:auto;">
+          <h2 style="margin-bottom:var(--space-lg);">Marketing without measurement is just spending</h2>
+          <p style="margin-inline:auto;margin-bottom:var(--space-xl);">Let&rsquo;s build the ops layer that turns your marketing into a revenue engine.</p>
+          <a href="/contact" class="btn btn--primary btn--large">Book a Discovery Call</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <footer style="background:var(--bg-dark);color:var(--text-inverse);padding-block:var(--space-3xl);">
+    <div class="container">
+      <div class="grid grid--4" style="gap:var(--space-2xl);align-items:start;">
+        <div style="grid-column:span 2;">
+          <div style="margin-bottom:var(--space-md);">
+            <img src="/images/logo-white.png" alt="Checkpoint GTM" style="height:24px;width:auto;">
+          </div>
+          <p style="font-size:0.875rem;color:rgba(250,250,248,0.5);max-width:320px;">Embedded RevOps and GTM consulting for B2B SaaS companies. Berlin-based, globally delivered.</p>
+        </div>
+        <div>
+          <h4 style="font-size:0.8125rem;font-weight:500;color:rgba(250,250,248,0.5);margin-bottom:var(--space-md);text-transform:uppercase;letter-spacing:0.05em;">Navigation</h4>
+          <div style="display:flex;flex-direction:column;gap:var(--space-sm);">
+            <a href="/services" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Services</a>
+            <a href="/case-studies" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Case Studies</a>
+            <a href="/about" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">About</a>
+            <a href="/contact" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h4 style="font-size:0.8125rem;font-weight:500;color:rgba(250,250,248,0.5);margin-bottom:var(--space-md);text-transform:uppercase;letter-spacing:0.05em;">Legal</h4>
+          <div style="display:flex;flex-direction:column;gap:var(--space-sm);">
+            <a href="/impressum" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Impressum</a>
+            <a href="/datenschutz" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Datenschutz</a>
+          </div>
+          <div style="margin-top:var(--space-lg);"><p style="font-size:0.8125rem;color:rgba(250,250,248,0.4);">Berlin, Germany</p></div>
+        </div>
+      </div>
+      <div style="margin-top:var(--space-2xl);padding-top:var(--space-lg);border-top:1px solid rgba(250,250,248,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-md);">
+        <p style="font-size:0.8125rem;color:rgba(250,250,248,0.4);">&copy; 2025 Checkpoint GTM. All rights reserved.</p>
+        <div style="display:flex;align-items:center;gap:var(--space-lg);">
+          <a href="https://linkedin.com" target="_blank" rel="noopener" style="color:rgba(250,250,248,0.5);" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/nav.js"></script>
+  <script src="../js/scroll-animations.js"></script>
+</body>
+</html>
