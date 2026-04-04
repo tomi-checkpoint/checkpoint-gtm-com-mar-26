@@ -53,22 +53,6 @@
       align-items: center;
     }
 
-    .nav__logo-img {
-      height: 28px;
-      width: auto;
-    }
-
-    .nav__logo-img--dark {
-      display: none;
-    }
-
-    [data-theme="dark"] .nav__logo-img:not(.nav__logo-img--dark) {
-      display: none;
-    }
-
-    [data-theme="dark"] .nav__logo-img--dark {
-      display: block;
-    }
     .nav__links {
       display: flex;
       align-items: center;
@@ -164,6 +148,7 @@
     }
     .service-hero__breadcrumb a:hover { color: var(--accent); }
     .service-hero__title {
+      font-size: clamp(2rem, 4vw, 2.75rem);
       max-width: 720px;
       margin-bottom: var(--space-lg);
     }
@@ -222,7 +207,7 @@
           <svg class="theme-toggle__moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           <svg class="theme-toggle__sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         </button>
-        <a href="/contact" class="btn btn--primary btn--small">Book a Call</a>
+        <a href="/contact" class="btn btn--primary btn--small">Let's Chat</a>
         <button class="nav__mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -234,7 +219,7 @@
     <a href="/case-studies" class="nav__mobile-link">Case Studies</a>
     <a href="/about" class="nav__mobile-link">About</a>
     <a href="/contact" class="nav__mobile-link">Contact</a>
-    <a href="/contact" class="btn btn--primary" style="margin-top: var(--space-md);">Book a Call</a>
+    <a href="/contact" class="btn btn--primary" style="margin-top: var(--space-md);">Let's Chat</a>
   </div>
 
   <main>
@@ -359,13 +344,13 @@
 
         <div class="grid grid--2 reveal-stagger" style="margin-top:var(--space-xl);">
           <a href="/services/revops" class="card card--link reveal">
-            <div class="card__icon">&#9673;</div>
+            <div class="card__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></div>
             <h3 class="card__title">Revenue Operations</h3>
             <p class="card__description">Operating model design, process automation, and data architecture that connects marketing, sales, and CS into one system.</p>
             <span class="card__link">Learn more <span>&rarr;</span></span>
           </a>
           <a href="/services/crm-migration" class="card card--link reveal">
-            <div class="card__icon">&#8644;</div>
+            <div class="card__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
             <h3 class="card__title">CRM Migration</h3>
             <p class="card__description">Proven migrations from Salesforce, Pipedrive, and Attio to HubSpot. Data integrity, workflow mapping, and zero-downtime cutover.</p>
             <span class="card__link">Learn more <span>&rarr;</span></span>
@@ -380,9 +365,9 @@
       <div class="container text-center">
         <div class="reveal" style="max-width:640px;margin-inline:auto;">
           <span class="overline" style="color:var(--accent-light);">Ready to get your HubSpot right?</span>
-          <h2 style="margin-top:var(--space-md);margin-bottom:var(--space-lg);">Book a discovery call</h2>
+          <h2 style="margin-top:var(--space-md);margin-bottom:var(--space-lg);">Let's have a chat</h2>
           <p style="margin-inline:auto;margin-bottom:var(--space-xl);">We'll walk through your current HubSpot setup, identify the biggest gaps, and outline a plan to fix them. No pitch deck, no pressure.</p>
-          <a href="/contact" class="btn btn--primary btn--large">Book a Discovery Call</a>
+          <a href="/contact" class="btn btn--primary btn--large">Let's Chat</a>
         </div>
       </div>
     </section>

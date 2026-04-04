@@ -28,22 +28,6 @@
       align-items: center;
     }
 
-    .nav__logo-img {
-      height: 28px;
-      width: auto;
-    }
-
-    .nav__logo-img--dark {
-      display: none;
-    }
-
-    [data-theme="dark"] .nav__logo-img:not(.nav__logo-img--dark) {
-      display: none;
-    }
-
-    [data-theme="dark"] .nav__logo-img--dark {
-      display: block;
-    }
     .nav__links { display:flex;align-items:center;gap:var(--space-xl); }
     .nav__link { font-size:0.9375rem;color:var(--text-secondary);transition:color var(--transition-fast); }
     .nav__link:hover { color:var(--text-primary); }
@@ -77,6 +61,7 @@
       margin-bottom: var(--space-md);
     }
     .service-hero__title {
+      font-size: clamp(2rem, 4vw, 2.75rem);
       max-width: 780px;
       margin-inline: auto;
       margin-bottom: var(--space-lg);
@@ -137,25 +122,231 @@
       line-height: 1.6;
       color: var(--text-secondary);
     }
-    @media (max-width: 900px) { .deliver-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 600px) { .deliver-grid { grid-template-columns: 1fr; } }
-
-    /* Process steps */
-    .process-steps {
+    /* Flywheel diagram */
+    .flywheel {
+      position: relative;
+      width: 520px;
+      height: 520px;
+      margin: var(--space-2xl) auto 0;
+    }
+    .flywheel__ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 2px dashed var(--border);
+    }
+    .flywheel__center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: var(--accent);
       display: flex;
       flex-direction: column;
-      gap: var(--space-lg);
-      max-width: 720px;
-      margin-inline: auto;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 2;
+      box-shadow: 0 8px 30px rgba(45, 106, 79, 0.25);
+    }
+    .flywheel__center-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .flywheel__center-desc {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.3;
+      max-width: 120px;
+    }
+    .flywheel__node {
+      position: absolute;
+      width: 150px;
+      text-align: center;
+      z-index: 2;
+    }
+    .flywheel__node-dot {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--bg-primary);
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-sm);
+      color: var(--accent);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    }
+    .flywheel__node-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+    .flywheel__node-desc {
+      font-size: 0.8125rem;
+      line-height: 1.4;
+      color: var(--text-secondary);
+    }
+    /* Position nodes around the circle (top, bottom-right, bottom-left) */
+    .flywheel__node--marketing {
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .flywheel__node--sales {
+      bottom: 10px;
+      right: -40px;
+    }
+    .flywheel__node--cs {
+      bottom: 10px;
+      left: -40px;
+    }
+    /* Arrow labels between nodes */
+    .flywheel__arrow {
+      position: absolute;
+      z-index: 1;
+    }
+    .flywheel__arrow-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      background: var(--bg-primary);
+      padding: 2px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .flywheel__arrow--mkt-sales {
+      top: 28%;
+      right: 4%;
+    }
+    .flywheel__arrow--sales-cs {
+      bottom: 6%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .flywheel__arrow--cs-mkt {
+      top: 28%;
+      left: 4%;
+    }
+
+    /* SVG arrows overlay */
+    .flywheel__arrows-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      overflow: visible;
+    }
+
+    /* Mobile flywheel — stacked vertical */
+    .flywheel-mobile {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      margin-top: var(--space-xl);
+    }
+    .flywheel-mobile__node {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      padding: var(--space-lg);
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      width: 100%;
+      max-width: 400px;
+    }
+    .flywheel-mobile__node-dot {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(45, 106, 79, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .flywheel-mobile__node-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+    .flywheel-mobile__node-desc {
+      font-size: 0.875rem;
+      line-height: 1.5;
+      color: var(--text-secondary);
+    }
+    .flywheel-mobile__arrow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: var(--space-sm) 0;
+      color: var(--accent);
+    }
+    .flywheel-mobile__arrow-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      margin-bottom: 2px;
+    }
+    .flywheel-mobile__center {
+      padding: var(--space-lg);
+      background: var(--accent);
+      border-radius: 12px;
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+      margin-top: var(--space-lg);
+    }
+    .flywheel-mobile__center-title {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .flywheel-mobile__center-desc {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 640px) {
+      .flywheel { display: none; }
+      .flywheel-mobile { display: flex; }
+    }
+
+    /* Process steps — horizontal */
+    .process-steps {
+      display: flex;
+      gap: 0;
       margin-top: var(--space-xl);
     }
     .process-step {
-      display: flex;
-      align-items: flex-start;
-      gap: var(--space-lg);
+      flex: 1;
+      text-align: center;
+      padding: var(--space-xl) var(--space-md);
+      position: relative;
     }
     .process-step__number {
-      flex-shrink: 0;
       width: 44px;
       height: 44px;
       border-radius: 50%;
@@ -167,9 +358,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      margin: 0 auto var(--space-md);
+      position: relative;
+      z-index: 1;
     }
     .process-step__content {
-      flex: 1;
+      text-align: center;
     }
     .process-step__title {
       font-family: var(--font-display);
@@ -177,11 +371,43 @@
       font-weight: 600;
       color: var(--text-primary);
       margin-bottom: 0.25rem;
+      text-align: center;
     }
     .process-step__desc {
       font-size: 0.9375rem;
       line-height: 1.6;
       color: var(--text-secondary);
+      max-width: 180px;
+      margin-inline: auto;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .process-steps {
+        flex-direction: column;
+        gap: var(--space-lg);
+      }
+      .process-step {
+        text-align: left;
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-md);
+        padding: 0;
+      }
+      .process-step__number {
+        margin: 0;
+        flex-shrink: 0;
+      }
+      .process-step__content {
+        text-align: left;
+      }
+      .process-step__title {
+        text-align: left;
+      }
+      .process-step__desc {
+        max-width: none;
+        margin-inline: 0;
+        text-align: left;
+      }
     }
 
     /* Who This Is For */
@@ -228,7 +454,7 @@
           <svg class="theme-toggle__moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           <svg class="theme-toggle__sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         </button>
-        <a href="/contact" class="btn btn--primary btn--small">Book a Call</a>
+        <a href="/contact" class="btn btn--primary btn--small">Let's Chat</a>
         <button class="nav__mobile-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
       </div>
     </div>
@@ -238,7 +464,7 @@
     <a href="/case-studies" class="nav__mobile-link">Case Studies</a>
     <a href="/about" class="nav__mobile-link">About</a>
     <a href="/contact" class="nav__mobile-link">Contact</a>
-    <a href="/contact" class="btn btn--primary" style="margin-top:var(--space-md);">Book a Call</a>
+    <a href="/contact" class="btn btn--primary" style="margin-top:var(--space-md);">Let's Chat</a>
   </div>
 
   <main>
@@ -249,7 +475,7 @@
         <h1 class="service-hero__title">Build the operating system behind your revenue</h1>
         <p class="service-hero__subtitle">RevOps isn't a department &mdash; it's the connective tissue between marketing, sales, and CS. We design and implement the processes, data architecture, and tooling that turn your GTM motion into a repeatable system.</p>
         <div class="service-hero__actions">
-          <a href="/contact" class="btn btn--primary btn--large">Book a Discovery Call</a>
+          <a href="/contact" class="btn btn--primary btn--large">Let's Chat</a>
           <a href="#approach" class="btn btn--ghost btn--large">See Our Approach</a>
         </div>
       </div>
@@ -264,53 +490,114 @@
           <h2>The building blocks of a scalable revenue engine</h2>
         </div>
 
-        <div class="deliver-grid reveal-stagger" style="margin-top:var(--space-xl);">
-          <div class="deliver-card reveal">
-            <div class="deliver-card__icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 12H12V8"/><path d="M12 16V12"/></svg>
-            </div>
-            <h3 class="deliver-card__title">GTM Process Design</h3>
-            <p class="deliver-card__desc">Map and optimize your lead-to-revenue process. Define handoffs, SLAs, and stage criteria that eliminate guesswork and finger-pointing between teams.</p>
+        <!-- Desktop flywheel -->
+        <div class="flywheel reveal">
+          <div class="flywheel__ring"></div>
+
+          <!-- SVG curved arrows -->
+          <svg class="flywheel__arrows-svg" viewBox="0 0 520 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                <polygon points="0 0, 8 3, 0 6" fill="var(--accent, #2D6A4F)"/>
+              </marker>
+            </defs>
+            <!-- Marketing -> Sales (top-right arc) -->
+            <path d="M 330 80 Q 460 160 430 330" stroke="var(--accent, #2D6A4F)" stroke-width="2" stroke-dasharray="6 4" fill="none" marker-end="url(#arrowhead)"/>
+            <!-- Sales -> CS (bottom arc) -->
+            <path d="M 390 400 Q 310 500 140 400" stroke="var(--accent, #2D6A4F)" stroke-width="2" stroke-dasharray="6 4" fill="none" marker-end="url(#arrowhead)"/>
+            <!-- CS -> Marketing (left arc, advocates loop) -->
+            <path d="M 100 330 Q 60 160 200 80" stroke="var(--accent, #2D6A4F)" stroke-width="2" stroke-dasharray="6 4" fill="none" marker-end="url(#arrowhead)"/>
+          </svg>
+
+          <!-- Arrow labels -->
+          <div class="flywheel__arrow flywheel__arrow--mkt-sales">
+            <span class="flywheel__arrow-label">Leads</span>
+          </div>
+          <div class="flywheel__arrow flywheel__arrow--sales-cs">
+            <span class="flywheel__arrow-label">Customers</span>
+          </div>
+          <div class="flywheel__arrow flywheel__arrow--cs-mkt">
+            <span class="flywheel__arrow-label">Advocates</span>
           </div>
 
-          <div class="deliver-card reveal">
-            <div class="deliver-card__icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M4 20V10l8-6 8 6v10"/><path d="M9 20v-6h6v6"/></svg>
-            </div>
-            <h3 class="deliver-card__title">Data Architecture</h3>
-            <p class="deliver-card__desc">Design your CRM data model, property schemas, and object relationships so every team works from a single source of truth.</p>
+          <!-- Center: RevOps -->
+          <div class="flywheel__center">
+            <div class="flywheel__center-title">RevOps</div>
+            <p class="flywheel__center-desc">Processes, data, and tooling that connect every team</p>
           </div>
 
-          <div class="deliver-card reveal">
-            <div class="deliver-card__icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <!-- Node: Marketing (top) -->
+          <div class="flywheel__node flywheel__node--marketing">
+            <div class="flywheel__node-dot">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
             </div>
-            <h3 class="deliver-card__title">Lead Management</h3>
-            <p class="deliver-card__desc">Scoring models, routing rules, lifecycle definitions, and MQL/SQL criteria that reflect how your buyers actually behave.</p>
+            <div class="flywheel__node-title">Marketing</div>
+            <p class="flywheel__node-desc">Demand gen, attribution, and lifecycle orchestration</p>
           </div>
 
-          <div class="deliver-card reveal">
-            <div class="deliver-card__icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+          <!-- Node: Sales (bottom-right) -->
+          <div class="flywheel__node flywheel__node--sales">
+            <div class="flywheel__node-dot">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
             </div>
-            <h3 class="deliver-card__title">Forecasting &amp; Pipeline</h3>
-            <p class="deliver-card__desc">Pipeline hygiene frameworks, weighted forecasting models, and deal inspection processes that make your revenue predictable.</p>
+            <div class="flywheel__node-title">Sales</div>
+            <p class="flywheel__node-desc">Pipeline, forecasting, and deal execution</p>
           </div>
 
-          <div class="deliver-card reveal">
-            <div class="deliver-card__icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <!-- Node: Customer Success (bottom-left) -->
+          <div class="flywheel__node flywheel__node--cs">
+            <div class="flywheel__node-dot">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
-            <h3 class="deliver-card__title">Tech Stack Audit</h3>
-            <p class="deliver-card__desc">Evaluate your current tools, eliminate redundancy, and design an integrated stack that actually talks to itself.</p>
+            <div class="flywheel__node-title">Customer Success</div>
+            <p class="flywheel__node-desc">Onboarding, renewals, and expansion revenue</p>
           </div>
+        </div>
 
-          <div class="deliver-card reveal">
-            <div class="deliver-card__icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <!-- Mobile flywheel (stacked) -->
+        <div class="flywheel-mobile reveal">
+          <div class="flywheel-mobile__node">
+            <div class="flywheel-mobile__node-dot">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
             </div>
-            <h3 class="deliver-card__title">Operational Reporting</h3>
-            <p class="deliver-card__desc">Dashboards and metrics frameworks that answer &lsquo;what happened, why, and what do we do next&rsquo; &mdash; not just &lsquo;how many.&rsquo;</p>
+            <div>
+              <div class="flywheel-mobile__node-title">Marketing</div>
+              <p class="flywheel-mobile__node-desc">Demand gen, attribution, and lifecycle orchestration</p>
+            </div>
+          </div>
+          <div class="flywheel-mobile__arrow">
+            <span class="flywheel-mobile__arrow-label">Leads</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+          </div>
+          <div class="flywheel-mobile__node">
+            <div class="flywheel-mobile__node-dot">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+            </div>
+            <div>
+              <div class="flywheel-mobile__node-title">Sales</div>
+              <p class="flywheel-mobile__node-desc">Pipeline, forecasting, and deal execution</p>
+            </div>
+          </div>
+          <div class="flywheel-mobile__arrow">
+            <span class="flywheel-mobile__arrow-label">Customers</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+          </div>
+          <div class="flywheel-mobile__node">
+            <div class="flywheel-mobile__node-dot">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div>
+              <div class="flywheel-mobile__node-title">Customer Success</div>
+              <p class="flywheel-mobile__node-desc">Onboarding, renewals, and expansion revenue</p>
+            </div>
+          </div>
+          <div class="flywheel-mobile__arrow">
+            <span class="flywheel-mobile__arrow-label">Advocates</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 14 20 9 15 4"/><path d="M4 20v-7a4 4 0 0 1 4-4h12"/></svg>
+          </div>
+          <div class="flywheel-mobile__center">
+            <div class="flywheel-mobile__center-title">RevOps</div>
+            <p class="flywheel-mobile__center-desc">The connective layer: processes, data, and tooling that align every team around revenue</p>
           </div>
         </div>
       </div>
@@ -371,7 +658,7 @@
       <div class="container">
         <div class="section-header text-center reveal">
           <span class="overline">Who This Is For</span>
-          <h2>Is this the right engagement for you?</h2>
+          <h2>Ready to get started?</h2>
         </div>
 
         <div class="fit-list reveal" style="margin-top:var(--space-xl);">
@@ -406,7 +693,7 @@
         <div class="reveal" style="max-width:640px;margin-inline:auto;">
           <h2 style="margin-bottom:var(--space-lg);">Revenue operations shouldn't be guesswork</h2>
           <p style="margin-inline:auto;margin-bottom:var(--space-xl);">Let's build the system your GTM team actually needs.</p>
-          <a href="/contact" class="btn btn--primary btn--large">Book a Discovery Call</a>
+          <a href="/contact" class="btn btn--primary btn--large">Let's Chat</a>
         </div>
       </div>
     </section>

@@ -62,23 +62,6 @@
       align-items: center;
     }
 
-    .nav__logo-img {
-      height: 28px;
-      width: auto;
-    }
-
-    .nav__logo-img--dark {
-      display: none;
-    }
-
-    [data-theme="dark"] .nav__logo-img:not(.nav__logo-img--dark) {
-      display: none;
-    }
-
-    [data-theme="dark"] .nav__logo-img--dark {
-      display: block;
-    }
-
     .nav__links {
       display: flex;
       align-items: center;
@@ -322,7 +305,7 @@
           <svg class="theme-toggle__moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           <svg class="theme-toggle__sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         </button>
-        <a href="/contact" class="btn btn--primary btn--small">Book a Call</a>
+        <a href="/contact" class="btn btn--primary btn--small">Let's Chat</a>
 
         <button class="nav__mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
           <span></span>
@@ -339,7 +322,7 @@
     <a href="/case-studies" class="nav__mobile-link">Case Studies</a>
     <a href="/about" class="nav__mobile-link">About</a>
     <a href="/contact" class="nav__mobile-link">Contact</a>
-    <a href="/contact" class="btn btn--primary" style="margin-top: var(--space-md);">Book a Call</a>
+    <a href="/contact" class="btn btn--primary" style="margin-top: var(--space-md);">Let's Chat</a>
   </div>
 
   <main>
@@ -357,10 +340,10 @@
             <span class="badge">Embedded RevOps & GTM Partner</span>
           </div>
           <h1 class="hero__title">Revenue systems<br>designed to scale</h1>
-          <p class="hero__subtitle">We embed into B2B SaaS teams to build the operating layer behind growth. Strategy tied to implementation. Every time.</p>
+          <p class="hero__subtitle">We embed into B2B SaaS teams to build the operating layer behind growth. Strategy tied to implementation — from day one.</p>
           <div class="hero__actions">
-            <a href="/contact" class="btn btn--primary btn--large">Book a Discovery Call</a>
-            <a href="/case-studies" class="btn btn--ghost">See our work <span class="arrow">&rarr;</span></a>
+            <a href="/contact" class="btn btn--primary btn--large">Let's Chat</a>
+            <a href="/case-studies" class="btn btn--ghost">Take a look at what we do <span class="arrow">&rarr;</span></a>
           </div>
         </div>
       </div>
@@ -417,7 +400,7 @@
     <!-- ========== LOGO SCROLL: Client Logos ========== -->
     <section class="logo-scroll">
       <div class="container">
-        <p class="logo-scroll__heading">Trusted by 50+ B2B SaaS teams across Europe</p>
+        <p class="logo-scroll__heading" style="text-align:center;">Trusted by 50+ B2B SaaS teams across Europe</p>
       </div>
       <div class="logo-scroll__wrapper">
         <!-- Row 1: scrolls left -->
@@ -485,7 +468,7 @@
         <div class="section-header text-center reveal">
           <span class="overline">What We Do</span>
           <h2>The operating layer behind your growth</h2>
-          <p class="text-center" style="margin-inline:auto;">Full-stack RevOps and GTM consulting. From CRM architecture to pipeline velocity, we cover the systems that revenue runs on.</p>
+          <p class="text-center" style="margin-inline:auto;">Full-stack execution and go-to-market strategy and implementation. From CRM architecture to pipeline velocity, we cover the systems that revenue runs on.</p>
         </div>
 
         <div class="grid grid--3 reveal-stagger" style="margin-top:var(--space-xl);">
@@ -537,13 +520,18 @@
             <span class="card__link">Learn more <span>&rarr;</span></span>
           </a>
 
-          <!-- Service 7 -->
-          <a href="/services/vc-portfolio" class="card card--link reveal">
-            <div class="card__icon">&#9878;</div>
-            <h3 class="card__title">VC Portfolio Support</h3>
-            <p class="card__description">Repeatable GTM and RevOps support across portfolio companies. Workshop packages, shared playbooks, and embedded implementation.</p>
-            <span class="card__link">Learn more <span>&rarr;</span></span>
-          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VC PORTFOLIO PARTNERSHIP ========== -->
+    <section class="section">
+      <div class="container">
+        <div class="reveal" style="max-width:800px;margin-inline:auto;text-align:center;">
+          <span class="overline">For Venture Capital Teams</span>
+          <h2 style="margin-top:var(--space-sm);margin-bottom:var(--space-lg);">We partner with VCs to strengthen portfolio GTM</h2>
+          <p style="margin-bottom:var(--space-xl);font-size:1.0625rem;line-height:1.7;">We partner with VCs to assess portfolio health and identify where we can have the most impact. From GTM readiness assessments to embedded RevOps across multiple companies — one partner, consistent quality, portfolio-wide results.</p>
+          <a href="/services/vc-portfolio-support" class="btn btn--secondary btn--large">Learn about portfolio support <span>&rarr;</span></a>
         </div>
       </div>
     </section>
@@ -554,8 +542,8 @@
       <div class="container">
         <div class="section-header text-center reveal">
           <span class="overline">How We Work</span>
-          <h2>From audit to operating model in 90 days</h2>
-          <p class="text-center" style="margin-inline:auto;">A phased approach that delivers compounding value. No big-bang launches, no surprises.</p>
+          <h2>From audit to operating model</h2>
+          <p class="text-center" style="margin-inline:auto;">We follow your timeline, adjust, and deliver value along the way.</p>
         </div>
 
         <div class="process-steps reveal" style="margin-top:var(--space-xl);">
@@ -592,6 +580,10 @@
     <!-- ========== DIFFERENTIATORS ========== -->
     <section class="section section--alt">
       <div class="container">
+        <div class="section-header text-center reveal" style="margin-bottom:var(--space-xl);">
+          <span class="overline">Why Checkpoint</span>
+          <h2>What makes us different</h2>
+        </div>
         <div class="grid grid--3 reveal-stagger">
           <div class="reveal" style="padding:var(--space-xl);">
             <h3 style="margin-bottom:var(--space-md);">We embed, we don't advise</h3>
@@ -639,12 +631,12 @@
       <div class="container">
         <div class="section-header text-center reveal">
           <span class="overline">What Clients Say</span>
-          <h2>Trusted by revenue teams across Europe</h2>
+          <h2>Trusted by revenue teams across Europe and beyond</h2>
         </div>
 
         <div class="grid grid--3 reveal-stagger" style="margin-top:var(--space-xl);">
           <div class="testimonial reveal">
-            <p class="testimonial__quote">They understood our business within the first week. By week four, our entire pipeline reporting was rebuilt and actually useful.</p>
+            <p class="testimonial__quote">"They understood our business within the first week. By week four, our entire pipeline reporting was rebuilt and actually useful."</p>
             <div class="testimonial__author">
               <div class="testimonial__avatar"></div>
               <div>
@@ -655,7 +647,7 @@
           </div>
 
           <div class="testimonial reveal">
-            <p class="testimonial__quote">The migration from Salesforce to HubSpot was flawless. Zero data loss, zero downtime, and our team was up to speed in days, not weeks.</p>
+            <p class="testimonial__quote">"The migration from Salesforce to HubSpot was flawless. Zero data loss, zero downtime, and our team was up to speed in days, not weeks."</p>
             <div class="testimonial__author">
               <div class="testimonial__avatar"></div>
               <div>
@@ -666,7 +658,7 @@
           </div>
 
           <div class="testimonial reveal">
-            <p class="testimonial__quote">We finally have a RevOps function that actually works. Attribution, lifecycle stages, lead scoring &mdash; all connected and all making sense.</p>
+            <p class="testimonial__quote">"We finally have a RevOps function that actually works. Attribution, lifecycle stages, lead scoring &mdash; all connected and all making sense."</p>
             <div class="testimonial__author">
               <div class="testimonial__avatar"></div>
               <div>
@@ -693,12 +685,12 @@
             <div class="stat-block__label">Companies scaled</div>
           </div>
           <div class="stat-block reveal">
-            <div class="stat-block__number">3</div>
+            <div class="stat-block__number">4</div>
             <div class="stat-block__label">Languages spoken</div>
           </div>
           <div class="stat-block reveal">
-            <div class="stat-block__number">9+</div>
-            <div class="stat-block__label">Countries served</div>
+            <div class="stat-block__number">12+</div>
+            <div class="stat-block__label">Countries we operate in</div>
           </div>
         </div>
       </div>
@@ -745,9 +737,9 @@
       <div class="container text-center">
         <div class="reveal" style="max-width:640px;margin-inline:auto;">
           <span class="overline" style="color:var(--accent-light);">Ready to fix your revenue systems?</span>
-          <h2 style="margin-top:var(--space-md);margin-bottom:var(--space-lg);">Let's start with a 30-minute discovery call</h2>
+          <h2 style="margin-top:var(--space-md);margin-bottom:var(--space-lg);">Let's optimize your go-to-market</h2>
           <p style="margin-inline:auto;margin-bottom:var(--space-xl);">No pitch deck, no pressure. We'll walk through your current setup, identify the biggest gaps, and tell you honestly whether we're the right fit.</p>
-          <a href="/contact" class="btn btn--primary btn--large">Book a Discovery Call</a>
+          <a href="/contact" class="btn btn--primary btn--large">Let's Have a Chat</a>
         </div>
       </div>
     </section>

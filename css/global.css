@@ -97,6 +97,33 @@
   --shadow-hero-card: 0 8px 40px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* --- Navigation Logo (shared across all pages) --- */
+.nav__logo-img {
+  height: 28px;
+  width: auto;
+}
+
+.nav__logo-img--dark {
+  display: none;
+}
+
+[data-theme="dark"] .nav__logo-img:not(.nav__logo-img--dark) {
+  display: none;
+}
+
+[data-theme="dark"] .nav__logo-img--dark {
+  display: block;
+}
+
+/* --- Dark Mode Nav Link Contrast --- */
+[data-theme="dark"] .nav__link {
+  color: rgba(250, 250, 248, 0.65);
+}
+
+[data-theme="dark"] .nav__link:hover {
+  color: rgba(250, 250, 248, 0.95);
+}
+
 /* --- Reset --- */
 *, *::before, *::after {
   margin: 0;

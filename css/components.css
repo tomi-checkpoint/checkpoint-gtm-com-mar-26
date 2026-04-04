@@ -109,6 +109,7 @@
 }
 
 .card__title {
+  font-size: 1.125rem;
   margin-bottom: var(--space-sm);
 }
 
@@ -608,6 +609,10 @@
   filter: grayscale(100%) brightness(0.7) sepia(100%) saturate(150%) hue-rotate(100deg);
 }
 
+[data-theme="dark"] .partner-grid__card img {
+  filter: grayscale(100%) brightness(1.4) sepia(100%) saturate(150%) hue-rotate(100deg);
+}
+
 @media (max-width: 640px) {
   .partner-grid__cards {
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
@@ -631,6 +636,10 @@
 /* Greyscale then recolor to lighter green for partners */
 .image-bank__grid:not(.image-bank__grid--small) .image-bank__card img {
   filter: grayscale(100%) brightness(0.7) sepia(100%) saturate(150%) hue-rotate(100deg);
+}
+
+[data-theme="dark"] .image-bank__grid:not(.image-bank__grid--small) .image-bank__card img {
+  filter: grayscale(100%) brightness(1.4) sepia(100%) saturate(150%) hue-rotate(100deg);
 }
 
 /* Certified badges: no card, same size */
@@ -731,6 +740,11 @@ a.logo-scroll__item {
 
 .logo-scroll__item:hover .logo-scroll__logo {
   opacity: 1;
+}
+
+[data-theme="dark"] .logo-scroll__logo {
+  filter: brightness(0) saturate(100%) invert(95%) sepia(10%) saturate(400%) hue-rotate(95deg) brightness(1.2);
+  opacity: 0.8;
 }
 
 @media (max-width: 640px) {
