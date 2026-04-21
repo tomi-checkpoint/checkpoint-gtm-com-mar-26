@@ -444,5 +444,14 @@
 
   <script src="../js/nav.js"></script>
   <script src="../js/scroll-animations.js"></script>
+  <!-- Crikket bug-reporting widget -->
+  <script src="https://cdn.jsdelivr.net/npm/@crikket-io/capture/dist/capture.global.js" defer></script>
+  <script>
+    window.addEventListener("load", function() {
+      if (window.CrikketCapture) {
+        window.CrikketCapture.init({ key: "crk_7OXqJjPMyjZa5zkLMYCGPXLp", host: "https://crikket.gotomarketpro.de" })
+      }
+    })
+  </script>
 </body>
 </html>
