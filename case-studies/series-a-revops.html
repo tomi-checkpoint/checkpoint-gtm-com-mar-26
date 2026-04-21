@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How a Series A SaaS startup replaced spreadsheets with a unified revenue system in HubSpot — 3x pipeline visibility, 68% faster deals, 100% adoption in 30 days.">
+  <meta name="theme-color" content="#FAFAF8">
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+  <title>From Spreadsheet Chaos to a Unified Revenue System — Checkpoint GTM</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Slab:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="../js/theme-toggle.js"></script>
+
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+
+  <style>
+    /* --- Navigation --- */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-height);display:flex;align-items:center;background:transparent;}
+    .nav--scrolled{background:rgba(250,250,248,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--border);}
+    [data-theme="dark"] .nav--scrolled{background:rgba(15,15,15,0.85);}
+    .nav__inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:var(--container-max);margin-inline:auto;padding-inline:var(--container-padding);}
+    .nav__logo{display:flex;align-items:center;}
+    .nav__links{display:flex;align-items:center;gap:var(--space-xl);}
+    .nav__link{font-size:0.9375rem;color:var(--text-secondary);transition:color var(--transition-fast);}
+    .nav__link:hover{color:var(--text-primary);}
+    .nav__actions{display:flex;align-items:center;gap:var(--space-md);}
+    .theme-toggle{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;color:var(--text-secondary);transition:all var(--transition-fast);cursor:pointer;background:none;border:none;}
+    .theme-toggle:hover{color:var(--text-primary);background:var(--bg-secondary);}
+    .theme-toggle svg{width:18px;height:18px;}
+    .nav__mobile-toggle{display:none;width:36px;height:36px;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;background:none;border:none;}
+    .nav__mobile-toggle span{display:block;width:20px;height:1.5px;background:var(--text-primary);transition:all var(--transition-fast);}
+    .nav__mobile-toggle.is-active span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+    .nav__mobile-toggle.is-active span:nth-child(2){opacity:0;}
+    .nav__mobile-toggle.is-active span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+    .nav__mobile-menu{display:none;position:fixed;inset:0;top:var(--nav-height);background:var(--bg-primary);padding:var(--space-xl) var(--container-padding);flex-direction:column;gap:var(--space-md);z-index:99;}
+    .nav__mobile-menu.is-open{display:flex;}
+    .nav__mobile-link{font-size:1.125rem;padding:var(--space-md) 0;border-bottom:1px solid var(--border);color:var(--text-primary);}
+    @media(max-width:768px){.nav__links{display:none;}.nav__mobile-toggle{display:flex;}.nav__actions .btn{display:none;}}
+
+    /* --- Case Study Detail --- */
+    .cs-hero {
+      padding-top: calc(var(--nav-height) + var(--space-4xl));
+      padding-bottom: var(--space-3xl);
+    }
+    .cs-hero__back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-xl);
+      transition: color var(--transition-fast);
+    }
+    .cs-hero__back:hover { color: var(--text-primary); }
+    .cs-hero__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-lg);
+    }
+    .cs-hero__tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.25rem 0.625rem;
+      border-radius: var(--radius-full);
+      background: var(--accent-subtle);
+      color: var(--accent);
+    }
+    [data-theme="dark"] .cs-hero__tag {
+      background: rgba(82,183,136,0.15);
+    }
+    .cs-hero h1 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      max-width: 720px;
+      margin-bottom: var(--space-md);
+    }
+    .cs-hero__meta {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+    }
+
+    .cs-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: var(--space-3xl);
+    }
+    .cs-metric {
+      padding: var(--space-xl) var(--space-lg);
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .cs-metric:last-child { border-right: none; }
+    .cs-metric__value {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: var(--space-xs);
+    }
+    .cs-metric__label {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+    @media (max-width: 640px) {
+      .cs-metrics { grid-template-columns: 1fr; }
+      .cs-metric { border-right: none; border-bottom: 1px solid var(--border); }
+      .cs-metric:last-child { border-bottom: none; }
+    }
+
+    .cs-section {
+      max-width: 720px;
+      margin-inline: auto;
+      margin-bottom: var(--space-3xl);
+    }
+    .cs-section__label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: var(--space-sm);
+    }
+    .cs-section h2 {
+      font-size: clamp(1.25rem, 2.5vw, 1.625rem);
+      margin-bottom: var(--space-lg);
+    }
+    .cs-section p {
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-md);
+    }
+    .cs-section ul {
+      list-style: none;
+      padding: 0;
+      margin: var(--space-md) 0;
+    }
+    .cs-section ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-sm);
+    }
+    .cs-section ul li::before {
+      content: "";
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 0.55rem;
+    }
+
+    .cs-quote {
+      max-width: 720px;
+      margin-inline: auto;
+      margin-bottom: var(--space-3xl);
+      padding: var(--space-2xl);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      position: relative;
+    }
+    .cs-quote::before {
+      content: "\201C";
+      font-family: var(--font-display);
+      font-size: 4rem;
+      color: var(--accent);
+      opacity: 0.3;
+      position: absolute;
+      top: 0.25rem;
+      left: 1.25rem;
+      line-height: 1;
+    }
+    .cs-quote blockquote {
+      font-size: 1.125rem;
+      line-height: 1.7;
+      color: var(--text-primary);
+      font-style: italic;
+      margin-bottom: var(--space-md);
+      padding-left: var(--space-md);
+    }
+    .cs-quote__author {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      padding-left: var(--space-md);
+    }
+
+    /* Process steps — vertical for case study */
+    .cs-process {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+      margin-top: var(--space-lg);
+    }
+    .cs-process__step {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+    }
+    .cs-process__number {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.875rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .cs-process__content h3 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+      color: var(--text-primary);
+    }
+    .cs-process__content p {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo" aria-label="Checkpoint GTM Home">
+        <img src="/images/logo-dark.png" alt="Checkpoint GTM" class="nav__logo-img">
+        <img src="/images/logo-white.png" alt="Checkpoint GTM" class="nav__logo-img nav__logo-img--dark">
+      </a>
+      <div class="nav__links">
+        <a href="/services" class="nav__link">Services</a>
+        <a href="/case-studies" class="nav__link">Case Studies</a>
+        <a href="/about" class="nav__link">About</a>
+        <a href="/contact" class="nav__link">Contact</a>
+      </div>
+      <div class="nav__actions">
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <svg class="theme-toggle__moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="theme-toggle__sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <a href="/contact" class="btn btn--primary btn--small">Let's Chat</a>
+        <button class="nav__mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="nav__mobile-menu">
+    <a href="/services" class="nav__mobile-link">Services</a>
+    <a href="/case-studies" class="nav__mobile-link">Case Studies</a>
+    <a href="/about" class="nav__mobile-link">About</a>
+    <a href="/contact" class="nav__mobile-link">Contact</a>
+    <a href="/contact" class="btn btn--primary" style="margin-top: var(--space-md);">Let's Chat</a>
+  </div>
+
+  <main>
+    <!-- ========== HERO ========== -->
+    <section class="cs-hero" data-animate>
+      <div class="container" style="max-width: 800px;">
+        <a href="/case-studies" class="cs-hero__back">&larr; All Case Studies</a>
+        <div class="cs-hero__tags">
+          <span class="cs-hero__tag">HubSpot Implementation</span>
+          <span class="cs-hero__tag">Series A</span>
+          <span class="cs-hero__tag">Full-Stack GTM</span>
+        </div>
+        <h1>From spreadsheet chaos to a unified revenue system</h1>
+        <p class="cs-hero__meta">B2B SaaS &middot; Series A &middot; 25 employees &middot; 12-week engagement</p>
+      </div>
+    </section>
+
+    <!-- ========== METRICS ========== -->
+    <section class="section" style="padding-top: 0;" data-animate>
+      <div class="container" style="max-width: 800px;">
+        <div class="cs-metrics">
+          <div class="cs-metric">
+            <div class="cs-metric__value">3x</div>
+            <div class="cs-metric__label">Pipeline visibility</div>
+          </div>
+          <div class="cs-metric">
+            <div class="cs-metric__value">68%</div>
+            <div class="cs-metric__label">Faster deal cycle</div>
+          </div>
+          <div class="cs-metric">
+            <div class="cs-metric__value">100%</div>
+            <div class="cs-metric__label">Team adoption in 30 days</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== THE CHALLENGE ========== -->
+    <section class="section" style="padding-top: 0;" data-animate>
+      <div class="container">
+        <div class="cs-section">
+          <div class="cs-section__label">The Challenge</div>
+          <h2>Three teams, three systems, zero visibility</h2>
+          <p>When this Series A SaaS company closed their funding round, they had a product the market wanted and a sales team ready to grow. What they did not have was any system to track that growth.</p>
+          <p>Sales lived in a shared Google Sheet with 14 tabs and no consistent stage definitions. Marketing was running campaigns through Mailchimp with no connection to revenue outcomes. Customer support handled everything through a shared Gmail inbox with color-coded labels.</p>
+          <p>The CEO could not answer basic questions: How many deals are in pipeline? What is our average sales cycle? Which marketing channels drive qualified leads? Every board meeting required two days of manual data assembly.</p>
+          <ul>
+            <li>No single source of truth for pipeline or customer data</li>
+            <li>Sales reps entering deal information differently across 14 spreadsheet tabs</li>
+            <li>Marketing unable to attribute any campaign to a closed deal</li>
+            <li>Customer support blind to account history and contract details</li>
+            <li>Board reporting took 2+ days of manual CSV exports and stitching</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== THE APPROACH ========== -->
+    <section class="section section--alt" data-animate>
+      <div class="container">
+        <div class="cs-section" style="margin-bottom: 0;">
+          <div class="cs-section__label">Our Approach</div>
+          <h2>Build the operating system behind the revenue engine</h2>
+          <p>We embedded with the founding team for 12 weeks and implemented HubSpot across Sales Hub, Marketing Hub, and Service Hub &mdash; not as three separate tools, but as one connected revenue system. Every decision was tied to how their team actually works, not how a CRM vendor thinks they should.</p>
+
+          <div class="cs-process">
+            <div class="cs-process__step">
+              <div class="cs-process__number">1</div>
+              <div class="cs-process__content">
+                <h3>Discovery</h3>
+                <p>Shadowed each team for a week. Mapped every handoff between sales, marketing, and support. Documented the actual deal stages (not the ones on the whiteboard), identified data gaps, and cataloged every spreadsheet, form, and inbox involved in the revenue process.</p>
+              </div>
+            </div>
+            <div class="cs-process__step">
+              <div class="cs-process__number">2</div>
+              <div class="cs-process__content">
+                <h3>Design</h3>
+                <p>Architected a unified data model: custom objects for their product licensing structure, a 6-stage pipeline matching their actual sales motion, lifecycle stages bridging marketing and sales, and a property schema that eliminated duplicate or conflicting data entry across teams.</p>
+              </div>
+            </div>
+            <div class="cs-process__step">
+              <div class="cs-process__number">3</div>
+              <div class="cs-process__content">
+                <h3>Build</h3>
+                <p>Configured HubSpot Sales Hub with deal pipelines, automated task creation, and sequence templates. Built Marketing Hub with form-to-workflow nurture paths, email templates, and UTM-based attribution. Set up Service Hub with a ticket pipeline, SLA tracking, and knowledge base. Connected everything through 8 cross-hub workflows and integrated Stripe for revenue data.</p>
+              </div>
+            </div>
+            <div class="cs-process__step">
+              <div class="cs-process__number">4</div>
+              <div class="cs-process__content">
+                <h3>Launch</h3>
+                <p>Migrated 4,200 contacts from spreadsheets with full data cleanup and deduplication. Ran 3 team training sessions (sales, marketing, support) plus 1:1 coaching for the VP of Sales. Built a launch checklist and ran parallel systems for one week before cutting over.</p>
+              </div>
+            </div>
+            <div class="cs-process__step">
+              <div class="cs-process__number">5</div>
+              <div class="cs-process__content">
+                <h3>Optimize</h3>
+                <p>Held biweekly office hours for the first 60 days post-launch. Refined lead scoring based on actual conversion data. Added 4 new automation workflows based on team feedback. Built the executive dashboard the CEO now opens every morning.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== RESULTS ========== -->
+    <section class="section" data-animate>
+      <div class="container">
+        <div class="cs-section">
+          <div class="cs-section__label">The Results</div>
+          <h2>From blind spots to board-ready in 90 days</h2>
+          <p>Within 30 days of launch, every team member was working inside HubSpot &mdash; no exceptions. The shared spreadsheet was archived. The CEO stopped the manual board prep ritual.</p>
+          <ul>
+            <li><strong>3x pipeline visibility</strong> &mdash; the team went from guessing at pipeline value to seeing every deal, stage, and expected close date in real time</li>
+            <li><strong>68% faster deal cycle</strong> &mdash; automated follow-ups, sequence templates, and task reminders cut the average time from first meeting to closed-won from 47 days to 15</li>
+            <li><strong>100% team adoption in 30 days</strong> &mdash; every rep, marketer, and support agent was fully onboarded with no holdouts or shadow spreadsheets</li>
+            <li>Marketing could attribute 73% of qualified pipeline to specific campaigns for the first time</li>
+            <li>Support resolution time dropped 41% with ticket routing and knowledge base self-service</li>
+            <li>Board reporting went from 2 days of manual work to a live dashboard link</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TESTIMONIAL ========== -->
+    <section class="section" style="padding-top: 0;" data-animate>
+      <div class="container">
+        <div class="cs-quote">
+          <blockquote>We thought we needed a CRM. What we actually needed was someone to design how our entire revenue process works and then build it. Checkpoint did not just configure HubSpot &mdash; they rewired how our team operates. The pipeline visibility alone changed how we run the company.</blockquote>
+          <div class="cs-quote__author">CEO &amp; Co-Founder &middot; Series A B2B SaaS</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section class="section section--dark" style="padding-block: var(--space-5xl);" data-animate>
+      <div class="container text-center">
+        <div style="max-width: 640px; margin-inline: auto;">
+          <h2 style="margin-bottom: var(--space-lg);">Outgrowing spreadsheets?</h2>
+          <p style="margin-inline: auto; margin-bottom: var(--space-xl);">Let&rsquo;s talk about building a revenue system your team will actually use &mdash; and your board will actually trust.</p>
+          <a href="/contact" class="btn btn--primary btn--large">Let's Chat</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <footer style="background:var(--bg-dark);color:var(--text-inverse);padding-block:var(--space-3xl);">
+    <div class="container">
+      <div class="grid grid--4" style="gap:var(--space-2xl);align-items:start;">
+        <div style="grid-column:span 2;">
+          <div style="margin-bottom:var(--space-md);">
+            <img src="/images/logo-white.png" alt="Checkpoint GTM" style="height:24px;width:auto;">
+          </div>
+          <p style="font-size:0.875rem;color:rgba(250,250,248,0.5);max-width:320px;">Embedded RevOps and GTM consulting for B2B SaaS companies. Berlin-based, globally delivered.</p>
+        </div>
+        <div>
+          <h4 style="font-size:0.8125rem;font-weight:500;color:rgba(250,250,248,0.5);margin-bottom:var(--space-md);text-transform:uppercase;letter-spacing:0.05em;">Navigation</h4>
+          <div style="display:flex;flex-direction:column;gap:var(--space-sm);">
+            <a href="/services" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Services</a>
+            <a href="/case-studies" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Case Studies</a>
+            <a href="/about" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">About</a>
+            <a href="/contact" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h4 style="font-size:0.8125rem;font-weight:500;color:rgba(250,250,248,0.5);margin-bottom:var(--space-md);text-transform:uppercase;letter-spacing:0.05em;">Legal</h4>
+          <div style="display:flex;flex-direction:column;gap:var(--space-sm);">
+            <a href="/impressum" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Impressum</a>
+            <a href="/datenschutz" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Datenschutz</a>
+          </div>
+          <div style="margin-top:var(--space-lg);"><p style="font-size:0.8125rem;color:rgba(250,250,248,0.4);">Berlin, Germany</p></div>
+        </div>
+      </div>
+      <div style="margin-top:var(--space-2xl);padding-top:var(--space-lg);border-top:1px solid rgba(250,250,248,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-md);">
+        <p style="font-size:0.8125rem;color:rgba(250,250,248,0.4);">&copy; 2025 Checkpoint GTM. All rights reserved.</p>
+        <div style="display:flex;align-items:center;gap:var(--space-lg);">
+          <a href="#" style="font-size:0.8125rem;color:rgba(250,250,248,0.5);">AI-readable version</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" style="color:rgba(250,250,248,0.5);" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/nav.js"></script>
+  <script src="../js/scroll-animations.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@crikket-io/capture/dist/capture.global.js" defer></script>
+  <script>
+    window.addEventListener("load", function() {
+      if (window.CrikketCapture) {
+        window.CrikketCapture.init({ key: "crk_7OXqJjPMyjZa5zkLMYCGPXLp", host: "https://crikket.gotomarketpro.de" })
+      }
+    })
+  </script>
+</body>
+</html>
