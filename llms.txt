@@ -1,0 +1,81 @@
+# Checkpoint GTM
+
+> Berlin-based RevOps and GTM consultancy for B2B SaaS companies. HubSpot Platinum Partner delivering strategy tied to implementation — embedded operators, not advisors.
+
+## Company
+Checkpoint GTM partners with B2B SaaS companies (seed to Series C) across Europe and North America to build the operating layer behind growth. We're HubSpot Platinum Partners and Salesforce Advanced Administrator certified, based in Berlin with multilingual delivery (English, German, Italian, French).
+
+## Services
+
+### HubSpot Implementation
+- [Overview](https://checkpointgtm.com/services/hubspot-implementation.html): Full HubSpot portal buildouts, optimization, and Sales/Marketing/Service/Operations Hub implementations for B2B SaaS companies at Series A through enterprise.
+
+### Revenue Operations Consulting
+- [Overview](https://checkpointgtm.com/services/revenue-operations.html): Operating model design, process automation, data architecture. RevOps that connects marketing, sales, and customer success into one operating system.
+
+### GTM Strategy
+- [Overview](https://checkpointgtm.com/services/gtm-strategy.html): Go-to-market strategy and execution for B2B SaaS — ICP definition, channel strategy, messaging frameworks, and operational execution.
+
+### CRM Migration
+- [Overview](https://checkpointgtm.com/services/crm-migration.html): Salesforce, Pipedrive, and Attio to HubSpot migrations. Zero downtime, data integrity, workflow rebuild.
+
+### Marketing Operations
+- [Overview](https://checkpointgtm.com/services/marketing-operations.html): Attribution, lifecycle stages, lead scoring, and campaign infrastructure that connects to pipeline.
+
+### AI Consulting for GTM
+- [Overview](https://checkpointgtm.com/services/ai-gtm-consulting.html): AI strategy, governance, and embedded implementation for B2B SaaS GTM teams. From pilot purgatory to production infrastructure.
+
+### AI & Automation
+- [Overview](https://checkpointgtm.com/services/ai-automation.html): Tactical AI workflows — enrichment, routing, content generation, custom MCPs. We build production systems, not demos.
+
+### Programmatic Outbound
+- [Overview](https://checkpointgtm.com/services/programmatic-outbound.html): Cold outbound at scale — waterfall enrichment, rotated infrastructure, multi-channel orchestration, measurable reply rates.
+
+### VC Portfolio Support
+- [Overview](https://checkpointgtm.com/services/vc-portfolio-support.html): Standardized RevOps and GTM support across portfolio companies, from seed-stage setup to Series B revenue operations.
+
+## Proof
+
+### Case Studies
+- [Series A revenue system build](https://checkpointgtm.com/case-studies/series-a-revops.html): 3x pipeline visibility, 68% faster deal cycle
+- [Series B RevOps transformation](https://checkpointgtm.com/case-studies/series-b-transformation.html): 4.2x revenue per rep, 92% forecast accuracy
+- [Salesforce to HubSpot migration](https://checkpointgtm.com/case-studies/crm-migration.html): 50K records, zero downtime, 40% cost reduction
+- [EU to US market entry](https://checkpointgtm.com/case-studies/gtm-market-entry.html): €2.1M pipeline in 90 days
+- [VC portfolio GTM infrastructure](https://checkpointgtm.com/case-studies/vc-portfolio.html): 8 companies, 6 weeks to first dashboard
+
+### Metrics
+- 80+ GTM implementations shipped
+- 100+ B2B SaaS companies scaled
+- 12+ countries served
+- 4 languages delivered (EN, DE, IT, FR)
+- HubSpot Platinum Partner
+- Salesforce Advanced Administrator certified
+
+## Company Pages
+- [About](https://checkpointgtm.com/about.html): The operators behind Checkpoint GTM
+- [Team](https://checkpointgtm.com/team.html): Meet the team
+- [Contact](https://checkpointgtm.com/contact.html): Book a meeting
+- [Berlin Office](https://checkpointgtm.com/locations/berlin.html): HubSpot Partners in Berlin
+
+## How We Work
+Our engagement model: Discovery → Design → Build → Launch → Optimize. We embed as fractional RevOps or project-based teams. Strategy is tied to implementation every time — we don't deliver decks, we ship working systems.
+
+## Engagement Models
+- Project-based: fixed scope, defined timeline (€15K–€90K)
+- Retainer: ongoing monthly support (€6K–€25K/month)
+- Fractional / Embedded: senior operators inside your team
+- Workshop / Training: team enablement sessions
+
+## Contact
+- Email: noah@checkpointgtm.com
+- Location: Berlin, Germany
+- LinkedIn: https://www.linkedin.com/company/checkpoint-gtm
+
+## Sitemap
+- [Homepage](https://checkpointgtm.com/)
+- [Services](https://checkpointgtm.com/services/index.html)
+- [Case Studies](https://checkpointgtm.com/case-studies.html)
+- [About](https://checkpointgtm.com/about.html)
+- [Team](https://checkpointgtm.com/team.html)
+- [Contact](https://checkpointgtm.com/contact.html)
+- [Sitemap XML](https://checkpointgtm.com/sitemap.xml)

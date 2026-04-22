@@ -334,3 +334,302 @@ p {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   Theme Switch — 3-state Segmented Control (Day / Night / AI)
+   ========================================================================== */
+/* Override per-page inlined .theme-toggle { width/height/border-radius } that
+   would otherwise crush the wrapper. The new control is a container, not a button. */
+.theme-switch.theme-toggle {
+  width: auto !important;
+  height: 36px !important;
+  border-radius: var(--radius-full) !important;
+  background: var(--bg-secondary) !important;
+  color: inherit !important;
+}
+
+.theme-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  height: 36px;
+}
+
+.theme-switch__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 28px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.theme-switch__btn:hover {
+  color: var(--text-primary);
+}
+
+.theme-switch__btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.theme-switch__btn.is-active {
+  background: var(--accent);
+  color: #FFFFFF;
+}
+
+.theme-switch__btn svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.theme-switch__btn .theme-switch__label {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 640px) {
+  .theme-switch {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   AI Mode Banner
+   ========================================================================== */
+.ai-mode-banner {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2000;
+  padding: 8px 16px;
+  background: #0a0a0a;
+  color: #FAFAF8;
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8125rem;
+  text-align: center;
+  border-bottom: 1px solid #2D6A4F;
+}
+
+.ai-mode-banner__exit {
+  color: #52B788;
+  text-decoration: underline;
+  margin-left: 4px;
+}
+
+.ai-mode-banner__exit:hover {
+  color: #74C69D;
+}
+
+/* ==========================================================================
+   AI Summary Blocks — hidden in Day/Night, visible in AI mode
+   ========================================================================== */
+.ai-summary {
+  display: none;
+}
+
+/* ==========================================================================
+   AI Theme — Machine-readable, LLM-optimized rendering
+   ========================================================================== */
+[data-theme="ai"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --bg-dark: #0a0a0a;
+  --bg-card: #fafafa;
+
+  --text-primary: #0a0a0a;
+  --text-secondary: #404040;
+  --text-inverse: #ffffff;
+  --text-muted: #666666;
+
+  --accent: #2D6A4F;
+  --accent-light: #40916C;
+  --accent-subtle: #D8F3DC;
+
+  --border: #d4d4d4;
+  --border-dark: #a3a3a3;
+
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-card: none;
+  --shadow-hero-card: none;
+
+  --font-display: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-body: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+[data-theme="ai"] body {
+  font-family: var(--font-body);
+  line-height: 1.7;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  padding-top: 40px; /* room for AI banner */
+}
+
+[data-theme="ai"] .ai-mode-banner {
+  display: block;
+}
+
+/* Kill motion, transitions, decorative chrome */
+[data-theme="ai"] *,
+[data-theme="ai"] *::before,
+[data-theme="ai"] *::after {
+  animation: none !important;
+  transition: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* Hide heavy animation canvas + decorative imagery */
+[data-theme="ai"] canvas,
+[data-theme="ai"] .hero__canvas-wrap,
+[data-theme="ai"] .hero__particles,
+[data-theme="ai"] .hero-particles,
+[data-theme="ai"] .hero__scroll-cta,
+[data-theme="ai"] .hero__scroll,
+[data-theme="ai"] .hero__bg,
+[data-theme="ai"] .marquee,
+[data-theme="ai"] .partner-grid img,
+[data-theme="ai"] .cert-badge,
+[data-theme="ai"] .certification-badges,
+[data-theme="ai"] img:not([data-keep-in-ai]) {
+  display: none !important;
+}
+
+/* Flatten the hero so it doesn't hijack the viewport */
+[data-theme="ai"] .hero,
+[data-theme="ai"] .hero__inner,
+[data-theme="ai"] .hero__fixed {
+  position: relative !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding-block: 4rem 2rem !important;
+  background: var(--bg-primary) !important;
+}
+
+[data-theme="ai"] .hero__content,
+[data-theme="ai"] .hero__card,
+[data-theme="ai"] .hero__cards {
+  position: static !important;
+  transform: none !important;
+}
+
+/* Single-column, reading-max width */
+[data-theme="ai"] main,
+[data-theme="ai"] .container,
+[data-theme="ai"] .section__inner,
+[data-theme="ai"] .hero__inner {
+  max-width: 760px !important;
+  margin-inline: auto !important;
+  padding-inline: 1.5rem !important;
+}
+
+[data-theme="ai"] section {
+  padding-block: 2rem !important;
+  background: var(--bg-primary) !important;
+}
+
+[data-theme="ai"] .grid,
+[data-theme="ai"] .grid--2,
+[data-theme="ai"] .grid--3,
+[data-theme="ai"] .grid--4 {
+  grid-template-columns: 1fr !important;
+  gap: 1rem !important;
+}
+
+/* Clean heading hierarchy */
+[data-theme="ai"] h1,
+[data-theme="ai"] h2,
+[data-theme="ai"] h3,
+[data-theme="ai"] h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+[data-theme="ai"] h1 { font-size: 2rem; margin-block: 2rem 1rem; }
+[data-theme="ai"] h2 { font-size: 1.5rem; margin-block: 2rem 0.75rem; }
+[data-theme="ai"] h3 { font-size: 1.125rem; margin-block: 1.5rem 0.5rem; }
+
+[data-theme="ai"] a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+[data-theme="ai"] .btn,
+[data-theme="ai"] .btn--primary,
+[data-theme="ai"] .btn--secondary {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: var(--bg-primary) !important;
+  color: var(--accent) !important;
+  border: 1px solid var(--accent) !important;
+  border-radius: 2px !important;
+  font-family: var(--font-body);
+  font-weight: 600;
+}
+
+/* Show AI summary blocks */
+[data-theme="ai"] .ai-summary {
+  display: block;
+  border-left: 3px solid var(--accent);
+  padding: 1rem 1.5rem;
+  background: var(--bg-secondary);
+  margin: 1.5rem 0 2rem;
+  font-size: 0.9375rem;
+  border-radius: 0 4px 4px 0;
+}
+
+[data-theme="ai"] .ai-summary h2,
+[data-theme="ai"] .ai-summary h3 {
+  margin-top: 0;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+[data-theme="ai"] .ai-summary p,
+[data-theme="ai"] .ai-summary li {
+  margin: 0.5rem 0;
+}
+
+/* Nav simplification in AI mode */
+[data-theme="ai"] .nav,
+[data-theme="ai"] .nav--scrolled {
+  position: static !important;
+  background: var(--bg-primary) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: 1px solid var(--border);
+}
+
+[data-theme="ai"] .nav__dropdown-menu {
+  position: static !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  pointer-events: auto !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  padding: 0 !important;
+  min-width: 0 !important;
+}
+

@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow">
+  <meta name="bingbot" content="index, follow">
   <meta name="description" content="Embedded RevOps and GTM consulting for B2B SaaS. HubSpot Platinum Partner in Berlin. Strategy tied to implementation — every engagement. Let's chat.">
   <link rel="canonical" href="https://checkpointgtm.com/" />
   <meta property="og:type" content="website" />
@@ -22,7 +25,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Slab:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Slab:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
   <!-- Theme toggle (runs before paint to prevent flash) -->
   <script src="js/theme-toggle.js"></script>
@@ -88,6 +91,75 @@
     .nav__link:hover {
       color: var(--text-primary);
     }
+    .nav__dropdown { position: relative; }
+    .nav__link--dropdown { display: inline-flex; align-items: center; gap: 0.25rem; }
+    .nav__dropdown-caret { font-size: 0.75rem; transition: transform var(--transition-fast); }
+    .nav__dropdown:hover .nav__dropdown-caret { transform: rotate(180deg); }
+
+    .nav__dropdown-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 50%;
+      min-width: 260px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      padding: var(--space-sm) 0;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateX(-50%) translateY(-8px);
+      transition: opacity var(--transition-fast), transform var(--transition-fast), visibility 0s linear var(--transition-fast);
+      z-index: 200;
+    }
+    .nav__dropdown:hover .nav__dropdown-menu,
+    .nav__dropdown:focus-within .nav__dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+      transition: opacity var(--transition-fast), transform var(--transition-fast);
+    }
+    .nav__dropdown-item {
+      display: block;
+      padding: 0.625rem var(--space-lg);
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      transition: background var(--transition-fast), color var(--transition-fast), opacity 0.3s, transform 0.3s;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    .nav__dropdown-item:hover { background: var(--bg-secondary); color: var(--accent); }
+
+    /* Stagger children fade-in */
+    .nav__dropdown:hover .nav__dropdown-item,
+    .nav__dropdown:focus-within .nav__dropdown-item {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .nav__dropdown:hover .nav__dropdown-item:nth-child(1) { transition-delay: 40ms; }
+    .nav__dropdown:hover .nav__dropdown-item:nth-child(2) { transition-delay: 80ms; }
+    .nav__dropdown:hover .nav__dropdown-item:nth-child(3) { transition-delay: 120ms; }
+    .nav__dropdown:hover .nav__dropdown-item:nth-child(4) { transition-delay: 160ms; }
+    .nav__dropdown:hover .nav__dropdown-item:nth-child(5) { transition-delay: 200ms; }
+    .nav__dropdown:hover .nav__dropdown-item:nth-child(6) { transition-delay: 240ms; }
+    .nav__dropdown:hover .nav__dropdown-item:nth-child(7) { transition-delay: 280ms; }
+    .nav__dropdown:hover .nav__dropdown-item:nth-child(8) { transition-delay: 320ms; }
+    .nav__dropdown:hover .nav__dropdown-item:nth-child(9) { transition-delay: 360ms; }
+    .nav__dropdown:hover .nav__dropdown-item:nth-child(10) { transition-delay: 400ms; }
+    .nav__dropdown:hover .nav__dropdown-item:nth-child(11) { transition-delay: 440ms; }
+
+    [data-theme="dark"] .nav__dropdown-menu {
+      background: rgba(26, 26, 26, 0.98);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      .nav__dropdown-menu { display: none; }
+    }
+
 
     .nav__actions {
       display: flex;
@@ -292,6 +364,101 @@
       .hero__content { bottom: 12%; }
       .hero__title { font-size: 1.75rem; }
     }
+
+    /* --- Meetings Modal --- */
+    .meetings-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-lg);
+      background: rgba(15, 15, 15, 0.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      opacity: 0;
+      transition: opacity 180ms ease;
+    }
+    .meetings-modal.is-open {
+      display: flex;
+      opacity: 1;
+    }
+    .meetings-modal__card {
+      position: relative;
+      width: 100%;
+      max-width: 960px;
+      max-height: 90vh;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transform: translateY(8px) scale(0.98);
+      transition: transform 180ms ease;
+    }
+    .meetings-modal.is-open .meetings-modal__card {
+      transform: translateY(0) scale(1);
+    }
+    .meetings-modal__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      padding: var(--space-md) var(--space-lg);
+      border-bottom: 1px solid var(--border);
+    }
+    .meetings-modal__title {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .meetings-modal__close {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-full);
+      background: transparent;
+      color: var(--text-secondary);
+      border: none;
+      cursor: pointer;
+      transition: background 160ms ease, color 160ms ease;
+    }
+    .meetings-modal__close:hover,
+    .meetings-modal__close:focus-visible {
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      outline: none;
+    }
+    .meetings-modal__body {
+      flex: 1 1 auto;
+      overflow-y: auto;
+      padding: var(--space-sm);
+    }
+    .meetings-modal__body .meetings-iframe-container {
+      min-height: 640px;
+    }
+    body.is-modal-open {
+      overflow: hidden;
+    }
+    @media (max-width: 640px) {
+      .meetings-modal { padding: 0; }
+      .meetings-modal__card {
+        max-height: 100vh;
+        height: 100vh;
+        border-radius: 0;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .meetings-modal,
+      .meetings-modal__card { transition: none; }
+    }
   </style>
 
   <!-- ========== STRUCTURED DATA (JSON-LD) ========== -->
@@ -405,7 +572,22 @@
       </a>
 
       <div class="nav__links">
-        <a href="/services/index.html" class="nav__link">Services</a>
+        <div class="nav__dropdown">
+          <a href="/services/index.html" class="nav__link nav__link--dropdown">Services <span class="nav__dropdown-caret">▾</span></a>
+          <div class="nav__dropdown-menu" role="menu">
+            <a href="/services/index.html" class="nav__dropdown-item" role="menuitem">All Services</a>
+            <a href="/services/hubspot-platinum-partner.html" class="nav__dropdown-item" role="menuitem">HubSpot Platinum Partner</a>
+            <a href="/services/hubspot-implementation.html" class="nav__dropdown-item" role="menuitem">HubSpot Implementation</a>
+            <a href="/services/revenue-operations.html" class="nav__dropdown-item" role="menuitem">Revenue Operations</a>
+            <a href="/services/gtm-strategy.html" class="nav__dropdown-item" role="menuitem">GTM Strategy</a>
+            <a href="/services/crm-migration.html" class="nav__dropdown-item" role="menuitem">CRM Migration</a>
+            <a href="/services/marketing-operations.html" class="nav__dropdown-item" role="menuitem">Marketing Operations</a>
+            <a href="/services/ai-gtm-consulting.html" class="nav__dropdown-item" role="menuitem">AI Consulting for GTM</a>
+            <a href="/services/ai-automation.html" class="nav__dropdown-item" role="menuitem">AI &amp; Automation</a>
+            <a href="/services/programmatic-outbound.html" class="nav__dropdown-item" role="menuitem">Programmatic Outbound</a>
+            <a href="/services/vc-portfolio-support.html" class="nav__dropdown-item" role="menuitem">VC Portfolio Support</a>
+          </div>
+        </div>
         <a href="/services/ai-gtm-consulting.html" class="nav__link">AI Consulting</a>
         <a href="/services/programmatic-outbound.html" class="nav__link">Outbound</a>
         <a href="/case-studies.html" class="nav__link">Case Studies</a>
@@ -414,10 +596,17 @@
       </div>
 
       <div class="nav__actions">
-        <button class="theme-toggle" aria-label="Toggle theme">
-          <svg class="theme-toggle__moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-          <svg class="theme-toggle__sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        </button>
+        <div class="theme-switch theme-toggle" role="radiogroup" aria-label="Theme">
+          <button type="button" class="theme-switch__btn" data-theme-value="light" role="radio" aria-checked="false" aria-label="Day mode" title="Day">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.78" y2="4.22"/></svg>
+          </button>
+          <button type="button" class="theme-switch__btn" data-theme-value="dark" role="radio" aria-checked="false" aria-label="Night mode" title="Night">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" class="theme-switch__btn" data-theme-value="ai" role="radio" aria-checked="false" aria-label="AI-optimized mode" title="AI view">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L14 9 L21 10 L15.5 14.5 L17 21 L12 17.5 L7 21 L8.5 14.5 L3 10 L10 9 Z"/></svg>
+          </button>
+        </div>
         <a href="/contact.html" class="btn btn--primary btn--small">Let's Chat</a>
 
         <button class="nav__mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -441,6 +630,15 @@
   </div>
 
   <main>
+    <aside class="ai-summary" aria-label="AI-readable summary">
+    <h2>Page Summary</h2>
+    <p><strong>What this is:</strong> Checkpoint GTM homepage. Checkpoint GTM is a Berlin-based embedded RevOps and GTM consultancy for B2B SaaS companies, startups, and VC-backed teams.</p>
+    <p><strong>Who it is for:</strong> Seed through Series B founders and revenue leaders; marketing, sales, and customer success operators; VC platform teams supporting portfolio companies; teams migrating from Salesforce, Pipedrive, or Attio to HubSpot.</p>
+    <p><strong>What we do:</strong> HubSpot implementation and optimization; CRM migration and data architecture; RevOps design; marketing operations and attribution; customer success operations; sales enablement; AI and automation integration; VC portfolio support.</p>
+    <p><strong>How we work:</strong> Five-phase delivery — Discovery, Design, Build, Launch, Optimize. Embedded consultants who implement, not just advise.</p>
+    <p><strong>Proof:</strong> HubSpot Platinum Partner. Salesforce Admin certified. 50+ implementations across 12+ countries. Multilingual EMEA delivery.</p>
+    <p><strong>Primary CTA:</strong> Book a free discovery call at /contact.html.</p>
+    </aside>
     <!-- ========== HERO ========== -->
     <section class="hero">
       <div class="hero__fixed">
@@ -457,7 +655,7 @@
           <h1 class="hero__title">Revenue systems<br>designed to scale</h1>
           <p class="hero__subtitle">We embed into B2B SaaS teams to build the operating layer behind growth. Strategy tied to implementation — from day one.</p>
           <div class="hero__actions">
-            <a href="/contact.html" class="btn btn--primary btn--large">Let's Chat</a>
+            <a href="/contact.html" class="btn btn--primary btn--large" data-open-meetings-modal aria-haspopup="dialog" aria-controls="meetings-modal">Let's Chat</a>
             <a href="/case-studies.html" class="btn btn--ghost">Take a look at what we do <span class="arrow">&rarr;</span></a>
           </div>
         </div>
@@ -506,6 +704,7 @@
           <div class="partner-grid__card partner-grid__card--from-bottom"><img src="images/partners/unnamed-2.png" alt="Unify — technology partner" loading="lazy"></div>
           <div class="partner-grid__card partner-grid__card--from-right"><img src="images/partners/unnamed-3.png" alt="Dreamdata — technology partner" loading="lazy"></div>
           <div class="partner-grid__card partner-grid__card--from-left"><img src="images/partners/unnamed-7.png" alt="n8n — technology partner" loading="lazy"></div>
+          <div class="partner-grid__card partner-grid__card--from-bottom"><img src="images/partners/anthropic.svg" alt="Anthropic — technology partner" loading="lazy"></div>
           <div class="partner-grid__card partner-grid__card--from-right"><img src="images/partners/partner-misc.jpg" alt="Checkpoint GTM technology partner" loading="lazy"></div>
         </div>
       </div>
@@ -556,6 +755,28 @@
             <span class="logo-scroll__item"><img src="images/clients/mondu.png" alt="Mondu — Checkpoint GTM client" class="logo-scroll__logo"></span>
           </div>
         </div>
+      </div>
+    </section>
+
+
+    <!-- ========== PLATINUM PARTNER BADGE STRIP ========== -->
+    <section class="section" style="padding-block: var(--space-2xl);" aria-label="HubSpot Platinum Partner">
+      <div class="container">
+        <a href="/services/hubspot-platinum-partner.html" class="platinum-strip reveal" style="display:flex;align-items:center;gap:var(--space-lg);justify-content:space-between;flex-wrap:wrap;padding:var(--space-lg) var(--space-xl);background:linear-gradient(135deg,#1A1A1A 0%,#2A2A2A 100%);color:#FAFAF8;border-radius:var(--radius-lg);text-decoration:none;transition:all var(--transition-base);border:1px solid rgba(255,255,255,0.06);">
+          <div style="display:flex;align-items:center;gap:var(--space-md);flex-wrap:wrap;">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:rgba(232,152,94,0.15);color:#E8985E;flex-shrink:0;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 7v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V7l-8-5z"/><path d="m9 12 2 2 4-4"/></svg>
+            </span>
+            <span style="font-family:var(--font-display);font-size:0.95rem;line-height:1.5;color:#FAFAF8;font-weight:500;">
+              <span style="color:#E8985E;font-weight:600;">HubSpot Platinum Partner</span>
+              <span style="opacity:0.35;margin-inline:var(--space-sm);">·</span>
+              Salesforce Advanced Admin Certified
+              <span style="opacity:0.35;margin-inline:var(--space-sm);">·</span>
+              Berlin-based, globally delivered
+            </span>
+          </div>
+          <span style="display:inline-flex;align-items:center;gap:0.5rem;font-size:0.875rem;font-weight:500;color:#E8985E;white-space:nowrap;">See what Platinum unlocks <span class="arrow">&rarr;</span></span>
+        </a>
       </div>
     </section>
 
@@ -741,16 +962,16 @@
           <span class="overline">Why Checkpoint</span>
           <h2>What makes us different</h2>
         </div>
-        <div class="grid grid--3 reveal-stagger">
-          <div class="reveal" style="padding:var(--space-xl);">
+        <div class="grid grid--3 reveal-stagger" style="align-items:start;">
+          <div class="reveal" style="padding:var(--space-xl);align-self:start;">
             <h3 style="margin-bottom:var(--space-md);">We embed, we don't advise</h3>
             <p>No strategy decks that collect dust. We sit inside your team, work in your tools, and build alongside your people. When we leave, the system runs without us.</p>
           </div>
-          <div class="reveal" style="padding:var(--space-xl);">
+          <div class="reveal" style="padding:var(--space-xl);align-self:start;">
             <h3 style="margin-bottom:var(--space-md);">EMEA-native, global standards</h3>
             <p>Based in Berlin. Delivered across Europe, the US, and APAC. Multilingual team. GDPR-aware from day one. Enterprise rigor without enterprise bureaucracy.</p>
           </div>
-          <div class="reveal" style="padding:var(--space-xl);">
+          <div class="reveal" style="padding:var(--space-xl);align-self:start;">
             <h3 style="margin-bottom:var(--space-md);">40+ implementations, zero guesswork</h3>
             <p>We've seen the patterns. Seed-stage chaos, Series B scaling pain, enterprise migration complexity. We bring proven playbooks adapted to your stage and stack.</p>
           </div>
@@ -762,7 +983,7 @@
     <!-- ========== PROOF MODULE ========== -->
     <section class="section">
       <div class="container">
-        <div class="proof-module reveal">
+        <div class="proof-module reveal" style="max-width:1040px;margin-inline:auto;">
           <div>
             <span class="overline mb-md" style="display:block;">Featured Case Study</span>
             <div class="proof-module__metric">3x</div>
@@ -793,34 +1014,31 @@
 
         <div class="grid grid--3 reveal-stagger" style="margin-top:var(--space-xl);">
           <div class="testimonial reveal">
-            <p class="testimonial__quote">"They understood our business within the first week. By week four, our entire pipeline reporting was rebuilt and actually useful."</p>
+            <p class="testimonial__quote">"Checkpoint didn't just redesign our HubSpot &mdash; they rebuilt how marketing and sales actually hand off. Pipeline attribution became something we could trust for the first time."</p>
             <div class="testimonial__author">
-              <div class="testimonial__avatar"></div>
-              <div>
-                <div class="testimonial__name">Head of Sales</div>
-                <div class="testimonial__role">Series A Fintech</div>
+              <div class="testimonial__meta">
+                <div class="testimonial__name">Fabian Liebig</div>
+                <div class="testimonial__role">VP Marketing &middot; Staffbase</div>
               </div>
             </div>
           </div>
 
           <div class="testimonial reveal">
-            <p class="testimonial__quote">"The migration from Salesforce to HubSpot was flawless. Zero data loss, zero downtime, and our team was up to speed in days, not weeks."</p>
+            <p class="testimonial__quote">"We went from a scattered outbound motion to a measurable revenue system in weeks. Checkpoint's team operates as an extension of ours &mdash; they don't hand off decks, they ship."</p>
             <div class="testimonial__author">
-              <div class="testimonial__avatar"></div>
-              <div>
-                <div class="testimonial__name">COO</div>
-                <div class="testimonial__role">E-commerce Platform</div>
+              <div class="testimonial__meta">
+                <div class="testimonial__name">Benjamin Jasper</div>
+                <div class="testimonial__role">VP Finance &middot; Voize</div>
               </div>
             </div>
           </div>
 
           <div class="testimonial reveal">
-            <p class="testimonial__quote">"Our RevOps function went from reactive firefighting to a proper operating system. Attribution, lifecycle stages, lead scoring &mdash; all connected and driving decisions we actually trust."</p>
+            <p class="testimonial__quote">"They understood our lifecycle complexity within a week. By the next sprint we had MQL tracking, remarketing flows, and a dashboard the exec team actually opens. That's rare."</p>
             <div class="testimonial__author">
-              <div class="testimonial__avatar"></div>
-              <div>
-                <div class="testimonial__name">VP Marketing</div>
-                <div class="testimonial__role">B2B SaaS Scale-up</div>
+              <div class="testimonial__meta">
+                <div class="testimonial__name">Jaclyn Crocker</div>
+                <div class="testimonial__role">COO &middot; Duel</div>
               </div>
             </div>
           </div>
@@ -832,21 +1050,21 @@
     <!-- ========== METRICS BAR ========== -->
     <section class="section section--dark">
       <div class="container">
-        <div class="grid grid--4 reveal-stagger">
-          <div class="stat-block reveal">
-            <div class="stat-block__number">40+</div>
+        <div class="grid grid--4 stats-bar">
+          <div class="stat-block">
+            <div class="stat-block__number" data-count-to="80" data-suffix="+">0<span class="stat-block__suffix">+</span></div>
             <div class="stat-block__label">GTM implementations</div>
           </div>
-          <div class="stat-block reveal">
-            <div class="stat-block__number">50+</div>
+          <div class="stat-block">
+            <div class="stat-block__number" data-count-to="100" data-suffix="+">0<span class="stat-block__suffix">+</span></div>
             <div class="stat-block__label">Companies scaled</div>
           </div>
-          <div class="stat-block reveal">
-            <div class="stat-block__number">4</div>
+          <div class="stat-block">
+            <div class="stat-block__number" data-count-to="4" data-suffix="">0<span class="stat-block__suffix"></span></div>
             <div class="stat-block__label">Languages spoken</div>
           </div>
-          <div class="stat-block reveal">
-            <div class="stat-block__number">12+</div>
+          <div class="stat-block">
+            <div class="stat-block__number" data-count-to="12" data-suffix="+">0<span class="stat-block__suffix">+</span></div>
             <div class="stat-block__label">Countries we operate in</div>
           </div>
         </div>
@@ -863,23 +1081,23 @@
           <p class="text-center" style="margin-inline:auto;">Whether you need a one-time buildout, ongoing support, or a fractional team member, we have a model that works.</p>
         </div>
 
-        <div class="grid grid--4 reveal-stagger" style="margin-top:var(--space-xl);">
-          <div class="engagement-card reveal">
+        <div class="grid grid--4 click-in-grid" style="margin-top:var(--space-xl);">
+          <div class="engagement-card click-in">
             <div class="engagement-card__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
             <h3 class="engagement-card__title">Project-Based</h3>
             <p class="engagement-card__desc">Defined scope, fixed timeline. HubSpot implementations, CRM migrations, system audits.</p>
           </div>
-          <div class="engagement-card reveal">
+          <div class="engagement-card click-in">
             <div class="engagement-card__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
             <h3 class="engagement-card__title">Retainer</h3>
             <p class="engagement-card__desc">Monthly hours for ongoing RevOps support, optimization, and system maintenance.</p>
           </div>
-          <div class="engagement-card reveal">
+          <div class="engagement-card click-in">
             <div class="engagement-card__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
             <h3 class="engagement-card__title">Fractional / Embedded</h3>
             <p class="engagement-card__desc">We join your team as your RevOps lead. Attend standups, own the roadmap, build the stack.</p>
           </div>
-          <div class="engagement-card reveal">
+          <div class="engagement-card click-in">
             <div class="engagement-card__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
             <h3 class="engagement-card__title">Workshop / Training</h3>
             <p class="engagement-card__desc">Team enablement sessions on HubSpot, RevOps best practices, and GTM methodology.</p>
@@ -967,8 +1185,9 @@
         <div>
           <h4 style="font-size:0.8125rem;font-weight:500;color:rgba(250,250,248,0.5);margin-bottom:var(--space-md);text-transform:uppercase;letter-spacing:0.05em;">Legal</h4>
           <div style="display:flex;flex-direction:column;gap:var(--space-sm);">
-            <a href="/impressum" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Impressum</a>
-            <a href="/datenschutz" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Datenschutz</a>
+            <a href="/imprint.html" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Impressum</a>
+            <a href="/legal-privacy-policy.html" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Datenschutz</a>
+            <a href="#" id="cookie-preferences-link" data-cookie-preferences style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Cookie preferences</a>
           </div>
           <div style="margin-top:var(--space-lg);">
             <p style="font-size:0.8125rem;color:rgba(250,250,248,0.4);">Berlin, Germany</p>
@@ -989,10 +1208,89 @@
     </div>
   </footer>
 
+  <!-- ========== MEETINGS MODAL ========== -->
+  <div id="meetings-modal" class="meetings-modal" role="dialog" aria-modal="true" aria-labelledby="meetings-modal-title" aria-hidden="true">
+    <div class="meetings-modal__card" role="document">
+      <div class="meetings-modal__header">
+        <h2 id="meetings-modal-title" class="meetings-modal__title">Book a discovery call</h2>
+        <button type="button" class="meetings-modal__close" data-close-meetings-modal aria-label="Close meeting scheduler">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="meetings-modal__body">
+        <div class="meetings-iframe-container" data-src="https://checkpointgtm.com/meetings/ncharak/meet-with-checkpoint?embed=true"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script src="js/nav.js"></script>
   <script src="js/hero-particles.js"></script>
   <script src="js/scroll-animations.js"></script>
+  <script>
+    (function () {
+      var modal = document.getElementById('meetings-modal');
+      if (!modal) return;
+      var triggers = document.querySelectorAll('[data-open-meetings-modal]');
+      var closers = modal.querySelectorAll('[data-close-meetings-modal]');
+      var card = modal.querySelector('.meetings-modal__card');
+      var previouslyFocused = null;
+      var scriptLoaded = false;
+
+      function loadHubSpotMeetingsScript() {
+        if (scriptLoaded) return;
+        scriptLoaded = true;
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.src = 'https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js';
+        document.body.appendChild(s);
+      }
+
+      function focusableEls() {
+        return modal.querySelectorAll('button, [href], input, select, textarea, iframe, [tabindex]:not([tabindex="-1"])');
+      }
+
+      function open(e) {
+        if (e) e.preventDefault();
+        previouslyFocused = document.activeElement;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('is-modal-open');
+        loadHubSpotMeetingsScript();
+        var first = modal.querySelector('[data-close-meetings-modal]');
+        if (first) first.focus();
+      }
+
+      function close() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('is-modal-open');
+        if (previouslyFocused && typeof previouslyFocused.focus === 'function') {
+          previouslyFocused.focus();
+        }
+      }
+
+      triggers.forEach(function (t) { t.addEventListener('click', open); });
+      closers.forEach(function (c) { c.addEventListener('click', close); });
+
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) close();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (!modal.classList.contains('is-open')) return;
+        if (e.key === 'Escape') { e.preventDefault(); close(); return; }
+        if (e.key === 'Tab') {
+          var els = focusableEls();
+          if (!els.length) return;
+          var first = els[0];
+          var last = els[els.length - 1];
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      });
+    })();
+  </script>
   <!-- Crikket bug-reporting widget -->
   <script src="https://cdn.jsdelivr.net/npm/@crikket-io/capture/dist/capture.global.js" defer></script>
   <script>
@@ -1002,5 +1300,8 @@
       }
     })
   </script>
+  <!-- Cookie consent (GDPR) -->
+  <div id="cookie-banner"></div>
+  <script src="js/cookie-consent.js"></script>
 </body>
 </html>

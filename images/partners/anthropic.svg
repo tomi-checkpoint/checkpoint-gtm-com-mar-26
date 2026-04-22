@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 64" role="img" aria-label="Anthropic">
+  <g fill="#1A1A1A">
+    <!-- Anthropic mark: simplified A-squared glyph -->
+    <path d="M22 12 L12 52 L22 52 L25 42 L39 42 L42 52 L52 52 L42 12 Z M27 34 L32 20 L37 34 Z"/>
+    <!-- wordmark "Anthropic" -->
+    <text x="66" y="41" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="24" font-weight="600" letter-spacing="0.5">Anthropic</text>
+  </g>
+</svg>

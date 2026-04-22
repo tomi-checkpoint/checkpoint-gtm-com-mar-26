@@ -64,14 +64,61 @@
               backdrop-filter var(--transition-base);
 }
 
-/* --- Stat Counter Animation --- */
-@keyframes countUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+/* --- Stat Counter Animation ---
+   Slide in left-to-right, number counter driven by JS (js/scroll-animations.js) */
+.stats-bar .stat-block {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.stat-block.is-visible .stat-block__number {
-  animation: countUp 0.5s ease forwards;
+.stats-bar .stat-block.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.stat-block__number {
+  position: relative;
+  display: inline-block;
+}
+
+.stat-block__suffix {
+  display: inline;
+}
+
+/* 2D "pop" ring effect spawned when the counter finishes */
+.stat-block__number::after {
+  content: '';
+  position: absolute;
+  inset: -10% -15%;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.6);
+}
+
+.stat-block.is-popped .stat-block__number::after {
+  animation: statPop 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes statPop {
+  0%   { opacity: 0.55; transform: scale(0.6); }
+  60%  { opacity: 0.35; transform: scale(1.15); }
+  100% { opacity: 0;    transform: scale(1.4); }
+}
+
+/* --- Grid "click-in" sequential entrance (engagement cards, etc.) --- */
+.click-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+
+.click-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* --- Subtle Float (for hero cards idle state) --- */
@@ -97,6 +144,17 @@
   .hero__content {
     opacity: 1;
     transform: none;
+    animation: none;
+  }
+
+  .stats-bar .stat-block,
+  .click-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .stat-block.is-popped .stat-block__number::after {
     animation: none;
   }
 

@@ -15,8 +15,90 @@
     document.querySelectorAll('.partner-grid__card').forEach(function(el) {
       el.classList.add('is-visible');
     });
+    document.querySelectorAll('.click-in').forEach(function(el) {
+      el.classList.add('is-visible');
+    });
+    // Stats: set final values with suffix, no animation
+    document.querySelectorAll('.stats-bar .stat-block').forEach(function(block) {
+      block.classList.add('is-visible');
+      var numberEl = block.querySelector('.stat-block__number');
+      if (numberEl) {
+        var target = parseInt(numberEl.getAttribute('data-count-to'), 10) || 0;
+        var suffix = numberEl.getAttribute('data-suffix') || '';
+        numberEl.innerHTML = target + '<span class="stat-block__suffix">' + suffix + '</span>';
+      }
+    });
     return;
   }
+
+  // --- Stats bar: slide-in + counter + pop ---
+  var statsBlocks = document.querySelectorAll('.stats-bar .stat-block');
+  if (statsBlocks.length) {
+    var easeOutQuart = function(t) { return 1 - Math.pow(1 - t, 4); };
+
+    var animateCounter = function(numberEl, target, suffix, duration, onDone) {
+      var start = performance.now();
+      var suffixHTML = '<span class="stat-block__suffix">' + suffix + '</span>';
+      var tick = function(now) {
+        var t = Math.min(1, (now - start) / duration);
+        var value = Math.round(easeOutQuart(t) * target);
+        numberEl.innerHTML = value + suffixHTML;
+        if (t < 1) {
+          requestAnimationFrame(tick);
+        } else {
+          numberEl.innerHTML = target + suffixHTML;
+          if (onDone) onDone();
+        }
+      };
+      requestAnimationFrame(tick);
+    };
+
+    var statsObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var block = entry.target;
+          var index = Array.prototype.indexOf.call(statsBlocks, block);
+          var slideDelay = index * 150;
+          var counterDelay = slideDelay + 250; // start counter after slide-in begins
+
+          setTimeout(function() { block.classList.add('is-visible'); }, slideDelay);
+
+          var numberEl = block.querySelector('.stat-block__number');
+          if (numberEl && numberEl.hasAttribute('data-count-to')) {
+            var target = parseInt(numberEl.getAttribute('data-count-to'), 10) || 0;
+            var suffix = numberEl.getAttribute('data-suffix') || '';
+            setTimeout(function() {
+              animateCounter(numberEl, target, suffix, 1500, function() {
+                block.classList.add('is-popped');
+                setTimeout(function() { block.classList.remove('is-popped'); }, 500);
+              });
+            }, counterDelay);
+          }
+          statsObserver.unobserve(block);
+        }
+      });
+    }, { threshold: 0.3, rootMargin: '0px 0px -40px 0px' });
+
+    statsBlocks.forEach(function(block) { statsObserver.observe(block); });
+  }
+
+  // --- Click-in grid: cards pop up from the bottom one by one ---
+  var clickInGrids = document.querySelectorAll('.click-in-grid');
+  clickInGrids.forEach(function(grid) {
+    var cards = grid.querySelectorAll('.click-in');
+    if (!cards.length) return;
+    var gridObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          cards.forEach(function(card, i) {
+            setTimeout(function() { card.classList.add('is-visible'); }, i * 140);
+          });
+          gridObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    gridObserver.observe(grid);
+  });
 
   // --- Standard reveal animations ---
   var observer = new IntersectionObserver(function(entries) {

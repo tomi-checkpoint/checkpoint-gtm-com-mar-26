@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow">
+  <meta name="bingbot" content="index, follow">
   <meta name="description" content="Programmatic outbound consulting: cold email infrastructure, waterfall enrichment, parallel dialers, and multi-channel sequences. Scale outbound without burning domains.">
   <link rel="canonical" href="https://checkpointgtm.com/services/programmatic-outbound.html" />
   <meta property="og:type" content="website" />
@@ -21,7 +24,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Slab:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Slab:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
   <script src="../js/theme-toggle.js"></script>
 
@@ -30,7 +33,75 @@
   <link rel="stylesheet" href="../css/animations.css">
 
   <style>
-    .nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-height);display:flex;align-items:center;background:transparent}.nav--scrolled{background:rgba(250,250,248,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--border)}[data-theme="dark"] .nav--scrolled{background:rgba(15,15,15,0.85)}.nav__inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:var(--container-max);margin-inline:auto;padding-inline:var(--container-padding)}.nav__logo{font-family:var(--font-display);font-weight:700;font-size:1.125rem;color:var(--text-primary);letter-spacing:-0.01em;display:flex;align-items:center;gap:0.5rem}.nav__logo-mark{width:28px;height:28px;background:var(--accent);border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.75rem;font-weight:700}.nav__links{display:flex;align-items:center;gap:var(--space-xl)}.nav__link{font-size:0.9375rem;color:var(--text-secondary);transition:color var(--transition-fast)}.nav__link:hover{color:var(--text-primary)}.nav__actions{display:flex;align-items:center;gap:var(--space-md)}.theme-toggle{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;color:var(--text-secondary);transition:all var(--transition-fast);cursor:pointer;background:none;border:none}.theme-toggle:hover{color:var(--text-primary);background:var(--bg-secondary)}.theme-toggle svg{width:18px;height:18px}.nav__mobile-toggle{display:none;width:36px;height:36px;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;background:none;border:none}.nav__mobile-toggle span{display:block;width:20px;height:1.5px;background:var(--text-primary);transition:all var(--transition-fast)}.nav__mobile-toggle.is-active span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}.nav__mobile-toggle.is-active span:nth-child(2){opacity:0}.nav__mobile-toggle.is-active span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}.nav__mobile-menu{display:none;position:fixed;inset:0;top:var(--nav-height);background:var(--bg-primary);padding:var(--space-xl) var(--container-padding);flex-direction:column;gap:var(--space-md);z-index:99}.nav__mobile-menu.is-open{display:flex}.nav__mobile-link{font-size:1.125rem;padding:var(--space-md) 0;border-bottom:1px solid var(--border);color:var(--text-primary)}@media(max-width:768px){.nav__links{display:none}.nav__mobile-toggle{display:flex}.nav__actions .btn{display:none}}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-height);display:flex;align-items:center;background:transparent}.nav--scrolled{background:rgba(250,250,248,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--border)}[data-theme="dark"] .nav--scrolled{background:rgba(15,15,15,0.85)}.nav__inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:var(--container-max);margin-inline:auto;padding-inline:var(--container-padding)}.nav__logo{font-family:var(--font-display);font-weight:700;font-size:1.125rem;color:var(--text-primary);letter-spacing:-0.01em;display:flex;align-items:center;gap:0.5rem}.nav__logo-mark{width:28px;height:28px;background:var(--accent);border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.75rem;font-weight:700}.nav__links{display:flex;align-items:center;gap:var(--space-xl)}.nav__link{font-size:0.9375rem;color:var(--text-secondary);transition:color var(--transition-fast)}.nav__link:hover{color:var(--text-primary)}
+    .nav__dropdown { position: relative; }
+    .nav__link--dropdown { display: inline-flex; align-items: center; gap: 0.25rem; }
+    .nav__dropdown-caret { font-size: 0.75rem; transition: transform var(--transition-fast); }
+    .nav__dropdown:hover .nav__dropdown-caret { transform: rotate(180deg); }
+
+    .nav__dropdown-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 50%;
+      min-width: 260px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      padding: var(--space-sm) 0;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateX(-50%) translateY(-8px);
+      transition: opacity var(--transition-fast), transform var(--transition-fast), visibility 0s linear var(--transition-fast);
+      z-index: 200;
+    }
+    .nav__dropdown:hover .nav__dropdown-menu,
+    .nav__dropdown:focus-within .nav__dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+      transition: opacity var(--transition-fast), transform var(--transition-fast);
+    }
+    .nav__dropdown-item {
+      display: block;
+      padding: 0.625rem var(--space-lg);
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      transition: background var(--transition-fast), color var(--transition-fast), opacity 0.3s, transform 0.3s;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    .nav__dropdown-item:hover { background: var(--bg-secondary); color: var(--accent); }
+
+    /* Stagger children fade-in */
+    .nav__dropdown:hover .nav__dropdown-item,
+    .nav__dropdown:focus-within .nav__dropdown-item {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .nav__dropdown:hover .nav__dropdown-item:nth-child(1) { transition-delay: 40ms; }
+    .nav__dropdown:hover .nav__dropdown-item:nth-child(2) { transition-delay: 80ms; }
+    .nav__dropdown:hover .nav__dropdown-item:nth-child(3) { transition-delay: 120ms; }
+    .nav__dropdown:hover .nav__dropdown-item:nth-child(4) { transition-delay: 160ms; }
+    .nav__dropdown:hover .nav__dropdown-item:nth-child(5) { transition-delay: 200ms; }
+    .nav__dropdown:hover .nav__dropdown-item:nth-child(6) { transition-delay: 240ms; }
+    .nav__dropdown:hover .nav__dropdown-item:nth-child(7) { transition-delay: 280ms; }
+    .nav__dropdown:hover .nav__dropdown-item:nth-child(8) { transition-delay: 320ms; }
+    .nav__dropdown:hover .nav__dropdown-item:nth-child(9) { transition-delay: 360ms; }
+    .nav__dropdown:hover .nav__dropdown-item:nth-child(10) { transition-delay: 400ms; }
+
+    [data-theme="dark"] .nav__dropdown-menu {
+      background: rgba(26, 26, 26, 0.98);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      .nav__dropdown-menu { display: none; }
+    }
+.nav__actions{display:flex;align-items:center;gap:var(--space-md)}.theme-toggle{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;color:var(--text-secondary);transition:all var(--transition-fast);cursor:pointer;background:none;border:none}.theme-toggle:hover{color:var(--text-primary);background:var(--bg-secondary)}.theme-toggle svg{width:18px;height:18px}.nav__mobile-toggle{display:none;width:36px;height:36px;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;background:none;border:none}.nav__mobile-toggle span{display:block;width:20px;height:1.5px;background:var(--text-primary);transition:all var(--transition-fast)}.nav__mobile-toggle.is-active span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}.nav__mobile-toggle.is-active span:nth-child(2){opacity:0}.nav__mobile-toggle.is-active span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}.nav__mobile-menu{display:none;position:fixed;inset:0;top:var(--nav-height);background:var(--bg-primary);padding:var(--space-xl) var(--container-padding);flex-direction:column;gap:var(--space-md);z-index:99}.nav__mobile-menu.is-open{display:flex}.nav__mobile-link{font-size:1.125rem;padding:var(--space-md) 0;border-bottom:1px solid var(--border);color:var(--text-primary)}@media(max-width:768px){.nav__links{display:none}.nav__mobile-toggle{display:flex}.nav__actions .btn{display:none}}
 
     /* Service Hero — centered */
     .service-hero {
@@ -416,6 +487,162 @@
       line-height: 1.7;
       color: var(--text-secondary);
     }
+
+    /* Approach section — calm, reassuring value props */
+    .approach-intro {
+      max-width: 780px;
+      margin-inline: auto;
+      margin-bottom: var(--space-2xl);
+    }
+    .approach-intro p {
+      font-size: 1.0625rem;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-md);
+    }
+    .approach-intro p strong { color: var(--text-primary); font-weight: 600; }
+    .approach-values {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+      max-width: 1040px;
+      margin-inline: auto;
+    }
+    .approach-value {
+      padding: var(--space-xl);
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+    .approach-value__title {
+      font-family: var(--font-display);
+      font-size: 1.0625rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: var(--space-sm);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .approach-value__title::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .approach-value__desc {
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+    }
+    @media (max-width: 900px) { .approach-values { grid-template-columns: 1fr; } }
+
+    /* Logo grid — ColdIQ-style */
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      max-width: 1100px;
+      margin-inline: auto;
+    }
+    .tool-logo {
+      aspect-ratio: 3 / 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-md);
+      background: var(--bg-primary);
+      transition: background var(--transition-fast), transform var(--transition-fast);
+      position: relative;
+    }
+    .tool-logo:hover {
+      background: var(--bg-secondary);
+    }
+    .tool-logo__mark {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+      filter: grayscale(100%);
+      opacity: 0.7;
+      transition: filter var(--transition-fast), opacity var(--transition-fast), color var(--transition-fast);
+      text-align: center;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+    .tool-logo:hover .tool-logo__mark {
+      filter: grayscale(0%);
+      opacity: 1;
+      color: var(--accent);
+    }
+    .tool-logo__mark--long {
+      font-size: 0.8125rem;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0);
+      white-space: nowrap; border: 0;
+    }
+    @media (max-width: 640px) {
+      .logo-grid { grid-template-columns: repeat(3, 1fr); }
+      .tool-logo__mark { font-size: 0.8125rem; }
+    }
+
+    /* Collapsible / details styling for SEO deep-dive layer */
+    .deep-toggle {
+      max-width: 1100px;
+      margin-inline: auto;
+      margin-top: var(--space-xl);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--bg-primary);
+      overflow: hidden;
+    }
+    .deep-toggle > summary {
+      padding: var(--space-lg) var(--space-xl);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-md);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.0625rem;
+      color: var(--text-primary);
+      transition: background var(--transition-fast);
+    }
+    .deep-toggle > summary:hover { background: var(--bg-secondary); }
+    .deep-toggle > summary::-webkit-details-marker { display: none; }
+    .deep-toggle > summary::after {
+      content: "+";
+      color: var(--accent);
+      font-size: 1.5rem;
+      font-weight: 400;
+      flex-shrink: 0;
+      transition: transform var(--transition-fast);
+    }
+    .deep-toggle[open] > summary::after { content: "−"; }
+    .deep-toggle__hint {
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      font-weight: 400;
+      color: var(--text-tertiary);
+      margin-left: 0.75rem;
+    }
+    .deep-toggle__body {
+      padding: var(--space-xl);
+      border-top: 1px solid var(--border);
+    }
   </style>
 
   <!-- ========== STRUCTURED DATA (JSON-LD) ========== -->
@@ -532,7 +759,21 @@
     <div class="nav__inner">
       <a href="/" class="nav__logo" aria-label="Checkpoint GTM Home"><img src="/images/logo-dark.png" alt="Checkpoint GTM" class="nav__logo-img"><img src="/images/logo-white.png" alt="Checkpoint GTM" class="nav__logo-img nav__logo-img--dark"></a>
       <div class="nav__links">
-        <a href="/services/index.html" class="nav__link">Services</a>
+        <div class="nav__dropdown">
+          <a href="/services/index.html" class="nav__link nav__link--dropdown">Services <span class="nav__dropdown-caret">▾</span></a>
+          <div class="nav__dropdown-menu" role="menu">
+            <a href="/services/index.html" class="nav__dropdown-item" role="menuitem">All Services</a>
+            <a href="/services/hubspot-implementation.html" class="nav__dropdown-item" role="menuitem">HubSpot Implementation</a>
+            <a href="/services/revenue-operations.html" class="nav__dropdown-item" role="menuitem">Revenue Operations</a>
+            <a href="/services/gtm-strategy.html" class="nav__dropdown-item" role="menuitem">GTM Strategy</a>
+            <a href="/services/crm-migration.html" class="nav__dropdown-item" role="menuitem">CRM Migration</a>
+            <a href="/services/marketing-operations.html" class="nav__dropdown-item" role="menuitem">Marketing Operations</a>
+            <a href="/services/ai-gtm-consulting.html" class="nav__dropdown-item" role="menuitem">AI Consulting for GTM</a>
+            <a href="/services/ai-automation.html" class="nav__dropdown-item" role="menuitem">AI &amp; Automation</a>
+            <a href="/services/programmatic-outbound.html" class="nav__dropdown-item" role="menuitem">Programmatic Outbound</a>
+            <a href="/services/vc-portfolio-support.html" class="nav__dropdown-item" role="menuitem">VC Portfolio Support</a>
+          </div>
+        </div>
         <a href="/services/ai-gtm-consulting.html" class="nav__link">AI Consulting</a>
         <a href="/services/programmatic-outbound.html" class="nav__link">Outbound</a>
         <a href="/case-studies.html" class="nav__link">Case Studies</a>
@@ -540,10 +781,17 @@
         <a href="/contact.html" class="nav__link">Contact</a>
       </div>
       <div class="nav__actions">
-        <button class="theme-toggle" aria-label="Toggle theme">
-          <svg class="theme-toggle__moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-          <svg class="theme-toggle__sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        </button>
+        <div class="theme-switch theme-toggle" role="radiogroup" aria-label="Theme">
+          <button type="button" class="theme-switch__btn" data-theme-value="light" role="radio" aria-checked="false" aria-label="Day mode" title="Day">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.78" y2="4.22"/></svg>
+          </button>
+          <button type="button" class="theme-switch__btn" data-theme-value="dark" role="radio" aria-checked="false" aria-label="Night mode" title="Night">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" class="theme-switch__btn" data-theme-value="ai" role="radio" aria-checked="false" aria-label="AI-optimized mode" title="AI view">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L14 9 L21 10 L15.5 14.5 L17 21 L12 17.5 L7 21 L8.5 14.5 L3 10 L10 9 Z"/></svg>
+          </button>
+        </div>
         <a href="/contact.html" class="btn btn--primary btn--small">Let's Chat</a>
         <button class="nav__mobile-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
       </div>
@@ -560,6 +808,13 @@
   </div>
 
   <main>
+    <aside class="ai-summary" aria-label="AI-readable summary">
+    <h2>Page Summary</h2>
+    <p><strong>Service:</strong> Programmatic outbound consulting.</p>
+    <p><strong>Scope:</strong> Cold email infrastructure (SPF, DKIM, DMARC, ESP rotation), waterfall enrichment, parallel dialer setup, multi-channel sequences, list scoring.</p>
+    <p><strong>Outcome focus:</strong> Scaling outbound volume without burning sending domains or deliverability reputation.</p>
+    <p><strong>CTA:</strong> Book an outbound consult at /contact.html.</p>
+    </aside>
     <!-- ========== HERO ========== -->
     <section class="service-hero">
       <div class="container reveal">
@@ -666,16 +921,109 @@
     </section>
 
 
-    <!-- ========== TOOLSTACK ========== -->
+    <!-- ========== APPROACH ========== -->
     <section class="section section--alt">
       <div class="container">
         <div class="section-header text-center reveal">
-          <span class="overline">The Stack</span>
-          <h2>Every tool we've tested, benchmarked, or built with</h2>
-          <p>We don't marry one tool &mdash; coverage varies by region, vertical, and ICP. This is what we actually run.</p>
+          <span class="overline">How We Work With You</span>
+          <h2>We adapt to your stack, your stage, and your team</h2>
         </div>
 
-        <div style="max-width:1000px;margin-inline:auto;margin-top:var(--space-2xl);" class="reveal">
+        <div class="approach-intro reveal">
+          <p>We've worked with every major outbound tool &mdash; sequencers, dialers, enrichment vendors, AI SDRs, waterfall platforms. We have strong opinions about what works in 2026, and an even stronger bias toward using what you already have.</p>
+          <p>Whether you want us to <strong>run your outbound end-to-end</strong>, <strong>build a playbook your team executes</strong>, or <strong>audit and fix what's already in place</strong>, the engagement shape is yours to choose. What doesn't change is the craft: waterfall-first data, rotated infrastructure, multi-channel orchestration, and reply rates you can actually measure.</p>
+        </div>
+
+        <div class="approach-values reveal">
+          <div class="approach-value">
+            <div class="approach-value__title">We'll use your stack</div>
+            <p class="approach-value__desc">If you're already on Outreach, Clay, and Apollo &mdash; we work in it. We don't force rip-and-replace. Tool swaps happen only when the math actually pencils out.</p>
+          </div>
+          <div class="approach-value">
+            <div class="approach-value__title">We have opinions</div>
+            <p class="approach-value__desc">We've run the experiments. We'll tell you which vendors, channels, and sequences actually move pipeline &mdash; and which ones are expensive theater.</p>
+          </div>
+          <div class="approach-value">
+            <div class="approach-value__title">We ship what we design</div>
+            <p class="approach-value__desc">No slide decks. Working sequences, warmed domains, scored dial lists, live dashboards. You get the machine, not the mockup.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========== TOOLSTACK — LOGO GRID + COLLAPSIBLE FULL TOOLKIT ========== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="overline">The Stack</span>
+          <h2>We've worked with all of it &mdash; and we have a best practice in mind</h2>
+          <p>Your stack is already in play. We know these tools cold. If there's a better call for your stage, we'll make it. If what you have works, we'll work in it.</p>
+        </div>
+
+        <div class="logo-grid reveal" aria-label="Outbound tools we work with" style="margin-top:var(--space-2xl);">
+          <div class="tool-logo" title="HubSpot"><span class="tool-logo__mark">HubSpot</span><span class="sr-only">HubSpot</span></div>
+          <div class="tool-logo" title="Salesforce"><span class="tool-logo__mark">Salesforce</span><span class="sr-only">Salesforce</span></div>
+          <div class="tool-logo" title="Outreach"><span class="tool-logo__mark">Outreach</span><span class="sr-only">Outreach</span></div>
+          <div class="tool-logo" title="Salesloft"><span class="tool-logo__mark">Salesloft</span><span class="sr-only">Salesloft</span></div>
+          <div class="tool-logo" title="Apollo"><span class="tool-logo__mark">Apollo</span><span class="sr-only">Apollo</span></div>
+          <div class="tool-logo" title="Salesforge"><span class="tool-logo__mark">Salesforge</span><span class="sr-only">Salesforge</span></div>
+          <div class="tool-logo" title="Instantly"><span class="tool-logo__mark">Instantly</span><span class="sr-only">Instantly</span></div>
+          <div class="tool-logo" title="Smartlead"><span class="tool-logo__mark">Smartlead</span><span class="sr-only">Smartlead</span></div>
+          <div class="tool-logo" title="Lemlist"><span class="tool-logo__mark">Lemlist</span><span class="sr-only">Lemlist</span></div>
+          <div class="tool-logo" title="Reply.io"><span class="tool-logo__mark">Reply.io</span><span class="sr-only">Reply.io</span></div>
+          <div class="tool-logo" title="Google Workspace"><span class="tool-logo__mark tool-logo__mark--long">Google Workspace</span><span class="sr-only">Google Workspace</span></div>
+          <div class="tool-logo" title="Microsoft 365"><span class="tool-logo__mark">Microsoft 365</span><span class="sr-only">Microsoft 365</span></div>
+          <div class="tool-logo" title="Primeforge"><span class="tool-logo__mark">Primeforge</span><span class="sr-only">Primeforge</span></div>
+          <div class="tool-logo" title="Mailforge"><span class="tool-logo__mark">Mailforge</span><span class="sr-only">Mailforge</span></div>
+          <div class="tool-logo" title="Zapmail"><span class="tool-logo__mark">Zapmail</span><span class="sr-only">Zapmail</span></div>
+          <div class="tool-logo" title="Warmup Inbox"><span class="tool-logo__mark">Warmup Inbox</span><span class="sr-only">Warmup Inbox</span></div>
+          <div class="tool-logo" title="Mailreach"><span class="tool-logo__mark">Mailreach</span><span class="sr-only">Mailreach</span></div>
+          <div class="tool-logo" title="Folderly"><span class="tool-logo__mark">Folderly</span><span class="sr-only">Folderly</span></div>
+          <div class="tool-logo" title="GlockApps"><span class="tool-logo__mark">GlockApps</span><span class="sr-only">GlockApps</span></div>
+          <div class="tool-logo" title="Emailguard"><span class="tool-logo__mark">Emailguard</span><span class="sr-only">Emailguard</span></div>
+          <div class="tool-logo" title="Clay"><span class="tool-logo__mark">Clay</span><span class="sr-only">Clay</span></div>
+          <div class="tool-logo" title="Leadsforge"><span class="tool-logo__mark">Leadsforge</span><span class="sr-only">Leadsforge</span></div>
+          <div class="tool-logo" title="BetterContact"><span class="tool-logo__mark">BetterContact</span><span class="sr-only">BetterContact</span></div>
+          <div class="tool-logo" title="FullEnrich"><span class="tool-logo__mark">FullEnrich</span><span class="sr-only">FullEnrich</span></div>
+          <div class="tool-logo" title="Findymail"><span class="tool-logo__mark">Findymail</span><span class="sr-only">Findymail</span></div>
+          <div class="tool-logo" title="Cargo"><span class="tool-logo__mark">Cargo</span><span class="sr-only">Cargo</span></div>
+          <div class="tool-logo" title="Cognism"><span class="tool-logo__mark">Cognism</span><span class="sr-only">Cognism</span></div>
+          <div class="tool-logo" title="ZoomInfo"><span class="tool-logo__mark">ZoomInfo</span><span class="sr-only">ZoomInfo</span></div>
+          <div class="tool-logo" title="ContactOut"><span class="tool-logo__mark">ContactOut</span><span class="sr-only">ContactOut</span></div>
+          <div class="tool-logo" title="Lusha"><span class="tool-logo__mark">Lusha</span><span class="sr-only">Lusha</span></div>
+          <div class="tool-logo" title="Dealfront"><span class="tool-logo__mark">Dealfront</span><span class="sr-only">Dealfront</span></div>
+          <div class="tool-logo" title="HeyReach"><span class="tool-logo__mark">HeyReach</span><span class="sr-only">HeyReach</span></div>
+          <div class="tool-logo" title="La Growth Machine"><span class="tool-logo__mark tool-logo__mark--long">La Growth Machine</span><span class="sr-only">La Growth Machine</span></div>
+          <div class="tool-logo" title="Expandi"><span class="tool-logo__mark">Expandi</span><span class="sr-only">Expandi</span></div>
+          <div class="tool-logo" title="Waalaxy"><span class="tool-logo__mark">Waalaxy</span><span class="sr-only">Waalaxy</span></div>
+          <div class="tool-logo" title="TitanX"><span class="tool-logo__mark">TitanX</span><span class="sr-only">TitanX</span></div>
+          <div class="tool-logo" title="Orum"><span class="tool-logo__mark">Orum</span><span class="sr-only">Orum</span></div>
+          <div class="tool-logo" title="Nooks"><span class="tool-logo__mark">Nooks</span><span class="sr-only">Nooks</span></div>
+          <div class="tool-logo" title="Aircall"><span class="tool-logo__mark">Aircall</span><span class="sr-only">Aircall</span></div>
+          <div class="tool-logo" title="Dialpad"><span class="tool-logo__mark">Dialpad</span><span class="sr-only">Dialpad</span></div>
+          <div class="tool-logo" title="Cloudtalk"><span class="tool-logo__mark">Cloudtalk</span><span class="sr-only">Cloudtalk</span></div>
+          <div class="tool-logo" title="Lavender"><span class="tool-logo__mark">Lavender</span><span class="sr-only">Lavender</span></div>
+          <div class="tool-logo" title="Claude"><span class="tool-logo__mark">Claude</span><span class="sr-only">Claude</span></div>
+          <div class="tool-logo" title="ChatGPT"><span class="tool-logo__mark">ChatGPT</span><span class="sr-only">ChatGPT</span></div>
+          <div class="tool-logo" title="11x"><span class="tool-logo__mark">11x</span><span class="sr-only">11x</span></div>
+          <div class="tool-logo" title="Artisan"><span class="tool-logo__mark">Artisan</span><span class="sr-only">Artisan</span></div>
+          <div class="tool-logo" title="6sense"><span class="tool-logo__mark">6sense</span><span class="sr-only">6sense</span></div>
+          <div class="tool-logo" title="Demandbase"><span class="tool-logo__mark">Demandbase</span><span class="sr-only">Demandbase</span></div>
+          <div class="tool-logo" title="Bombora"><span class="tool-logo__mark">Bombora</span><span class="sr-only">Bombora</span></div>
+          <div class="tool-logo" title="Common Room"><span class="tool-logo__mark">Common Room</span><span class="sr-only">Common Room</span></div>
+          <div class="tool-logo" title="Warmly"><span class="tool-logo__mark">Warmly</span><span class="sr-only">Warmly</span></div>
+          <div class="tool-logo" title="Chili Piper"><span class="tool-logo__mark">Chili Piper</span><span class="sr-only">Chili Piper</span></div>
+          <div class="tool-logo" title="Cal.com"><span class="tool-logo__mark">Cal.com</span><span class="sr-only">Cal.com</span></div>
+          <div class="tool-logo" title="Calendly"><span class="tool-logo__mark">Calendly</span><span class="sr-only">Calendly</span></div>
+          <div class="tool-logo" title="RevenueHero"><span class="tool-logo__mark">RevenueHero</span><span class="sr-only">RevenueHero</span></div>
+        </div>
+
+        <details class="deep-toggle reveal">
+          <summary>
+            <span>The full toolkit &mdash; 160+ tools across 16 categories<span class="deep-toggle__hint">for the curious operator</span></span>
+          </summary>
+          <div class="deep-toggle__body">
 
           <div class="stack-category">
             <div class="stack-category__title">Email sequencers</div>
@@ -923,21 +1271,27 @@
             </div>
           </div>
 
-        </div>
+          </div>
+        </details>
       </div>
     </section>
 
 
-    <!-- ========== HARD-EARNED RULES ========== -->
+    <!-- ========== HARD-EARNED RULES (collapsed SEO layer) ========== -->
     <section class="section">
       <div class="container">
         <div class="section-header text-center reveal">
           <span class="overline">Operator Rules</span>
-          <h2>Hard-earned outbound rules</h2>
-          <p>Extracted from years of domain fleets, dead warmup pools, and campaigns that either worked or didn't.</p>
+          <h2>Our outbound playbook &mdash; 18 hard-earned rules</h2>
+          <p>If you want the full operator view, open this up. Extracted from years of domain fleets, dead warmup pools, and campaigns that either worked or didn't.</p>
         </div>
 
-        <div class="rules-list reveal" style="margin-top:var(--space-2xl);">
+        <details class="deep-toggle reveal" style="margin-top:var(--space-2xl);">
+          <summary>
+            <span>Open the full playbook<span class="deep-toggle__hint">18 rules, 1,500+ words</span></span>
+          </summary>
+          <div class="deep-toggle__body">
+        <div class="rules-list" style="margin-top:0;">
           <div class="rule-item">
             <div class="rule-item__num">1</div>
             <div>
@@ -1082,6 +1436,8 @@
             </div>
           </div>
         </div>
+          </div>
+        </details>
       </div>
     </section>
 
@@ -1323,10 +1679,6 @@
             <div class="faq-item__answer">Single-vendor means you buy a seat on one database (Apollo, ContactOut, ZoomInfo) and rely on its coverage. Waterfall routes each contact through 15-20+ providers in sequence and keeps the first verified match. Waterfalls consistently outperform any single database &mdash; coverage varies by region, vertical, and ICP, and no one vendor wins everywhere.</div>
           </details>
           <details class="faq-item">
-            <summary>How do you handle GDPR for European outbound?</summary>
-            <div class="faq-item__answer">We use GDPR-compliant data vendors with DPAs in place, apply legitimate-interest framing in copy, honor unsubscribe requests immediately, and maintain suppression lists across sequencers. For Germany specifically we advise on Abmahnung risk and prefer LinkedIn or phone outreach for high-risk DACH segments.</div>
-          </details>
-          <details class="faq-item">
             <summary>What's a realistic reply rate for cold email?</summary>
             <div class="faq-item__answer">For B2B SaaS the healthy band is 1-3% reply rate with 20-40% positive reply rate (PRR). Anything above 3% usually means your ICP is tight and your offer is painful enough. Below 0.5% and you have an infrastructure, offer, or copy problem &mdash; in that order of likelihood.</div>
           </details>
@@ -1337,10 +1689,6 @@
           <details class="faq-item">
             <summary>What tools do you recommend for a small startup on a budget?</summary>
             <div class="faq-item__answer">A lean stack: Salesforge or Smartlead for sequencing, Primeforge or Zapmail for infrastructure, one enrichment vendor (Findymail or Leadsforge) to start, HeyReach for LinkedIn, and Cal.com for booking. Total under $500/month. We add channels and waterfall layers as volume justifies it.</div>
-          </details>
-          <details class="faq-item">
-            <summary>How do you prevent domain burn at scale?</summary>
-            <div class="faq-item__answer">Diversification across multiple layers. Two or more domain registrars, two or more ESPs (Google Workspace + Microsoft 365), and rotated batches &mdash; send on batch 1 for two weeks, cool down, rotate to batch 2. p=reject DMARC, proper SPF and DKIM alignment, and placement tests every two weeks keep deliverability measurable.</div>
           </details>
           <details class="faq-item">
             <summary>Can you integrate outbound data into our HubSpot?</summary>
@@ -1385,8 +1733,9 @@
         <div>
           <h4 style="font-size:0.8125rem;font-weight:500;color:rgba(250,250,248,0.5);margin-bottom:var(--space-md);text-transform:uppercase;letter-spacing:0.05em;">Legal</h4>
           <div style="display:flex;flex-direction:column;gap:var(--space-sm);">
-            <a href="/impressum" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Impressum</a>
-            <a href="/datenschutz" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Datenschutz</a>
+            <a href="/imprint.html" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Impressum</a>
+            <a href="/legal-privacy-policy.html" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Datenschutz</a>
+            <a href="#" id="cookie-preferences-link" data-cookie-preferences style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Cookie preferences</a>
           </div>
           <div style="margin-top:var(--space-lg);"><p style="font-size:0.8125rem;color:rgba(250,250,248,0.4);">Berlin, Germany</p></div>
         </div>
@@ -1434,5 +1783,8 @@
       }
     })
   </script>
+  <!-- Cookie consent (GDPR) -->
+  <div id="cookie-banner"></div>
+  <script src="../js/cookie-consent.js"></script>
 </body>
 </html>
