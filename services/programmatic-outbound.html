@@ -108,6 +108,41 @@
       padding-top: calc(var(--nav-height) + var(--space-4xl));
       padding-bottom: var(--space-4xl);
       text-align: center;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .service-hero__canvas-wrap {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .service-hero__canvas-wrap canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      opacity: 0.45;
+      mix-blend-mode: multiply;
+    }
+    [data-theme="dark"] .service-hero__canvas-wrap canvas {
+      opacity: 0.32;
+      mix-blend-mode: screen;
+    }
+    [data-theme="ai"] .service-hero__canvas-wrap { display: none; }
+    .service-hero__canvas-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(180deg, transparent 0%, transparent 55%, var(--bg-primary) 100%);
+    }
+    .service-hero > .container { position: relative; z-index: 1; }
+    @media (prefers-reduced-motion: reduce) {
+      .service-hero__canvas-wrap { display: none; }
     }
     .service-hero__overline {
       display: inline-block;
@@ -817,6 +852,9 @@
     </aside>
     <!-- ========== HERO ========== -->
     <section class="service-hero">
+      <div class="service-hero__canvas-wrap" aria-hidden="true">
+        <canvas id="outbound-hero-canvas"></canvas>
+      </div>
       <div class="container reveal">
         <span class="service-hero__overline">Programmatic Outbound</span>
         <h1 class="service-hero__title">Cold outbound at scale, without burning your domains</h1>
@@ -1786,5 +1824,21 @@
   <!-- Cookie consent (GDPR) -->
   <div id="cookie-banner"></div>
   <script src="../js/cookie-consent.js"></script>
+
+  <!-- Hero contour shader background -->
+  <script src="../js/outbound-hero-shader.js" defer></script>
+  <script>
+    (function() {
+      function init() {
+        if (typeof window.initContourShader !== 'function') { setTimeout(init, 50); return; }
+        window.initContourShader('#outbound-hero-canvas', {
+          speed: 1.0,
+          tint: [0.788, 0.851, 0.835],
+        });
+      }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+      else init();
+    })();
+  </script>
 </body>
 </html>
