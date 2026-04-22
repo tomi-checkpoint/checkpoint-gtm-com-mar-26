@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI consulting for B2B SaaS GTM teams. AI readiness assessments, adoption roadmaps, governance frameworks, and embedded implementation. From pilots to production.">
+  <link rel="canonical" href="https://checkpointgtm.com/services/ai-gtm-consulting.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://checkpointgtm.com/services/ai-gtm-consulting.html" />
+  <meta property="og:title" content="AI Consulting for GTM — Strategy, Governance, Implementation" />
+  <meta property="og:description" content="AI consulting for B2B SaaS GTM teams. AI readiness assessments, adoption roadmaps, governance frameworks, and embedded implementation. From pilots to production." />
+  <meta property="og:image" content="https://checkpointgtm.com/images/og-default.png" />
+  <meta property="og:site_name" content="Checkpoint GTM" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AI Consulting for GTM — Strategy, Governance, Implementation" />
+  <meta name="twitter:description" content="AI consulting for B2B SaaS GTM teams. AI readiness assessments, adoption roadmaps, governance frameworks, and embedded implementation. From pilots to production." />
+  <meta name="twitter:image" content="https://checkpointgtm.com/images/og-default.png" />
+  <meta name="theme-color" content="#FAFAF8">
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+  <title>AI Consulting for GTM — Strategy, Governance, Implementation | Checkpoint GTM</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Slab:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="../js/theme-toggle.js"></script>
+
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+
+  <style>
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-height);display:flex;align-items:center;background:transparent}.nav--scrolled{background:rgba(250,250,248,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--border)}[data-theme="dark"] .nav--scrolled{background:rgba(15,15,15,0.85)}.nav__inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:var(--container-max);margin-inline:auto;padding-inline:var(--container-padding)}.nav__logo{font-family:var(--font-display);font-weight:700;font-size:1.125rem;color:var(--text-primary);letter-spacing:-0.01em;display:flex;align-items:center;gap:0.5rem}.nav__logo-mark{width:28px;height:28px;background:var(--accent);border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.75rem;font-weight:700}.nav__links{display:flex;align-items:center;gap:var(--space-xl)}.nav__link{font-size:0.9375rem;color:var(--text-secondary);transition:color var(--transition-fast)}.nav__link:hover{color:var(--text-primary)}.nav__actions{display:flex;align-items:center;gap:var(--space-md)}.theme-toggle{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;color:var(--text-secondary);transition:all var(--transition-fast);cursor:pointer;background:none;border:none}.theme-toggle:hover{color:var(--text-primary);background:var(--bg-secondary)}.theme-toggle svg{width:18px;height:18px}.nav__mobile-toggle{display:none;width:36px;height:36px;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;background:none;border:none}.nav__mobile-toggle span{display:block;width:20px;height:1.5px;background:var(--text-primary);transition:all var(--transition-fast)}.nav__mobile-toggle.is-active span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}.nav__mobile-toggle.is-active span:nth-child(2){opacity:0}.nav__mobile-toggle.is-active span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}.nav__mobile-menu{display:none;position:fixed;inset:0;top:var(--nav-height);background:var(--bg-primary);padding:var(--space-xl) var(--container-padding);flex-direction:column;gap:var(--space-md);z-index:99}.nav__mobile-menu.is-open{display:flex}.nav__mobile-link{font-size:1.125rem;padding:var(--space-md) 0;border-bottom:1px solid var(--border);color:var(--text-primary)}@media(max-width:768px){.nav__links{display:none}.nav__mobile-toggle{display:flex}.nav__actions .btn{display:none}}
+
+    /* Service Hero — centered */
+    .service-hero {
+      padding-top: calc(var(--nav-height) + var(--space-4xl));
+      padding-bottom: var(--space-4xl);
+      text-align: center;
+    }
+    .service-hero__overline {
+      display: inline-block;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: var(--space-md);
+    }
+    .service-hero__title {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      max-width: 820px;
+      margin-inline: auto;
+      margin-bottom: var(--space-lg);
+    }
+    .service-hero__subtitle {
+      font-size: 1.1875rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      max-width: 720px;
+      margin-inline: auto;
+      margin-bottom: var(--space-xl);
+    }
+    .service-hero__actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+    }
+
+    /* Problem / framing 2-col */
+    .framing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+      align-items: start;
+      max-width: 1000px;
+      margin-inline: auto;
+    }
+    .framing-grid p {
+      font-size: 1.0625rem;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-md);
+    }
+    .framing-grid__accent {
+      border-left: 3px solid var(--accent);
+      padding-left: var(--space-md);
+    }
+    @media (max-width: 820px) {
+      .framing-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Framework 4-col */
+    .framework-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-lg);
+      margin-top: var(--space-xl);
+    }
+    .framework-card {
+      padding: var(--space-xl);
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      text-align: center;
+      transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+    }
+    .framework-card:hover {
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+      transform: translateY(-2px);
+    }
+    .framework-card__icon {
+      font-size: 1.75rem;
+      margin-bottom: var(--space-sm);
+    }
+    .framework-card__title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.0625rem;
+      color: var(--text-primary);
+      margin-bottom: var(--space-sm);
+    }
+    .framework-card__desc {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+    @media (max-width: 900px) { .framework-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px) { .framework-grid { grid-template-columns: 1fr; } }
+
+    /* Cards grid for What We Deliver */
+    .deliver-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+    }
+    .deliver-card {
+      padding: var(--space-xl);
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+    }
+    .deliver-card:hover {
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+      transform: translateY(-2px);
+    }
+    .deliver-card__icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(45, 106, 79, 0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-md);
+      color: var(--accent);
+    }
+    .deliver-card__icon svg {
+      width: 20px;
+      height: 20px;
+    }
+    .deliver-card__title {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: var(--space-sm);
+      color: var(--text-primary);
+    }
+    .deliver-card__desc {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+    @media (max-width: 900px) { .deliver-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .deliver-grid { grid-template-columns: 1fr; } }
+
+    /* Process steps — horizontal */
+    .process-steps {
+      display: flex;
+      gap: 0;
+      margin-top: var(--space-xl);
+    }
+    .process-step {
+      flex: 1;
+      text-align: center;
+      padding: var(--space-xl) var(--space-md);
+      position: relative;
+    }
+    .process-step__number {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.125rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-md);
+      position: relative;
+      z-index: 1;
+    }
+    .process-step__content {
+      text-align: center;
+    }
+    .process-step__title {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+      text-align: center;
+    }
+    .process-step__desc {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      max-width: 180px;
+      margin-inline: auto;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .process-steps {
+        flex-direction: column;
+        gap: var(--space-lg);
+      }
+      .process-step {
+        text-align: left;
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-md);
+        padding: 0;
+      }
+      .process-step__number {
+        margin: 0;
+        flex-shrink: 0;
+      }
+      .process-step__content {
+        text-align: left;
+      }
+      .process-step__title {
+        text-align: left;
+      }
+      .process-step__desc {
+        max-width: none;
+        margin-inline: 0;
+        text-align: left;
+      }
+    }
+
+    /* Stack chips */
+    .stack-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.375rem 0.875rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      font-size: 0.875rem;
+      color: var(--text-primary);
+      font-weight: 500;
+      transition: all var(--transition-fast);
+    }
+    .stack-chip:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Who This Is For */
+    .fit-list {
+      max-width: 720px;
+      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .fit-list__item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 1.0625rem;
+      line-height: 1.5;
+      color: var(--text-primary);
+    }
+    .fit-list__icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      color: var(--accent);
+      margin-top: 2px;
+    }
+  </style>
+
+  <!-- ========== STRUCTURED DATA (JSON-LD) ========== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "AI Consulting for GTM",
+    "name": "AI Consulting for GTM",
+    "description": "AI consulting for B2B SaaS GTM teams. AI readiness assessments, adoption roadmaps, governance frameworks, and embedded implementation. From pilots to production.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Checkpoint GTM",
+      "url": "https://checkpointgtm.com"
+    },
+    "areaServed": [
+      { "@type": "Place", "name": "Europe" },
+      { "@type": "Place", "name": "United States" }
+    ],
+    "audience": {
+      "@type": "BusinessAudience",
+      "audienceType": "B2B SaaS companies"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://checkpointgtm.com" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://checkpointgtm.com/services/" },
+      { "@type": "ListItem", "position": 3, "name": "AI Consulting for GTM", "item": "https://checkpointgtm.com/services/ai-gtm-consulting.html" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What's the difference between your AI Consulting and your AI Automation service?",
+        "acceptedAnswer": { "@type": "Answer", "text": "AI Consulting answers 'how should we think about AI across our revenue motion?' — strategy, governance, roadmap. AI Automation is the tactical build ('please automate our lead enrichment routing'). Most engagements start strategic and fund tactical builds downstream." }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does an AI consulting engagement cost?",
+        "acceptedAnswer": { "@type": "Answer", "text": "AI Readiness Assessments start at €15K for a 2-week diagnostic. Full roadmap + governance + implementation engagements typically run €35K–€90K depending on scope. Ongoing retainers range €8K–€25K/month. We scope every engagement before quoting." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you measure ROI on AI initiatives?",
+        "acceptedAnswer": { "@type": "Answer", "text": "We baseline current spend and output before we touch anything, set measurement standards per workflow (pipeline generated, hours saved, data quality lift), and review quarterly against kill criteria. Zombie pilots don't survive us." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you work with AI-native startups or only traditional SaaS?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Both. AI-native startups hire us to tighten their internal GTM operations (they're so focused on building AI for their customers that their own sales motion is a mess). Traditional SaaS hires us to adopt AI operationally without the whiplash." }
+      },
+      {
+        "@type": "Question",
+        "name": "My team is already using 10 AI tools. Do we really need more?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Probably not. Most engagements kill 30–50% of the existing stack. We audit what's actually moving pipeline and consolidate. Tools we can't justify get cut." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you handle data privacy and governance?",
+        "acceptedAnswer": { "@type": "Answer", "text": "We design policies before touching production data. Vendor evaluation rubrics cover SOC 2, GDPR, data retention, prompt logging, and sub-processor chains. For regulated industries (fintech, healthtech, EU companies) this is where we start." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you build custom AI systems or only implement off-the-shelf tools?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Both. We've built production MCPs (custom HubSpot integration, Salesforce admin tooling), Hermes-based agent architectures, and Clay + Claude orchestration systems. Build vs. buy is a decision we make per workflow, based on your control needs and economics — not a dogma." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you integrate with our existing HubSpot setup?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes — we're a HubSpot Platinum Partner and have built our own HubSpot MCP layer. Most of our AI work lands directly in HubSpot via workflows, custom properties, and bidirectional data flow with Clay, Apollo, and Cargo." }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo" aria-label="Checkpoint GTM Home"><img src="/images/logo-dark.png" alt="Checkpoint GTM" class="nav__logo-img"><img src="/images/logo-white.png" alt="Checkpoint GTM" class="nav__logo-img nav__logo-img--dark"></a>
+      <div class="nav__links">
+        <a href="/services/index.html" class="nav__link">Services</a>
+        <a href="/case-studies.html" class="nav__link">Case Studies</a>
+        <a href="/about.html" class="nav__link">About</a>
+        <a href="/contact.html" class="nav__link">Contact</a>
+      </div>
+      <div class="nav__actions">
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <svg class="theme-toggle__moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="theme-toggle__sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <a href="/contact.html" class="btn btn--primary btn--small">Let's Chat</a>
+        <button class="nav__mobile-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="nav__mobile-menu">
+    <a href="/services/index.html" class="nav__mobile-link">Services</a>
+    <a href="/case-studies.html" class="nav__mobile-link">Case Studies</a>
+    <a href="/about.html" class="nav__mobile-link">About</a>
+    <a href="/contact.html" class="nav__mobile-link">Contact</a>
+    <a href="/contact.html" class="btn btn--primary" style="margin-top:var(--space-md);">Let's Chat</a>
+  </div>
+
+  <main>
+    <!-- ========== HERO ========== -->
+    <section class="service-hero">
+      <div class="container reveal">
+        <span class="service-hero__overline">AI Consulting for GTM</span>
+        <h1 class="service-hero__title">AI strategy that ships &mdash; not another slide deck</h1>
+        <p class="service-hero__subtitle">You've evaluated 20 AI tools. You're running 6. None are moving measurable pipeline. We help B2B SaaS leaders turn AI from pilot purgatory into production infrastructure &mdash; strategy, governance, and embedded implementation, all tied to revenue.</p>
+        <div class="service-hero__actions">
+          <a href="/contact.html" class="btn btn--primary btn--large">Let's Chat</a>
+          <a href="#framework" class="btn btn--ghost btn--large">See the framework</a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========== PROBLEM FRAMING ========== -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section-header text-center reveal" style="margin-bottom:var(--space-2xl);">
+          <span class="overline">The Problem</span>
+          <h2>Where AI adoption breaks</h2>
+        </div>
+
+        <div class="framing-grid reveal">
+          <div>
+            <p>Every GTM team we talk to has an AI problem that sounds the same: a top rep built a lead scoring prompt in Claude that works brilliantly &mdash; for them. Marketing runs Apollo + Clay. Ops is piloting 11x. Legal is nervous about data going into ChatGPT. Leadership wants a strategy. No one can point to the pipeline AI has moved.</p>
+            <p>The gap isn't enthusiasm. It's operational clarity &mdash; a framework for which pilots to scale, which to kill, and how to run AI as revenue infrastructure, not a sidecar.</p>
+          </div>
+          <div class="framing-grid__accent">
+            <p>We close that gap. Working AI integrated into your CRM, your sales stack, and your team's daily workflow. Governance that legal signs off on. Measurement that ties to pipeline.</p>
+            <p>And because we ship what we design &mdash; our own stack runs on a custom HubSpot MCP, Claude, and Clay &mdash; you get operators who've lived the architecture decisions, not slideware consultants.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========== FRAMEWORK ========== -->
+    <section id="framework" class="section">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="overline">Framework</span>
+          <h2>Our AI-for-GTM framework</h2>
+        </div>
+
+        <div class="framework-grid reveal-stagger">
+          <div class="framework-card reveal">
+            <div class="framework-card__icon" aria-hidden="true">&#129517;</div>
+            <h3 class="framework-card__title">Adoption roadmap</h3>
+            <p class="framework-card__desc">Pilot-to-production scorecard. Which 6 tools stay, which 14 go. Investment tied to revenue targets, not vendor hype cycles.</p>
+          </div>
+          <div class="framework-card reveal">
+            <div class="framework-card__icon" aria-hidden="true">&#128737;&#65039;</div>
+            <h3 class="framework-card__title">Guardrails &amp; policy</h3>
+            <p class="framework-card__desc">Data handling rules, vendor evaluation rubric, prompt injection defenses. Legal and security stop panicking.</p>
+          </div>
+          <div class="framework-card reveal">
+            <div class="framework-card__icon" aria-hidden="true">&#9881;&#65039;</div>
+            <h3 class="framework-card__title">Embedded workflows</h3>
+            <p class="framework-card__desc">Working integrations across HubSpot, Clay, Apollo, 11x, Claude, and custom MCPs. Not pilots in isolated sandboxes.</p>
+          </div>
+          <div class="framework-card reveal">
+            <div class="framework-card__icon" aria-hidden="true">&#128101;</div>
+            <h3 class="framework-card__title">Team capability</h3>
+            <p class="framework-card__desc">Role-specific training. Prompt libraries your reps actually use. Capability transfers, not dependency on us.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========== WHAT WE DELIVER ========== -->
+    <section id="deliver" class="section section--alt">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="overline">What We Deliver</span>
+          <h2>From diagnostic to embedded implementation</h2>
+        </div>
+
+        <div class="deliver-grid reveal-stagger" style="margin-top:var(--space-xl);">
+          <div class="deliver-card reveal">
+            <div class="deliver-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <h3 class="deliver-card__title">AI Readiness Assessment</h3>
+            <p class="deliver-card__desc">2-week diagnostic: current tool footprint, spend audit, governance gaps, opportunity map. Output: prioritized 90-day roadmap with ROI estimates.</p>
+          </div>
+
+          <div class="deliver-card reveal">
+            <div class="deliver-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 3 18"/><path d="M6 6l6 6-6 6"/><path d="M12 6l6 6-6 6"/><path d="M18 6h3v12h-3"/></svg>
+            </div>
+            <h3 class="deliver-card__title">AI GTM Roadmap</h3>
+            <p class="deliver-card__desc">Which pilots scale, which die, which get rebuilt. Budget allocation, ownership, metrics. Quarterly revisits baked in.</p>
+          </div>
+
+          <div class="deliver-card reveal">
+            <div class="deliver-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 class="deliver-card__title">Governance Framework</h3>
+            <p class="deliver-card__desc">Data policies, vendor evaluation rubric, security standards, approval workflow. Ready for legal sign-off in regulated industries (fintech, healthtech).</p>
+          </div>
+
+          <div class="deliver-card reveal">
+            <div class="deliver-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <h3 class="deliver-card__title">Pilot-to-Production Playbook</h3>
+            <p class="deliver-card__desc">Structured pilot methodology with kill criteria and scale paths. End zombie pilots.</p>
+          </div>
+
+          <div class="deliver-card reveal">
+            <div class="deliver-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg>
+            </div>
+            <h3 class="deliver-card__title">AI-Native Workflow Build</h3>
+            <p class="deliver-card__desc">Working integrations in your stack: Clay enrichment orchestration, Claude-powered lead scoring, HubSpot MCP for sales workflows, 11x for outbound, Apollo signal-driven plays.</p>
+          </div>
+
+          <div class="deliver-card reveal">
+            <div class="deliver-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 class="deliver-card__title">Team Enablement</h3>
+            <p class="deliver-card__desc">Role-specific training for SDRs, AEs, ops, and leadership. Prompt libraries for your ICP, messaging, and systems. Office hours for the first 90 days.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========== PROCESS ========== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="overline">Our Process</span>
+          <h2>From audit to production</h2>
+        </div>
+
+        <div class="process-steps reveal">
+          <div class="process-step">
+            <div class="process-step__number">1</div>
+            <div class="process-step__content">
+              <div class="process-step__title">Discovery</div>
+              <p class="process-step__desc">Audit current AI footprint, tool spend, governance posture, team capability.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step__number">2</div>
+            <div class="process-step__content">
+              <div class="process-step__title">Design</div>
+              <p class="process-step__desc">Roadmap, governance framework, measurement architecture.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step__number">3</div>
+            <div class="process-step__content">
+              <div class="process-step__title">Build</div>
+              <p class="process-step__desc">Implement prioritized workflows in your production stack.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step__number">4</div>
+            <div class="process-step__content">
+              <div class="process-step__title">Launch</div>
+              <p class="process-step__desc">Team training, rollout, measurement baseline, kill criteria for legacy pilots.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-step__number">5</div>
+            <div class="process-step__content">
+              <div class="process-step__title">Optimize</div>
+              <p class="process-step__desc">Ongoing refinement, new tool evaluation, governance reviews.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========== OUR STACK ========== -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="overline">Tools We Operate</span>
+          <h2>We're tool-agnostic. But we have opinions.</h2>
+          <p class="text-center" style="margin-inline:auto;max-width:720px;">We've shipped production AI workflows on every category below. When we recommend a stack, it's because we've run it &mdash; not because we read a Gartner report.</p>
+        </div>
+
+        <div class="reveal" style="margin-top:var(--space-2xl);display:flex;flex-direction:column;gap:var(--space-xl);">
+
+          <div>
+            <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:var(--space-md);">CRMs &amp; Core Platforms</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm);">
+              <span class="stack-chip">HubSpot</span>
+              <span class="stack-chip">Salesforce</span>
+              <span class="stack-chip">Pipedrive</span>
+              <span class="stack-chip">Attio</span>
+              <span class="stack-chip">Close</span>
+              <span class="stack-chip">Copper</span>
+              <span class="stack-chip">Folk</span>
+              <span class="stack-chip">Nimble</span>
+              <span class="stack-chip">Zoho CRM</span>
+              <span class="stack-chip">Monday Sales</span>
+            </div>
+          </div>
+
+          <div>
+            <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:var(--space-md);">AI Models &amp; LLM Platforms</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm);">
+              <span class="stack-chip">Claude (Anthropic)</span>
+              <span class="stack-chip">OpenAI</span>
+              <span class="stack-chip">GPT-4</span>
+              <span class="stack-chip">GPT-5</span>
+              <span class="stack-chip">Gemini</span>
+              <span class="stack-chip">Perplexity</span>
+              <span class="stack-chip">Mistral</span>
+              <span class="stack-chip">DeepSeek</span>
+              <span class="stack-chip">Llama</span>
+              <span class="stack-chip">Cohere</span>
+              <span class="stack-chip">Groq</span>
+              <span class="stack-chip">Together AI</span>
+              <span class="stack-chip">OpenRouter</span>
+              <span class="stack-chip">Azure OpenAI</span>
+              <span class="stack-chip">AWS Bedrock</span>
+              <span class="stack-chip">Vertex AI</span>
+            </div>
+          </div>
+
+          <div>
+            <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:var(--space-md);">AI-Powered Sales Tools</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm);">
+              <span class="stack-chip">11x</span>
+              <span class="stack-chip">Regie.ai</span>
+              <span class="stack-chip">Lavender</span>
+              <span class="stack-chip">Artisan</span>
+              <span class="stack-chip">Outreach</span>
+              <span class="stack-chip">Salesloft</span>
+              <span class="stack-chip">Apollo</span>
+              <span class="stack-chip">Clay</span>
+              <span class="stack-chip">Cargo</span>
+              <span class="stack-chip">Cognism</span>
+              <span class="stack-chip">ZoomInfo</span>
+              <span class="stack-chip">Lusha</span>
+              <span class="stack-chip">Seamless.ai</span>
+              <span class="stack-chip">Persana</span>
+              <span class="stack-chip">Twain</span>
+              <span class="stack-chip">Clari</span>
+              <span class="stack-chip">Gong</span>
+              <span class="stack-chip">Chorus</span>
+              <span class="stack-chip">ExecVision</span>
+              <span class="stack-chip">Avoma</span>
+              <span class="stack-chip">Fathom</span>
+              <span class="stack-chip">Fireflies</span>
+              <span class="stack-chip">Grain</span>
+              <span class="stack-chip">Otter</span>
+              <span class="stack-chip">Supernormal</span>
+            </div>
+          </div>
+
+          <div>
+            <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:var(--space-md);">Enrichment &amp; Signal Intelligence</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm);">
+              <span class="stack-chip">Clay</span>
+              <span class="stack-chip">Apollo</span>
+              <span class="stack-chip">Cargo</span>
+              <span class="stack-chip">Ocean.io</span>
+              <span class="stack-chip">Crustdata</span>
+              <span class="stack-chip">Signals Agency</span>
+              <span class="stack-chip">Common Room</span>
+              <span class="stack-chip">Warmly</span>
+              <span class="stack-chip">RB2B</span>
+              <span class="stack-chip">Clearbit</span>
+              <span class="stack-chip">People Data Labs</span>
+              <span class="stack-chip">Breeze Intelligence</span>
+              <span class="stack-chip">LeadIQ</span>
+              <span class="stack-chip">SalesIntel</span>
+              <span class="stack-chip">FullContact</span>
+              <span class="stack-chip">Datanyze</span>
+            </div>
+          </div>
+
+          <div>
+            <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:var(--space-md);">Outbound &amp; Email</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm);">
+              <span class="stack-chip">Instantly</span>
+              <span class="stack-chip">Smartlead</span>
+              <span class="stack-chip">Lemlist</span>
+              <span class="stack-chip">Outreach</span>
+              <span class="stack-chip">Salesloft</span>
+              <span class="stack-chip">Apollo</span>
+              <span class="stack-chip">Mixmax</span>
+              <span class="stack-chip">Yesware</span>
+              <span class="stack-chip">Woodpecker</span>
+              <span class="stack-chip">Mailshake</span>
+              <span class="stack-chip">Reply.io</span>
+              <span class="stack-chip">QuickMail</span>
+              <span class="stack-chip">Warmbox</span>
+              <span class="stack-chip">Mailwarm</span>
+            </div>
+          </div>
+
+          <div>
+            <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:var(--space-md);">AI SDR / Agent Platforms</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm);">
+              <span class="stack-chip">11x</span>
+              <span class="stack-chip">Artisan</span>
+              <span class="stack-chip">Aomni</span>
+              <span class="stack-chip">AiSDR</span>
+              <span class="stack-chip">Overloop</span>
+              <span class="stack-chip">Reggie</span>
+              <span class="stack-chip">Jason (Relevance AI)</span>
+              <span class="stack-chip">Nooks</span>
+              <span class="stack-chip">Qualified</span>
+              <span class="stack-chip">Drift</span>
+              <span class="stack-chip">Intercom Fin</span>
+              <span class="stack-chip">Regal.io</span>
+            </div>
+          </div>
+
+          <div>
+            <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:var(--space-md);">Attribution &amp; Analytics</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm);">
+              <span class="stack-chip">Dreamdata</span>
+              <span class="stack-chip">HockeyStack</span>
+              <span class="stack-chip">Attribution</span>
+              <span class="stack-chip">Bizible</span>
+              <span class="stack-chip">Salesforce Marketing Cloud Personalization</span>
+              <span class="stack-chip">Ruler Analytics</span>
+              <span class="stack-chip">Northbeam</span>
+              <span class="stack-chip">Triple Whale</span>
+              <span class="stack-chip">Mixpanel</span>
+              <span class="stack-chip">Amplitude</span>
+              <span class="stack-chip">Heap</span>
+              <span class="stack-chip">PostHog</span>
+              <span class="stack-chip">Segment</span>
+              <span class="stack-chip">RudderStack</span>
+            </div>
+          </div>
+
+          <div>
+            <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:var(--space-md);">Workflow Automation &amp; Integration</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm);">
+              <span class="stack-chip">n8n</span>
+              <span class="stack-chip">Zapier</span>
+              <span class="stack-chip">Make</span>
+              <span class="stack-chip">Workato</span>
+              <span class="stack-chip">Tray.io</span>
+              <span class="stack-chip">Paragon</span>
+              <span class="stack-chip">Merge.dev</span>
+              <span class="stack-chip">Nango</span>
+              <span class="stack-chip">Pipedream</span>
+              <span class="stack-chip">Integromat</span>
+              <span class="stack-chip">Latenode</span>
+              <span class="stack-chip">Composio</span>
+              <span class="stack-chip">Unito</span>
+            </div>
+          </div>
+
+          <div>
+            <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:var(--space-md);">Custom Agent &amp; Orchestration</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm);">
+              <span class="stack-chip">Hermes Agent</span>
+              <span class="stack-chip">LangChain</span>
+              <span class="stack-chip">LangGraph</span>
+              <span class="stack-chip">LlamaIndex</span>
+              <span class="stack-chip">CrewAI</span>
+              <span class="stack-chip">AutoGen</span>
+              <span class="stack-chip">Semantic Kernel</span>
+              <span class="stack-chip">Dust</span>
+              <span class="stack-chip">Relevance AI</span>
+              <span class="stack-chip">Stack AI</span>
+              <span class="stack-chip">Voiceflow</span>
+              <span class="stack-chip">Retool</span>
+              <span class="stack-chip">Pipedream</span>
+              <span class="stack-chip">Claude Agent SDK</span>
+              <span class="stack-chip">OpenAI Assistants</span>
+              <span class="stack-chip">Vercel AI SDK</span>
+            </div>
+          </div>
+
+          <div>
+            <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:var(--space-md);">AI-Native Dev &amp; Build Tools</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm);">
+              <span class="stack-chip">Cursor</span>
+              <span class="stack-chip">Bolt</span>
+              <span class="stack-chip">Lovable</span>
+              <span class="stack-chip">Replit Agent</span>
+              <span class="stack-chip">Claude Code</span>
+              <span class="stack-chip">GStack</span>
+              <span class="stack-chip">Paperclip</span>
+              <span class="stack-chip">Codex</span>
+              <span class="stack-chip">Aider</span>
+              <span class="stack-chip">Windsurf</span>
+              <span class="stack-chip">GitHub Copilot</span>
+              <span class="stack-chip">v0.dev</span>
+            </div>
+          </div>
+
+          <div>
+            <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:var(--space-md);">MCP (Model Context Protocol) Ecosystem</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm);">
+              <span class="stack-chip">Custom HubSpot MCP</span>
+              <span class="stack-chip">Salesforce MCP</span>
+              <span class="stack-chip">Notion MCP</span>
+              <span class="stack-chip">Slack MCP</span>
+              <span class="stack-chip">Google Drive MCP</span>
+              <span class="stack-chip">Gmail MCP</span>
+              <span class="stack-chip">Linear MCP</span>
+              <span class="stack-chip">Jira MCP</span>
+              <span class="stack-chip">Claude Desktop MCP servers</span>
+              <span class="stack-chip">Any-MCP</span>
+              <span class="stack-chip">MCP Inspector</span>
+            </div>
+          </div>
+
+          <div>
+            <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:var(--space-md);">Data Infrastructure</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm);">
+              <span class="stack-chip">Snowflake</span>
+              <span class="stack-chip">BigQuery</span>
+              <span class="stack-chip">Redshift</span>
+              <span class="stack-chip">Databricks</span>
+              <span class="stack-chip">Supabase</span>
+              <span class="stack-chip">Postgres</span>
+              <span class="stack-chip">Firebase</span>
+              <span class="stack-chip">Convex</span>
+              <span class="stack-chip">PlanetScale</span>
+              <span class="stack-chip">Neon</span>
+              <span class="stack-chip">Turso</span>
+            </div>
+          </div>
+
+          <div>
+            <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:var(--space-md);">Customer Success &amp; Support AI</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm);">
+              <span class="stack-chip">Intercom Fin</span>
+              <span class="stack-chip">Zendesk AI</span>
+              <span class="stack-chip">Ada</span>
+              <span class="stack-chip">Decagon</span>
+              <span class="stack-chip">Sierra</span>
+              <span class="stack-chip">Forethought</span>
+              <span class="stack-chip">Cresta</span>
+              <span class="stack-chip">PolyAI</span>
+            </div>
+          </div>
+
+          <div>
+            <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:var(--space-md);">Content &amp; Marketing AI</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm);">
+              <span class="stack-chip">Jasper</span>
+              <span class="stack-chip">Copy.ai</span>
+              <span class="stack-chip">Writer</span>
+              <span class="stack-chip">Anthropic Claude</span>
+              <span class="stack-chip">Gamma</span>
+              <span class="stack-chip">Tome</span>
+              <span class="stack-chip">Beautiful.ai</span>
+              <span class="stack-chip">Descript</span>
+              <span class="stack-chip">ElevenLabs</span>
+              <span class="stack-chip">HeyGen</span>
+              <span class="stack-chip">Synthesia</span>
+              <span class="stack-chip">Midjourney</span>
+              <span class="stack-chip">DALL-E</span>
+              <span class="stack-chip">Runway</span>
+              <span class="stack-chip">Suno</span>
+            </div>
+          </div>
+
+          <div>
+            <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:var(--space-md);">Chat, Inbox &amp; Meeting Intelligence</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm);">
+              <span class="stack-chip">Glyphic</span>
+              <span class="stack-chip">Gong</span>
+              <span class="stack-chip">Chorus</span>
+              <span class="stack-chip">ExecVision</span>
+              <span class="stack-chip">Avoma</span>
+              <span class="stack-chip">Fathom</span>
+              <span class="stack-chip">Fireflies</span>
+              <span class="stack-chip">Grain</span>
+              <span class="stack-chip">Otter</span>
+              <span class="stack-chip">Supernormal</span>
+              <span class="stack-chip">Attention</span>
+              <span class="stack-chip">Refract</span>
+              <span class="stack-chip">Tethr</span>
+            </div>
+          </div>
+
+          <div>
+            <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:var(--space-md);">Scheduling, Forms &amp; Workspace</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm);">
+              <span class="stack-chip">Cal.com</span>
+              <span class="stack-chip">Calendly</span>
+              <span class="stack-chip">Chilipiper</span>
+              <span class="stack-chip">Default</span>
+              <span class="stack-chip">RevenueHero</span>
+              <span class="stack-chip">Gravity Forms</span>
+              <span class="stack-chip">Typeform</span>
+              <span class="stack-chip">Tally</span>
+              <span class="stack-chip">Paperform</span>
+              <span class="stack-chip">Airtable</span>
+              <span class="stack-chip">Notion</span>
+              <span class="stack-chip">Coda</span>
+              <span class="stack-chip">Linear</span>
+              <span class="stack-chip">Asana</span>
+              <span class="stack-chip">ClickUp</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="reveal" style="margin-top:var(--space-2xl);padding:var(--space-xl);background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);max-width:820px;margin-inline:auto;">
+          <h3 style="font-size:1.125rem;margin-bottom:var(--space-md);">Our internal stack</h3>
+          <p style="color:var(--text-secondary);line-height:1.7;">Checkpoint's own GTM runs on a custom HubSpot MCP that queries the API directly (bypassing SDK limits), Claude-driven Clay workflows for enrichment, Cargo for orchestration, Hermes-based agents for client-specific automation, Glyphic for meeting intelligence, Instantly for outbound, and our own tools (Flow Sprite for Salesforce admin, Mega Graphics for visual generation). We don't sell theoretical architectures.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========== WHO THIS IS FOR ========== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="overline">Who This Is For</span>
+          <h2>Ready to stop running AI pilots without a scorecard?</h2>
+        </div>
+
+        <div class="fit-list reveal" style="margin-top:var(--space-xl);">
+          <div class="fit-list__item">
+            <svg class="fit-list__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>Series B+ B2B SaaS with mature GTM motion and growing AI tool sprawl</span>
+          </div>
+          <div class="fit-list__item">
+            <svg class="fit-list__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>CROs/CMOs facing board pressure on AI strategy without operational clarity</span>
+          </div>
+          <div class="fit-list__item">
+            <svg class="fit-list__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>RevOps leaders managing a 6-figure AI tool spend with no measurement framework</span>
+          </div>
+          <div class="fit-list__item">
+            <svg class="fit-list__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>GTM teams where AI pilots fragment faster than they compound</span>
+          </div>
+          <div class="fit-list__item">
+            <svg class="fit-list__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>Companies in regulated industries (fintech, healthtech) needing AI governance before scale</span>
+          </div>
+          <div class="fit-list__item">
+            <svg class="fit-list__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>Founders who built their own AI workflows in Claude and now need to make them scalable for the team</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========== FAQ ========== -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section-header text-center reveal" style="margin-bottom:var(--space-xl);">
+          <span class="overline">Frequently Asked Questions</span>
+          <h2>AI consulting questions, answered</h2>
+        </div>
+        <div style="max-width:760px;margin-inline:auto;display:flex;flex-direction:column;gap:var(--space-lg);" class="reveal-stagger">
+          <div class="reveal">
+            <h3 style="font-size:1.125rem;font-weight:600;margin-bottom:var(--space-sm);color:var(--text-primary);">What's the difference between your AI Consulting and your AI Automation service?</h3>
+            <p style="color:var(--text-secondary);line-height:1.6;">AI Consulting answers &ldquo;how should we think about AI across our revenue motion?&rdquo; &mdash; strategy, governance, roadmap. AI Automation is the tactical build (&ldquo;please automate our lead enrichment routing&rdquo;). Most engagements start strategic and fund tactical builds downstream. See our <a href="/services/ai-automation.html" style="color:var(--accent);">AI &amp; Automation page</a> for pure build work.</p>
+          </div>
+          <div class="reveal">
+            <h3 style="font-size:1.125rem;font-weight:600;margin-bottom:var(--space-sm);color:var(--text-primary);">How much does an AI consulting engagement cost?</h3>
+            <p style="color:var(--text-secondary);line-height:1.6;">AI Readiness Assessments start at &euro;15K for a 2-week diagnostic. Full roadmap + governance + implementation engagements typically run &euro;35K&ndash;&euro;90K depending on scope. Ongoing retainers range &euro;8K&ndash;&euro;25K/month. We scope every engagement before quoting.</p>
+          </div>
+          <div class="reveal">
+            <h3 style="font-size:1.125rem;font-weight:600;margin-bottom:var(--space-sm);color:var(--text-primary);">How do you measure ROI on AI initiatives?</h3>
+            <p style="color:var(--text-secondary);line-height:1.6;">We baseline current spend and output before we touch anything, set measurement standards per workflow (pipeline generated, hours saved, data quality lift), and review quarterly against kill criteria. Zombie pilots don't survive us.</p>
+          </div>
+          <div class="reveal">
+            <h3 style="font-size:1.125rem;font-weight:600;margin-bottom:var(--space-sm);color:var(--text-primary);">Do you work with AI-native startups or only traditional SaaS?</h3>
+            <p style="color:var(--text-secondary);line-height:1.6;">Both. AI-native startups hire us to tighten their internal GTM operations (they're so focused on building AI for their customers that their own sales motion is a mess). Traditional SaaS hires us to adopt AI operationally without the whiplash.</p>
+          </div>
+          <div class="reveal">
+            <h3 style="font-size:1.125rem;font-weight:600;margin-bottom:var(--space-sm);color:var(--text-primary);">My team is already using 10 AI tools. Do we really need more?</h3>
+            <p style="color:var(--text-secondary);line-height:1.6;">Probably not. Most engagements kill 30&ndash;50% of the existing stack. We audit what's actually moving pipeline and consolidate. Tools we can't justify get cut.</p>
+          </div>
+          <div class="reveal">
+            <h3 style="font-size:1.125rem;font-weight:600;margin-bottom:var(--space-sm);color:var(--text-primary);">How do you handle data privacy and governance?</h3>
+            <p style="color:var(--text-secondary);line-height:1.6;">We design policies before touching production data. Vendor evaluation rubrics cover SOC 2, GDPR, data retention, prompt logging, and sub-processor chains. For regulated industries (fintech, healthtech, EU companies) this is where we start.</p>
+          </div>
+          <div class="reveal">
+            <h3 style="font-size:1.125rem;font-weight:600;margin-bottom:var(--space-sm);color:var(--text-primary);">Do you build custom AI systems or only implement off-the-shelf tools?</h3>
+            <p style="color:var(--text-secondary);line-height:1.6;">Both. We've built production MCPs (custom HubSpot integration, Salesforce admin tooling), Hermes-based agent architectures, and Clay + Claude orchestration systems. Build vs. buy is a decision we make per workflow, based on your control needs and economics &mdash; not a dogma.</p>
+          </div>
+          <div class="reveal">
+            <h3 style="font-size:1.125rem;font-weight:600;margin-bottom:var(--space-sm);color:var(--text-primary);">Can you integrate with our existing HubSpot setup?</h3>
+            <p style="color:var(--text-secondary);line-height:1.6;">Yes &mdash; we're a HubSpot Platinum Partner and have built our own HubSpot MCP layer. Most of our AI work lands directly in HubSpot via workflows, custom properties, and bidirectional data flow with Clay, Apollo, and Cargo. See <a href="/services/hubspot-implementation.html" style="color:var(--accent);">HubSpot Implementation</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========== CTA BANNER ========== -->
+    <section class="section section--dark" style="padding-block:var(--space-5xl);">
+      <div class="container text-center">
+        <div class="reveal" style="max-width:680px;margin-inline:auto;">
+          <h2 style="margin-bottom:var(--space-lg);">Your GTM team's AI strategy, sorted.</h2>
+          <p style="margin-inline:auto;margin-bottom:var(--space-xl);">30-minute call. We'll map your current AI footprint, identify your three highest-ROI workflows to scale, and tell you which pilots to kill. No deck, no pitch.</p>
+          <a href="/contact.html" class="btn btn--primary btn--large">Let's Chat</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <footer style="background:var(--bg-dark);color:var(--text-inverse);padding-block:var(--space-3xl);">
+    <div class="container">
+      <div class="grid grid--4" style="gap:var(--space-2xl);align-items:start;">
+        <div style="grid-column:span 2;">
+          <div style="margin-bottom:var(--space-md);">
+            <img src="/images/logo-white.png" alt="Checkpoint GTM" style="height:24px;width:auto;">
+          </div>
+          <p style="font-size:0.875rem;color:rgba(250,250,248,0.5);max-width:320px;">Embedded RevOps and GTM consulting for B2B SaaS companies. Berlin-based, globally delivered.</p>
+        </div>
+        <div>
+          <h4 style="font-size:0.8125rem;font-weight:500;color:rgba(250,250,248,0.5);margin-bottom:var(--space-md);text-transform:uppercase;letter-spacing:0.05em;">Navigation</h4>
+          <div style="display:flex;flex-direction:column;gap:var(--space-sm);">
+            <a href="/services/index.html" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Services</a>
+            <a href="/case-studies.html" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Case Studies</a>
+            <a href="/about.html" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">About</a>
+            <a href="/contact.html" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h4 style="font-size:0.8125rem;font-weight:500;color:rgba(250,250,248,0.5);margin-bottom:var(--space-md);text-transform:uppercase;letter-spacing:0.05em;">Legal</h4>
+          <div style="display:flex;flex-direction:column;gap:var(--space-sm);">
+            <a href="/impressum" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Impressum</a>
+            <a href="/datenschutz" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Datenschutz</a>
+          </div>
+          <div style="margin-top:var(--space-lg);"><p style="font-size:0.8125rem;color:rgba(250,250,248,0.4);">Berlin, Germany</p></div>
+        </div>
+      </div>
+      <div style="margin-top:var(--space-2xl);padding-top:var(--space-lg);border-top:1px solid rgba(250,250,248,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-md);">
+        <p style="font-size:0.8125rem;color:rgba(250,250,248,0.4);">&copy; 2025 Checkpoint GTM. All rights reserved.</p>
+        <div style="display:flex;align-items:center;gap:var(--space-lg);">
+          <a href="https://linkedin.com" target="_blank" rel="noopener" style="color:rgba(250,250,248,0.5);" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/nav.js"></script>
+  <script src="../js/scroll-animations.js"></script>
+  <!-- Crikket bug-reporting widget -->
+  <script src="https://cdn.jsdelivr.net/npm/@crikket-io/capture/dist/capture.global.js" defer></script>
+  <script>
+    window.addEventListener("load", function() {
+      if (window.CrikketCapture) {
+        window.CrikketCapture.init({ key: "crk_7OXqJjPMyjZa5zkLMYCGPXLp", host: "https://crikket.gotomarketpro.de" })
+      }
+    })
+  </script>
+</body>
+</html>

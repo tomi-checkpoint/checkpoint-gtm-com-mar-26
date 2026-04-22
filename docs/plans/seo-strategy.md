@@ -182,6 +182,55 @@ Track these weekly for the Tier 1 keywords:
 
 Steal (and improve on) their best content angles; don't copy.
 
+## Tier 5 — Programmatic Outbound (new pillar, 2026-04-22)
+
+Launched a dedicated content pillar targeting the programmatic outbound / cold email consulting buyer. This is an adjacent-but-distinct ICP from core RevOps: agencies, sales leaders, and founders running outbound at scale who need infrastructure, waterfall enrichment, and multi-channel orchestration expertise. Higher search volume than pure RevOps, lower CPC, different buyer journey.
+
+### Target keywords
+
+| Keyword | Intent | Priority |
+|---|---|---|
+| `programmatic outbound` | Commercial | P0 (primary) |
+| `cold email infrastructure` | Commercial | P0 |
+| `waterfall enrichment` | Commercial | P0 |
+| `cold email deliverability consulting` | Commercial | P0 |
+| `outbound consulting agency` | Commercial | P0 |
+| `multi-channel outbound` | Commercial | P1 |
+| `b2b outbound services` | Commercial | P0 |
+| `cold outbound agency` | Commercial | P1 |
+| `domain warmup services` | Commercial | P1 |
+| `clay consulting` | Commercial | P1 |
+| `salesforge consulting` | Commercial | P2 |
+| `smartlead consulting` | Commercial | P2 |
+| `apollo consulting` | Commercial | P2 |
+| `outbound sdr consulting` | Commercial | P1 |
+| `linkedin outreach agency` | Commercial | P1 |
+| `cold calling services b2b saas` | Commercial | P1 |
+
+### Page → keyword mapping
+
+| Page | Primary keyword | Supporting keywords |
+|---|---|---|
+| `/services/programmatic-outbound.html` | `programmatic outbound` | `b2b outbound services`, `outbound consulting agency`, `multi-channel outbound`, `cold outbound agency` |
+| `/services/programmatic-outbound/deliverability-infrastructure.html` | `cold email deliverability consulting` | `cold email infrastructure`, `domain warmup services`, `spf dkim dmarc setup`, `multi-esp outbound` |
+| `/services/programmatic-outbound/waterfall-enrichment.html` | `waterfall enrichment` | `clay consulting`, `leadsforge`, `fullenrich`, `bettercontact`, `findymail`, `b2b data enrichment consulting` |
+| `/services/programmatic-outbound/cold-calling-playbook.html` | `cold calling services b2b saas` | `parallel dialer`, `titanx`, `sureconnect`, `tps register`, `outbound sdr consulting` |
+
+### Content notes
+
+- Main page is ~5,500 words with 16 tool-stack categories (100+ pills), 18 hard-earned rules, 6 use-case playbooks with bespoke stacks, interactive selector, FAQ with FAQPage schema.
+- Each sub-page is 1,500-2,000 words of operator-grade tactical content drawn from the Baconforge practitioner community.
+- Tool names (Salesforge, Clay, Smartlead, Apollo, HeyReach, TitanX, etc.) act as long-tail SEO surfaces; each tool mention is a potential ranking signal for branded-adjacent searches.
+- All three sub-pages are internally linked from the main page's &ldquo;Go Deeper&rdquo; section. Main page links from both homepage services grid and /services/index.html.
+
+### Link opportunities specific to this pillar
+
+- Guest posts on Salesforge, Clay, Instantly, Lemlist blogs (tool ecosystem plays)
+- LinkedIn newsletter syndication (Noah's network is in the Baconforge community)
+- Podcast appearances: Outbound Games, GTM Partners, The Outbound Kitchen
+- Co-marketing with non-competing tools (Leadsforge, BetterContact, MirrorProfiles)
+
 ## Execution log
 
 - **2026-04-21:** SEO audit complete. 0 Open Graph, 0 JSON-LD, 0 canonical, no sitemap/robots, 0 alt text. Strategy doc created. Phase 1 starting.
+- **2026-04-22:** Programmatic Outbound content pillar launched. Main page + 3 sub-pages + sitemap updates + homepage/services-index integration.

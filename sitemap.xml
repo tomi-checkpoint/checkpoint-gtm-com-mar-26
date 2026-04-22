@@ -73,8 +73,38 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://checkpointgtm.com/services/ai-gtm-consulting.html</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://checkpointgtm.com/services/vc-portfolio-support.html</loc>
     <lastmod>2026-04-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://checkpointgtm.com/services/programmatic-outbound.html</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://checkpointgtm.com/services/programmatic-outbound/deliverability-infrastructure.html</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://checkpointgtm.com/services/programmatic-outbound/waterfall-enrichment.html</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://checkpointgtm.com/services/programmatic-outbound/cold-calling-playbook.html</loc>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
