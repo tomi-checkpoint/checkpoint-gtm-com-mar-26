@@ -66,6 +66,8 @@ checkpoint-gtm/
 ### Other Pages
 - **About** — Differentiators, process, stats, values (production-ready)
 - **Case Studies** — 5 case study cards with real metrics/summaries (production-ready)
+- **Case Study Detail Pages** — 5 subpages under `case-studies/`: `series-a-revops`, `series-b-transformation`, `crm-migration`, `gtm-market-entry`, `vc-portfolio` (Sprint 2)
+- **Team** — `team.html` with member profiles and EMEA/VC positioning (Sprint 2)
 - **Contact** — 2-column form with role/need dropdowns (form action="#", needs backend)
 - **Services Index** — 7 service cards + engagement models + process
 - **7 Service Subpages** — Each has hero, deep-dive sections, process, use cases, CTA (60-70% content depth)
@@ -118,10 +120,13 @@ The site is currently 100% static. The original brief requires meaningful conten
 - Contact form backend (currently action="#", needs HubSpot form or serverless function)
 - Testimonial avatar images (currently empty placeholder divs)
 - Service subpage content depth (some pages need expanded copy)
-- Individual case study detail pages (case-studies.html links to "#")
+- Workflow / dashboard screenshots in case study detail pages (needs anonymized client assets — Sprint 2 P3.3, deferred)
 - SEO meta tags / Open Graph tags (partially done)
 - HubSpot Design Manager deployment
 - Analytics / tracking integration
+
+## Shipped Sprints
+- **Sprint 2** (verified 2026-04-24) — all 27 Crikket bug reports addressed except P3.3 (workflow screenshots, gated on client assets). Full breakdown: `docs/sprint-2-verification.md`. Case study detail pages, Team page, dark-mode contrast fixes, service link routing, footer nav, and consistency pass all landed.
 
 ## Client Logos with Case Studies
 Companies marked with ✓ have testimonials and should link to case study pages:

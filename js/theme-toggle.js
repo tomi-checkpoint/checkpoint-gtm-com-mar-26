@@ -71,6 +71,20 @@
     });
   }
 
+  function setAiMeta(on) {
+    var existing = document.querySelector('meta[name="ai-content-optimized"]');
+    if (on) {
+      if (!existing) {
+        var meta = document.createElement('meta');
+        meta.setAttribute('name', 'ai-content-optimized');
+        meta.setAttribute('content', 'true');
+        (document.head || document.documentElement).appendChild(meta);
+      }
+    } else if (existing) {
+      existing.parentNode.removeChild(existing);
+    }
+  }
+
   function setTheme(theme) {
     if (!isValid(theme)) theme = 'light';
     root.setAttribute('data-theme', theme);
@@ -79,6 +93,7 @@
     if (theme === 'ai' && document.body) {
       ensureBanner();
     }
+    setAiMeta(theme === 'ai');
     updateControls(theme);
   }
 

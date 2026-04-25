@@ -632,6 +632,91 @@
       .tool-logo__mark { font-size: 0.8125rem; }
     }
 
+    /* ColdIQ-style categorized logo wall (v2) */
+    .stack-wall { max-width: 1180px; margin-inline: auto; }
+    .stack-band { margin-top: var(--space-2xl); }
+    .stack-band__head {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-md);
+      margin-bottom: var(--space-md);
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .stack-band__label {
+      font-family: var(--font-display);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+    }
+    .stack-band__hint {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+    .stack-band__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .stack-tile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: var(--space-md) var(--space-sm);
+      background: var(--bg-primary);
+      min-height: 110px;
+      transition: background var(--transition-fast);
+    }
+    .stack-tile:hover { background: var(--bg-secondary); }
+    .stack-tile__logo {
+      height: 34px;
+      max-width: 100%;
+      object-fit: contain;
+      filter: grayscale(100%) contrast(0.9);
+      opacity: 0.75;
+      transition: filter var(--transition-fast), opacity var(--transition-fast);
+    }
+    .stack-tile:hover .stack-tile__logo { filter: grayscale(0%) contrast(1); opacity: 1; }
+    [data-theme="dark"] .stack-tile__logo { filter: grayscale(100%) brightness(0) invert(1); opacity: 0.72; }
+    [data-theme="dark"] .stack-tile:hover .stack-tile__logo { filter: brightness(0) invert(1); opacity: 1; }
+    .stack-tile__mark {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+      opacity: 0.78;
+      text-align: center;
+      line-height: 1.1;
+    }
+    .stack-tile__mark--long { font-size: 0.8125rem; }
+    .stack-tile__name {
+      font-size: 0.6875rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-tertiary, var(--text-secondary));
+      opacity: 0.75;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .stack-band__grid { grid-template-columns: repeat(3, 1fr); }
+      .stack-tile { min-height: 92px; }
+      .stack-tile__logo, .stack-tile__mark { height: 28px; }
+    }
+
     /* Collapsible / details styling for SEO deep-dive layer */
     .deep-toggle {
       max-width: 1100px;
@@ -995,67 +1080,235 @@
       <div class="container">
         <div class="section-header text-center reveal">
           <span class="overline">The Stack</span>
-          <h2>We've worked with all of it &mdash; and we have a best practice in mind</h2>
-          <p>Your stack is already in play. We know these tools cold. If there's a better call for your stage, we'll make it. If what you have works, we'll work in it.</p>
+          <h2>We&rsquo;ve worked with every tool in the outbound stack</h2>
+          <p>Sequencers, dialers, enrichment waterfalls, AI SDRs, LinkedIn automation, deliverability infrastructure &mdash; we&rsquo;ve built with them, broken them, and rebuilt them. We bring a best-practice default for your stage. If your current stack works, we work in it. If it doesn&rsquo;t, we&rsquo;ll tell you why and what to change.</p>
         </div>
 
-        <div class="logo-grid reveal" aria-label="Outbound tools we work with" style="margin-top:var(--space-2xl);">
-          <div class="tool-logo" title="HubSpot"><span class="tool-logo__mark">HubSpot</span><span class="sr-only">HubSpot</span></div>
-          <div class="tool-logo" title="Salesforce"><span class="tool-logo__mark">Salesforce</span><span class="sr-only">Salesforce</span></div>
-          <div class="tool-logo" title="Outreach"><span class="tool-logo__mark">Outreach</span><span class="sr-only">Outreach</span></div>
-          <div class="tool-logo" title="Salesloft"><span class="tool-logo__mark">Salesloft</span><span class="sr-only">Salesloft</span></div>
-          <div class="tool-logo" title="Apollo"><span class="tool-logo__mark">Apollo</span><span class="sr-only">Apollo</span></div>
-          <div class="tool-logo" title="Salesforge"><span class="tool-logo__mark">Salesforge</span><span class="sr-only">Salesforge</span></div>
-          <div class="tool-logo" title="Instantly"><span class="tool-logo__mark">Instantly</span><span class="sr-only">Instantly</span></div>
-          <div class="tool-logo" title="Smartlead"><span class="tool-logo__mark">Smartlead</span><span class="sr-only">Smartlead</span></div>
-          <div class="tool-logo" title="Lemlist"><span class="tool-logo__mark">Lemlist</span><span class="sr-only">Lemlist</span></div>
-          <div class="tool-logo" title="Reply.io"><span class="tool-logo__mark">Reply.io</span><span class="sr-only">Reply.io</span></div>
-          <div class="tool-logo" title="Google Workspace"><span class="tool-logo__mark tool-logo__mark--long">Google Workspace</span><span class="sr-only">Google Workspace</span></div>
-          <div class="tool-logo" title="Microsoft 365"><span class="tool-logo__mark">Microsoft 365</span><span class="sr-only">Microsoft 365</span></div>
-          <div class="tool-logo" title="Primeforge"><span class="tool-logo__mark">Primeforge</span><span class="sr-only">Primeforge</span></div>
-          <div class="tool-logo" title="Mailforge"><span class="tool-logo__mark">Mailforge</span><span class="sr-only">Mailforge</span></div>
-          <div class="tool-logo" title="Zapmail"><span class="tool-logo__mark">Zapmail</span><span class="sr-only">Zapmail</span></div>
-          <div class="tool-logo" title="Warmup Inbox"><span class="tool-logo__mark">Warmup Inbox</span><span class="sr-only">Warmup Inbox</span></div>
-          <div class="tool-logo" title="Mailreach"><span class="tool-logo__mark">Mailreach</span><span class="sr-only">Mailreach</span></div>
-          <div class="tool-logo" title="Folderly"><span class="tool-logo__mark">Folderly</span><span class="sr-only">Folderly</span></div>
-          <div class="tool-logo" title="GlockApps"><span class="tool-logo__mark">GlockApps</span><span class="sr-only">GlockApps</span></div>
-          <div class="tool-logo" title="Emailguard"><span class="tool-logo__mark">Emailguard</span><span class="sr-only">Emailguard</span></div>
-          <div class="tool-logo" title="Clay"><span class="tool-logo__mark">Clay</span><span class="sr-only">Clay</span></div>
-          <div class="tool-logo" title="Leadsforge"><span class="tool-logo__mark">Leadsforge</span><span class="sr-only">Leadsforge</span></div>
-          <div class="tool-logo" title="BetterContact"><span class="tool-logo__mark">BetterContact</span><span class="sr-only">BetterContact</span></div>
-          <div class="tool-logo" title="FullEnrich"><span class="tool-logo__mark">FullEnrich</span><span class="sr-only">FullEnrich</span></div>
-          <div class="tool-logo" title="Findymail"><span class="tool-logo__mark">Findymail</span><span class="sr-only">Findymail</span></div>
-          <div class="tool-logo" title="Cargo"><span class="tool-logo__mark">Cargo</span><span class="sr-only">Cargo</span></div>
-          <div class="tool-logo" title="Cognism"><span class="tool-logo__mark">Cognism</span><span class="sr-only">Cognism</span></div>
-          <div class="tool-logo" title="ZoomInfo"><span class="tool-logo__mark">ZoomInfo</span><span class="sr-only">ZoomInfo</span></div>
-          <div class="tool-logo" title="ContactOut"><span class="tool-logo__mark">ContactOut</span><span class="sr-only">ContactOut</span></div>
-          <div class="tool-logo" title="Lusha"><span class="tool-logo__mark">Lusha</span><span class="sr-only">Lusha</span></div>
-          <div class="tool-logo" title="Dealfront"><span class="tool-logo__mark">Dealfront</span><span class="sr-only">Dealfront</span></div>
-          <div class="tool-logo" title="HeyReach"><span class="tool-logo__mark">HeyReach</span><span class="sr-only">HeyReach</span></div>
-          <div class="tool-logo" title="La Growth Machine"><span class="tool-logo__mark tool-logo__mark--long">La Growth Machine</span><span class="sr-only">La Growth Machine</span></div>
-          <div class="tool-logo" title="Expandi"><span class="tool-logo__mark">Expandi</span><span class="sr-only">Expandi</span></div>
-          <div class="tool-logo" title="Waalaxy"><span class="tool-logo__mark">Waalaxy</span><span class="sr-only">Waalaxy</span></div>
-          <div class="tool-logo" title="TitanX"><span class="tool-logo__mark">TitanX</span><span class="sr-only">TitanX</span></div>
-          <div class="tool-logo" title="Orum"><span class="tool-logo__mark">Orum</span><span class="sr-only">Orum</span></div>
-          <div class="tool-logo" title="Nooks"><span class="tool-logo__mark">Nooks</span><span class="sr-only">Nooks</span></div>
-          <div class="tool-logo" title="Aircall"><span class="tool-logo__mark">Aircall</span><span class="sr-only">Aircall</span></div>
-          <div class="tool-logo" title="Dialpad"><span class="tool-logo__mark">Dialpad</span><span class="sr-only">Dialpad</span></div>
-          <div class="tool-logo" title="Cloudtalk"><span class="tool-logo__mark">Cloudtalk</span><span class="sr-only">Cloudtalk</span></div>
-          <div class="tool-logo" title="Lavender"><span class="tool-logo__mark">Lavender</span><span class="sr-only">Lavender</span></div>
-          <div class="tool-logo" title="Claude"><span class="tool-logo__mark">Claude</span><span class="sr-only">Claude</span></div>
-          <div class="tool-logo" title="ChatGPT"><span class="tool-logo__mark">ChatGPT</span><span class="sr-only">ChatGPT</span></div>
-          <div class="tool-logo" title="11x"><span class="tool-logo__mark">11x</span><span class="sr-only">11x</span></div>
-          <div class="tool-logo" title="Artisan"><span class="tool-logo__mark">Artisan</span><span class="sr-only">Artisan</span></div>
-          <div class="tool-logo" title="6sense"><span class="tool-logo__mark">6sense</span><span class="sr-only">6sense</span></div>
-          <div class="tool-logo" title="Demandbase"><span class="tool-logo__mark">Demandbase</span><span class="sr-only">Demandbase</span></div>
-          <div class="tool-logo" title="Bombora"><span class="tool-logo__mark">Bombora</span><span class="sr-only">Bombora</span></div>
-          <div class="tool-logo" title="Common Room"><span class="tool-logo__mark">Common Room</span><span class="sr-only">Common Room</span></div>
-          <div class="tool-logo" title="Warmly"><span class="tool-logo__mark">Warmly</span><span class="sr-only">Warmly</span></div>
-          <div class="tool-logo" title="Chili Piper"><span class="tool-logo__mark">Chili Piper</span><span class="sr-only">Chili Piper</span></div>
-          <div class="tool-logo" title="Cal.com"><span class="tool-logo__mark">Cal.com</span><span class="sr-only">Cal.com</span></div>
-          <div class="tool-logo" title="Calendly"><span class="tool-logo__mark">Calendly</span><span class="sr-only">Calendly</span></div>
-          <div class="tool-logo" title="RevenueHero"><span class="tool-logo__mark">RevenueHero</span><span class="sr-only">RevenueHero</span></div>
+        <div class="stack-wall reveal" aria-label="Outbound tools Checkpoint GTM works with">
+
+          <!-- CRM -->
+          <div class="stack-band">
+            <div class="stack-band__head">
+              <span class="stack-band__label">CRM &amp; system of record</span>
+              <span class="stack-band__hint">where pipeline lives</span>
+            </div>
+            <div class="stack-band__grid">
+              <div class="stack-tile" title="HubSpot"><span class="stack-tile__mark" aria-hidden="true">HubSpot</span><span class="stack-tile__name">HubSpot</span></div>
+              <div class="stack-tile" title="Salesforce"><span class="stack-tile__mark" aria-hidden="true">Salesforce</span><span class="stack-tile__name">Salesforce</span></div>
+              <div class="stack-tile" title="Attio"><span class="stack-tile__mark" aria-hidden="true">Attio</span><span class="stack-tile__name">Attio</span></div>
+              <div class="stack-tile" title="Pipedrive"><span class="stack-tile__mark" aria-hidden="true">Pipedrive</span><span class="stack-tile__name">Pipedrive</span></div>
+            </div>
+          </div>
+
+          <!-- Sequencing -->
+          <div class="stack-band">
+            <div class="stack-band__head">
+              <span class="stack-band__label">Sequencing &amp; outreach</span>
+              <span class="stack-band__hint">the execution layer</span>
+            </div>
+            <div class="stack-band__grid">
+              <div class="stack-tile" title="Instantly.ai"><img class="stack-tile__logo" src="/images/partners/instantly.jpg" alt="Instantly" loading="lazy"><span class="stack-tile__name">Instantly</span></div>
+              <div class="stack-tile" title="Lemlist"><img class="stack-tile__logo" src="/images/partners/lemlist.png" alt="Lemlist" loading="lazy"><span class="stack-tile__name">Lemlist</span></div>
+              <div class="stack-tile" title="Smartlead"><span class="stack-tile__mark" aria-hidden="true">Smartlead</span><span class="stack-tile__name">Smartlead</span></div>
+              <div class="stack-tile" title="Salesforge"><span class="stack-tile__mark" aria-hidden="true">Salesforge</span><span class="stack-tile__name">Salesforge</span></div>
+              <div class="stack-tile" title="Outreach"><span class="stack-tile__mark" aria-hidden="true">Outreach</span><span class="stack-tile__name">Outreach</span></div>
+              <div class="stack-tile" title="Salesloft"><span class="stack-tile__mark" aria-hidden="true">Salesloft</span><span class="stack-tile__name">Salesloft</span></div>
+              <div class="stack-tile" title="Reply.io"><span class="stack-tile__mark" aria-hidden="true">Reply.io</span><span class="stack-tile__name">Reply.io</span></div>
+              <div class="stack-tile" title="Apollo"><img class="stack-tile__logo" src="/images/partners/apollo.png" alt="Apollo.io" loading="lazy"><span class="stack-tile__name">Apollo</span></div>
+            </div>
+          </div>
+
+          <!-- Data & enrichment -->
+          <div class="stack-band">
+            <div class="stack-band__head">
+              <span class="stack-band__label">Data &amp; enrichment waterfall</span>
+              <span class="stack-band__hint">20+ vendors, one routing layer</span>
+            </div>
+            <div class="stack-band__grid">
+              <div class="stack-tile" title="Clay"><span class="stack-tile__mark" aria-hidden="true">Clay</span><span class="stack-tile__name">Clay</span></div>
+              <div class="stack-tile" title="Leadsforge"><span class="stack-tile__mark" aria-hidden="true">Leadsforge</span><span class="stack-tile__name">Leadsforge</span></div>
+              <div class="stack-tile" title="BetterContact"><span class="stack-tile__mark" aria-hidden="true">BetterContact</span><span class="stack-tile__name">BetterContact</span></div>
+              <div class="stack-tile" title="FullEnrich"><span class="stack-tile__mark" aria-hidden="true">FullEnrich</span><span class="stack-tile__name">FullEnrich</span></div>
+              <div class="stack-tile" title="Findymail"><span class="stack-tile__mark" aria-hidden="true">Findymail</span><span class="stack-tile__name">Findymail</span></div>
+              <div class="stack-tile" title="Cargo"><span class="stack-tile__mark" aria-hidden="true">Cargo</span><span class="stack-tile__name">Cargo</span></div>
+              <div class="stack-tile" title="Cognism"><span class="stack-tile__mark" aria-hidden="true">Cognism</span><span class="stack-tile__name">Cognism</span></div>
+              <div class="stack-tile" title="ZoomInfo"><span class="stack-tile__mark" aria-hidden="true">ZoomInfo</span><span class="stack-tile__name">ZoomInfo</span></div>
+              <div class="stack-tile" title="ContactOut"><span class="stack-tile__mark" aria-hidden="true">ContactOut</span><span class="stack-tile__name">ContactOut</span></div>
+              <div class="stack-tile" title="Lusha"><span class="stack-tile__mark" aria-hidden="true">Lusha</span><span class="stack-tile__name">Lusha</span></div>
+              <div class="stack-tile" title="Dealfront"><span class="stack-tile__mark" aria-hidden="true">Dealfront</span><span class="stack-tile__name">Dealfront</span></div>
+              <div class="stack-tile" title="Ocean.io"><span class="stack-tile__mark" aria-hidden="true">Ocean.io</span><span class="stack-tile__name">Ocean.io</span></div>
+            </div>
+          </div>
+
+          <!-- Deliverability & infrastructure -->
+          <div class="stack-band">
+            <div class="stack-band__head">
+              <span class="stack-band__label">Deliverability &amp; inbox infrastructure</span>
+              <span class="stack-band__hint">domains, warmup, monitoring</span>
+            </div>
+            <div class="stack-band__grid">
+              <div class="stack-tile" title="Google Workspace"><span class="stack-tile__mark stack-tile__mark--long" aria-hidden="true">Google Workspace</span><span class="stack-tile__name">Google Workspace</span></div>
+              <div class="stack-tile" title="Microsoft 365"><span class="stack-tile__mark" aria-hidden="true">Microsoft 365</span><span class="stack-tile__name">Microsoft 365</span></div>
+              <div class="stack-tile" title="Primeforge"><span class="stack-tile__mark" aria-hidden="true">Primeforge</span><span class="stack-tile__name">Primeforge</span></div>
+              <div class="stack-tile" title="Mailforge"><span class="stack-tile__mark" aria-hidden="true">Mailforge</span><span class="stack-tile__name">Mailforge</span></div>
+              <div class="stack-tile" title="Zapmail"><span class="stack-tile__mark" aria-hidden="true">Zapmail</span><span class="stack-tile__name">Zapmail</span></div>
+              <div class="stack-tile" title="Mailreach"><span class="stack-tile__mark" aria-hidden="true">Mailreach</span><span class="stack-tile__name">Mailreach</span></div>
+              <div class="stack-tile" title="Folderly"><span class="stack-tile__mark" aria-hidden="true">Folderly</span><span class="stack-tile__name">Folderly</span></div>
+              <div class="stack-tile" title="GlockApps"><span class="stack-tile__mark" aria-hidden="true">GlockApps</span><span class="stack-tile__name">GlockApps</span></div>
+              <div class="stack-tile" title="Emailguard"><span class="stack-tile__mark" aria-hidden="true">Emailguard</span><span class="stack-tile__name">Emailguard</span></div>
+              <div class="stack-tile" title="Warmup Inbox"><span class="stack-tile__mark" aria-hidden="true">Warmup Inbox</span><span class="stack-tile__name">Warmup Inbox</span></div>
+            </div>
+          </div>
+
+          <!-- LinkedIn & multi-channel -->
+          <div class="stack-band">
+            <div class="stack-band__head">
+              <span class="stack-band__label">LinkedIn &amp; multi-channel</span>
+              <span class="stack-band__hint">email is a channel, not the strategy</span>
+            </div>
+            <div class="stack-band__grid">
+              <div class="stack-tile" title="HeyReach"><span class="stack-tile__mark" aria-hidden="true">HeyReach</span><span class="stack-tile__name">HeyReach</span></div>
+              <div class="stack-tile" title="La Growth Machine"><span class="stack-tile__mark stack-tile__mark--long" aria-hidden="true">La Growth Machine</span><span class="stack-tile__name">La Growth Machine</span></div>
+              <div class="stack-tile" title="Expandi"><span class="stack-tile__mark" aria-hidden="true">Expandi</span><span class="stack-tile__name">Expandi</span></div>
+              <div class="stack-tile" title="Waalaxy"><span class="stack-tile__mark" aria-hidden="true">Waalaxy</span><span class="stack-tile__name">Waalaxy</span></div>
+            </div>
+          </div>
+
+          <!-- Dialer / calling -->
+          <div class="stack-band">
+            <div class="stack-band__head">
+              <span class="stack-band__label">Dialers &amp; calling infrastructure</span>
+              <span class="stack-band__hint">parallel + power, local presence</span>
+            </div>
+            <div class="stack-band__grid">
+              <div class="stack-tile" title="Orum"><span class="stack-tile__mark" aria-hidden="true">Orum</span><span class="stack-tile__name">Orum</span></div>
+              <div class="stack-tile" title="Nooks"><span class="stack-tile__mark" aria-hidden="true">Nooks</span><span class="stack-tile__name">Nooks</span></div>
+              <div class="stack-tile" title="TitanX"><span class="stack-tile__mark" aria-hidden="true">TitanX</span><span class="stack-tile__name">TitanX</span></div>
+              <div class="stack-tile" title="Aircall"><span class="stack-tile__mark" aria-hidden="true">Aircall</span><span class="stack-tile__name">Aircall</span></div>
+              <div class="stack-tile" title="Dialpad"><span class="stack-tile__mark" aria-hidden="true">Dialpad</span><span class="stack-tile__name">Dialpad</span></div>
+              <div class="stack-tile" title="Cloudtalk"><span class="stack-tile__mark" aria-hidden="true">Cloudtalk</span><span class="stack-tile__name">Cloudtalk</span></div>
+            </div>
+          </div>
+
+          <!-- AI & automation -->
+          <div class="stack-band">
+            <div class="stack-band__head">
+              <span class="stack-band__label">AI, copilots &amp; automation</span>
+              <span class="stack-band__hint">useful where it moves reply rate</span>
+            </div>
+            <div class="stack-band__grid">
+              <div class="stack-tile" title="Anthropic Claude"><img class="stack-tile__logo" src="/images/partners/anthropic.svg" alt="Anthropic" loading="lazy"><span class="stack-tile__name">Claude / Anthropic</span></div>
+              <div class="stack-tile" title="OpenAI ChatGPT"><span class="stack-tile__mark" aria-hidden="true">ChatGPT</span><span class="stack-tile__name">OpenAI</span></div>
+              <div class="stack-tile" title="ElevenLabs"><img class="stack-tile__logo" src="/images/partners/elevenlabs.png" alt="ElevenLabs" loading="lazy"><span class="stack-tile__name">ElevenLabs</span></div>
+              <div class="stack-tile" title="Lavender"><span class="stack-tile__mark" aria-hidden="true">Lavender</span><span class="stack-tile__name">Lavender</span></div>
+              <div class="stack-tile" title="11x"><span class="stack-tile__mark" aria-hidden="true">11x</span><span class="stack-tile__name">11x</span></div>
+              <div class="stack-tile" title="Artisan"><span class="stack-tile__mark" aria-hidden="true">Artisan</span><span class="stack-tile__name">Artisan</span></div>
+            </div>
+          </div>
+
+          <!-- Intent / ABM -->
+          <div class="stack-band">
+            <div class="stack-band__head">
+              <span class="stack-band__label">Intent, ABM &amp; signal</span>
+              <span class="stack-band__hint">who&rsquo;s in-market right now</span>
+            </div>
+            <div class="stack-band__grid">
+              <div class="stack-tile" title="6sense"><span class="stack-tile__mark" aria-hidden="true">6sense</span><span class="stack-tile__name">6sense</span></div>
+              <div class="stack-tile" title="Demandbase"><span class="stack-tile__mark" aria-hidden="true">Demandbase</span><span class="stack-tile__name">Demandbase</span></div>
+              <div class="stack-tile" title="Bombora"><span class="stack-tile__mark" aria-hidden="true">Bombora</span><span class="stack-tile__name">Bombora</span></div>
+              <div class="stack-tile" title="Common Room"><span class="stack-tile__mark stack-tile__mark--long" aria-hidden="true">Common Room</span><span class="stack-tile__name">Common Room</span></div>
+              <div class="stack-tile" title="Warmly"><span class="stack-tile__mark" aria-hidden="true">Warmly</span><span class="stack-tile__name">Warmly</span></div>
+            </div>
+          </div>
+
+          <!-- Booking / handoff -->
+          <div class="stack-band">
+            <div class="stack-band__head">
+              <span class="stack-band__label">Booking &amp; handoff</span>
+              <span class="stack-band__hint">meeting &gt; meeting booked &gt; meeting held</span>
+            </div>
+            <div class="stack-band__grid">
+              <div class="stack-tile" title="Chili Piper"><span class="stack-tile__mark" aria-hidden="true">Chili Piper</span><span class="stack-tile__name">Chili Piper</span></div>
+              <div class="stack-tile" title="RevenueHero"><span class="stack-tile__mark" aria-hidden="true">RevenueHero</span><span class="stack-tile__name">RevenueHero</span></div>
+              <div class="stack-tile" title="Cal.com"><span class="stack-tile__mark" aria-hidden="true">Cal.com</span><span class="stack-tile__name">Cal.com</span></div>
+              <div class="stack-tile" title="Calendly"><span class="stack-tile__mark" aria-hidden="true">Calendly</span><span class="stack-tile__name">Calendly</span></div>
+              <div class="stack-tile" title="PandaDoc"><img class="stack-tile__logo" src="/images/partners/pandadoc.png" alt="PandaDoc" loading="lazy"><span class="stack-tile__name">PandaDoc</span></div>
+            </div>
+          </div>
+
         </div>
+
+        <!-- Machine-readable tool inventory for AI crawlers & SEO -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "name": "Outbound tools Checkpoint GTM works with",
+          "description": "Categorized inventory of sales and outbound technology Checkpoint GTM has implemented, migrated, or integrated for B2B SaaS clients.",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "item": {"@type": "SoftwareApplication", "name": "HubSpot", "applicationCategory": "CRM"}},
+            {"@type": "ListItem", "position": 2, "item": {"@type": "SoftwareApplication", "name": "Salesforce", "applicationCategory": "CRM"}},
+            {"@type": "ListItem", "position": 3, "item": {"@type": "SoftwareApplication", "name": "Attio", "applicationCategory": "CRM"}},
+            {"@type": "ListItem", "position": 4, "item": {"@type": "SoftwareApplication", "name": "Pipedrive", "applicationCategory": "CRM"}},
+            {"@type": "ListItem", "position": 5, "item": {"@type": "SoftwareApplication", "name": "Instantly", "applicationCategory": "Email sequencing"}},
+            {"@type": "ListItem", "position": 6, "item": {"@type": "SoftwareApplication", "name": "Lemlist", "applicationCategory": "Email sequencing"}},
+            {"@type": "ListItem", "position": 7, "item": {"@type": "SoftwareApplication", "name": "Smartlead", "applicationCategory": "Email sequencing"}},
+            {"@type": "ListItem", "position": 8, "item": {"@type": "SoftwareApplication", "name": "Salesforge", "applicationCategory": "Email sequencing"}},
+            {"@type": "ListItem", "position": 9, "item": {"@type": "SoftwareApplication", "name": "Outreach", "applicationCategory": "Sales engagement"}},
+            {"@type": "ListItem", "position": 10, "item": {"@type": "SoftwareApplication", "name": "Salesloft", "applicationCategory": "Sales engagement"}},
+            {"@type": "ListItem", "position": 11, "item": {"@type": "SoftwareApplication", "name": "Reply.io", "applicationCategory": "Sales engagement"}},
+            {"@type": "ListItem", "position": 12, "item": {"@type": "SoftwareApplication", "name": "Apollo.io", "applicationCategory": "Sales engagement"}},
+            {"@type": "ListItem", "position": 13, "item": {"@type": "SoftwareApplication", "name": "Clay", "applicationCategory": "Data enrichment"}},
+            {"@type": "ListItem", "position": 14, "item": {"@type": "SoftwareApplication", "name": "Leadsforge", "applicationCategory": "Data enrichment"}},
+            {"@type": "ListItem", "position": 15, "item": {"@type": "SoftwareApplication", "name": "BetterContact", "applicationCategory": "Data enrichment"}},
+            {"@type": "ListItem", "position": 16, "item": {"@type": "SoftwareApplication", "name": "FullEnrich", "applicationCategory": "Data enrichment"}},
+            {"@type": "ListItem", "position": 17, "item": {"@type": "SoftwareApplication", "name": "Findymail", "applicationCategory": "Data enrichment"}},
+            {"@type": "ListItem", "position": 18, "item": {"@type": "SoftwareApplication", "name": "Cargo", "applicationCategory": "Data orchestration"}},
+            {"@type": "ListItem", "position": 19, "item": {"@type": "SoftwareApplication", "name": "Cognism", "applicationCategory": "B2B data"}},
+            {"@type": "ListItem", "position": 20, "item": {"@type": "SoftwareApplication", "name": "ZoomInfo", "applicationCategory": "B2B data"}},
+            {"@type": "ListItem", "position": 21, "item": {"@type": "SoftwareApplication", "name": "ContactOut", "applicationCategory": "B2B data"}},
+            {"@type": "ListItem", "position": 22, "item": {"@type": "SoftwareApplication", "name": "Lusha", "applicationCategory": "B2B data"}},
+            {"@type": "ListItem", "position": 23, "item": {"@type": "SoftwareApplication", "name": "Dealfront", "applicationCategory": "B2B data"}},
+            {"@type": "ListItem", "position": 24, "item": {"@type": "SoftwareApplication", "name": "Ocean.io", "applicationCategory": "B2B data"}},
+            {"@type": "ListItem", "position": 25, "item": {"@type": "SoftwareApplication", "name": "Google Workspace", "applicationCategory": "Email infrastructure"}},
+            {"@type": "ListItem", "position": 26, "item": {"@type": "SoftwareApplication", "name": "Microsoft 365", "applicationCategory": "Email infrastructure"}},
+            {"@type": "ListItem", "position": 27, "item": {"@type": "SoftwareApplication", "name": "Primeforge", "applicationCategory": "Email infrastructure"}},
+            {"@type": "ListItem", "position": 28, "item": {"@type": "SoftwareApplication", "name": "Mailforge", "applicationCategory": "Email infrastructure"}},
+            {"@type": "ListItem", "position": 29, "item": {"@type": "SoftwareApplication", "name": "Zapmail", "applicationCategory": "Email infrastructure"}},
+            {"@type": "ListItem", "position": 30, "item": {"@type": "SoftwareApplication", "name": "Mailreach", "applicationCategory": "Deliverability"}},
+            {"@type": "ListItem", "position": 31, "item": {"@type": "SoftwareApplication", "name": "Folderly", "applicationCategory": "Deliverability"}},
+            {"@type": "ListItem", "position": 32, "item": {"@type": "SoftwareApplication", "name": "GlockApps", "applicationCategory": "Deliverability"}},
+            {"@type": "ListItem", "position": 33, "item": {"@type": "SoftwareApplication", "name": "Emailguard", "applicationCategory": "Deliverability"}},
+            {"@type": "ListItem", "position": 34, "item": {"@type": "SoftwareApplication", "name": "Warmup Inbox", "applicationCategory": "Deliverability"}},
+            {"@type": "ListItem", "position": 35, "item": {"@type": "SoftwareApplication", "name": "HeyReach", "applicationCategory": "LinkedIn automation"}},
+            {"@type": "ListItem", "position": 36, "item": {"@type": "SoftwareApplication", "name": "La Growth Machine", "applicationCategory": "LinkedIn automation"}},
+            {"@type": "ListItem", "position": 37, "item": {"@type": "SoftwareApplication", "name": "Expandi", "applicationCategory": "LinkedIn automation"}},
+            {"@type": "ListItem", "position": 38, "item": {"@type": "SoftwareApplication", "name": "Waalaxy", "applicationCategory": "LinkedIn automation"}},
+            {"@type": "ListItem", "position": 39, "item": {"@type": "SoftwareApplication", "name": "Orum", "applicationCategory": "Sales dialer"}},
+            {"@type": "ListItem", "position": 40, "item": {"@type": "SoftwareApplication", "name": "Nooks", "applicationCategory": "Sales dialer"}},
+            {"@type": "ListItem", "position": 41, "item": {"@type": "SoftwareApplication", "name": "TitanX", "applicationCategory": "Sales dialer"}},
+            {"@type": "ListItem", "position": 42, "item": {"@type": "SoftwareApplication", "name": "Aircall", "applicationCategory": "Cloud telephony"}},
+            {"@type": "ListItem", "position": 43, "item": {"@type": "SoftwareApplication", "name": "Dialpad", "applicationCategory": "Cloud telephony"}},
+            {"@type": "ListItem", "position": 44, "item": {"@type": "SoftwareApplication", "name": "Cloudtalk", "applicationCategory": "Cloud telephony"}},
+            {"@type": "ListItem", "position": 45, "item": {"@type": "SoftwareApplication", "name": "Anthropic Claude", "applicationCategory": "AI / LLM"}},
+            {"@type": "ListItem", "position": 46, "item": {"@type": "SoftwareApplication", "name": "OpenAI ChatGPT", "applicationCategory": "AI / LLM"}},
+            {"@type": "ListItem", "position": 47, "item": {"@type": "SoftwareApplication", "name": "ElevenLabs", "applicationCategory": "AI voice"}},
+            {"@type": "ListItem", "position": 48, "item": {"@type": "SoftwareApplication", "name": "Lavender", "applicationCategory": "AI email coach"}},
+            {"@type": "ListItem", "position": 49, "item": {"@type": "SoftwareApplication", "name": "11x", "applicationCategory": "AI SDR"}},
+            {"@type": "ListItem", "position": 50, "item": {"@type": "SoftwareApplication", "name": "Artisan", "applicationCategory": "AI SDR"}},
+            {"@type": "ListItem", "position": 51, "item": {"@type": "SoftwareApplication", "name": "6sense", "applicationCategory": "Intent / ABM"}},
+            {"@type": "ListItem", "position": 52, "item": {"@type": "SoftwareApplication", "name": "Demandbase", "applicationCategory": "Intent / ABM"}},
+            {"@type": "ListItem", "position": 53, "item": {"@type": "SoftwareApplication", "name": "Bombora", "applicationCategory": "Intent data"}},
+            {"@type": "ListItem", "position": 54, "item": {"@type": "SoftwareApplication", "name": "Common Room", "applicationCategory": "Signal / community"}},
+            {"@type": "ListItem", "position": 55, "item": {"@type": "SoftwareApplication", "name": "Warmly", "applicationCategory": "Signal / visitor intent"}},
+            {"@type": "ListItem", "position": 56, "item": {"@type": "SoftwareApplication", "name": "Chili Piper", "applicationCategory": "Meeting booking"}},
+            {"@type": "ListItem", "position": 57, "item": {"@type": "SoftwareApplication", "name": "RevenueHero", "applicationCategory": "Meeting booking"}},
+            {"@type": "ListItem", "position": 58, "item": {"@type": "SoftwareApplication", "name": "Cal.com", "applicationCategory": "Meeting booking"}},
+            {"@type": "ListItem", "position": 59, "item": {"@type": "SoftwareApplication", "name": "Calendly", "applicationCategory": "Meeting booking"}},
+            {"@type": "ListItem", "position": 60, "item": {"@type": "SoftwareApplication", "name": "PandaDoc", "applicationCategory": "Proposals / e-signature"}}
+          ]
+        }
+        </script>
 
         <details class="deep-toggle reveal">
           <summary>

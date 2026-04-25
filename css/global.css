@@ -633,3 +633,45 @@ p {
   min-width: 0 !important;
 }
 
+/* Force all scroll-revealed elements visible regardless of IntersectionObserver state */
+[data-theme="ai"] .reveal,
+[data-theme="ai"] .partner-grid__card,
+[data-theme="ai"] .click-in,
+[data-theme="ai"] .image-bank__card,
+[data-theme="ai"] .stat-block {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+
+/* Hide marquee + partner grid + cert scatter entirely — they don't read well as text */
+[data-theme="ai"] .client-marquee,
+[data-theme="ai"] .partner-grid,
+[data-theme="ai"] .certification-badges,
+[data-theme="ai"] .hero-bot,
+[data-theme="ai"] .hero__bot,
+[data-theme="ai"] .image-bank,
+[data-theme="ai"] .testimonials__avatar,
+[data-theme="ai"] .nav__mobile-toggle {
+  display: none !important;
+}
+
+/* Promote .ai-summary to lead position — it should appear immediately under the nav */
+[data-theme="ai"] main > .ai-summary:first-child,
+[data-theme="ai"] .ai-summary {
+  margin-top: 1rem;
+}
+
+/* Add a "machine-readable view" header at the top of main so LLMs/users see context */
+[data-theme="ai"] main::before {
+  content: "Checkpoint GTM — Machine-readable view. Optimized for LLM parsing and quick scanning.";
+  display: block;
+  max-width: 760px;
+  margin: 1rem auto 2rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  border: 1px dashed var(--border);
+  border-radius: 4px;
+}
+

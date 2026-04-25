@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="description" content="How Checkpoint GTM migrated AppMagic from Close CRM to HubSpot and rebuilt the revenue operation — 3x inbound conversion, €1.8M net-new pipeline in 90 days, 41% lift in sales-accepted demos.">
+  <link rel="canonical" href="https://checkpointgtm.com/case-studies/appmagic-crm-migration.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://checkpointgtm.com/case-studies/appmagic-crm-migration.html" />
+  <meta property="og:title" content="Case Study: AppMagic &mdash; Close to HubSpot Migration + RevOps Rebuild" />
+  <meta property="og:description" content="Full platform migration and revenue operation rebuild for AppMagic. 3x inbound conversion, €1.8M net-new pipeline in 90 days, 41% lift in sales-accepted demos." />
+  <meta property="og:image" content="https://checkpointgtm.com/images/og-default.png" />
+  <meta property="og:site_name" content="Checkpoint GTM" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Case Study: AppMagic &mdash; Close to HubSpot Migration + RevOps Rebuild" />
+  <meta name="twitter:description" content="Full platform migration and revenue operation rebuild for AppMagic." />
+  <meta name="twitter:image" content="https://checkpointgtm.com/images/og-default.png" />
+  <meta name="theme-color" content="#FAFAF8">
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+  <title>Case Study: AppMagic &mdash; Close to HubSpot Migration | Checkpoint GTM</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Slab:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <script src="../js/theme-toggle.js"></script>
+
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+
+  <style>
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-height);display:flex;align-items:center;background:transparent;}
+    .nav--scrolled{background:rgba(250,250,248,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--border);}
+    [data-theme="dark"] .nav--scrolled{background:rgba(15,15,15,0.85);}
+    .nav__inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:var(--container-max);margin-inline:auto;padding-inline:var(--container-padding);}
+    .nav__logo{display:flex;align-items:center;}
+    .nav__links{display:flex;align-items:center;gap:var(--space-xl);}
+    .nav__link{font-size:0.9375rem;color:var(--text-secondary);transition:color var(--transition-fast);}
+    .nav__link:hover{color:var(--text-primary);}
+    .nav__actions{display:flex;align-items:center;gap:var(--space-md);}
+    .nav__mobile-toggle{display:none;background:none;border:0;width:28px;height:24px;flex-direction:column;justify-content:space-between;cursor:pointer;padding:0;}
+    .nav__mobile-toggle span{display:block;height:2px;background:var(--text-primary);width:100%;transition:all var(--transition-fast);}
+    .nav__mobile-menu{display:none;}
+
+    .cs-hero{padding-top:calc(var(--nav-height) + var(--space-4xl));padding-bottom:var(--space-2xl);}
+    .cs-hero__back{display:inline-block;margin-bottom:var(--space-lg);font-size:0.875rem;color:var(--text-secondary);}
+    .cs-hero__back:hover{color:var(--accent);}
+    .cs-hero__tags{display:flex;gap:var(--space-xs);margin-bottom:var(--space-md);flex-wrap:wrap;}
+    .cs-hero__tag{font-size:0.75rem;padding:4px 10px;background:var(--bg-alt);border-radius:999px;color:var(--text-secondary);}
+    .cs-hero h1{font-size:clamp(2rem,4vw,3rem);margin-bottom:var(--space-md);}
+    .cs-hero__meta{color:var(--text-secondary);font-size:0.9375rem;}
+    .cs-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:var(--space-xl);background:var(--bg-alt);border-radius:var(--radius-lg);padding:var(--space-2xl);}
+    .cs-metric__value{font-family:'Roboto Slab',serif;font-size:2.25rem;font-weight:600;color:var(--accent);margin-bottom:var(--space-xs);line-height:1;}
+    .cs-metric__label{font-size:0.875rem;color:var(--text-secondary);line-height:1.4;}
+    .cs-section{max-width:800px;margin-inline:auto;margin-bottom:var(--space-3xl);}
+    .cs-section__label{text-transform:uppercase;letter-spacing:0.08em;font-size:0.75rem;color:var(--accent);margin-bottom:var(--space-sm);font-weight:500;}
+    .cs-section h2{margin-bottom:var(--space-lg);}
+    .cs-section p{margin-bottom:var(--space-md);}
+    .cs-section ul{margin-bottom:var(--space-md);padding-left:var(--space-lg);}
+    .cs-section li{margin-bottom:var(--space-sm);}
+    .cs-process{display:flex;flex-direction:column;gap:var(--space-lg);margin-top:var(--space-xl);}
+    .cs-process__step{display:flex;gap:var(--space-lg);align-items:flex-start;}
+    .cs-process__number{flex-shrink:0;width:40px;height:40px;border-radius:50%;background:var(--accent);color:white;display:flex;align-items:center;justify-content:center;font-weight:600;font-family:'Roboto Slab',serif;}
+    .cs-process__content h3{margin-bottom:var(--space-xs);font-size:1.125rem;}
+    .cs-process__content p{margin-bottom:0;color:var(--text-secondary);}
+    .cs-quote{max-width:800px;margin-inline:auto;padding:var(--space-2xl);background:var(--bg-alt);border-radius:var(--radius-lg);border-left:4px solid var(--accent);}
+    .cs-quote blockquote{font-size:1.1875rem;line-height:1.6;font-style:italic;color:var(--text-primary);margin:0 0 var(--space-md);}
+    .cs-quote__author{display:flex;align-items:center;gap:var(--space-md);font-size:0.9375rem;}
+    .cs-quote__photo{width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0;border:1px solid var(--border);}
+    .cs-quote__author strong{color:var(--text-primary);font-weight:500;}
+    .cs-quote__author span{color:var(--text-secondary);}
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"AppMagic: Close-to-HubSpot migration that rebuilt the revenue engine",
+    "description":"How Checkpoint GTM migrated AppMagic from Close CRM to HubSpot and rebuilt the revenue operation — 3x inbound conversion, €1.8M net-new pipeline in 90 days, 41% lift in sales-accepted demos.",
+    "author":{"@type":"Organization","name":"Checkpoint GTM"},
+    "publisher":{"@type":"Organization","name":"Checkpoint GTM","logo":{"@type":"ImageObject","url":"https://checkpointgtm.com/images/logo-dark.png"}},
+    "datePublished":"2026-04-24",
+    "dateModified":"2026-04-24",
+    "mainEntityOfPage":"https://checkpointgtm.com/case-studies/appmagic-crm-migration.html"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://checkpointgtm.com"},
+      {"@type":"ListItem","position":2,"name":"Case Studies","item":"https://checkpointgtm.com/case-studies.html"},
+      {"@type":"ListItem","position":3,"name":"AppMagic &mdash; Close to HubSpot","item":"https://checkpointgtm.com/case-studies/appmagic-crm-migration.html"}
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo" aria-label="Checkpoint GTM Home">
+        <img src="/images/logo-dark.png" alt="Checkpoint GTM" class="nav__logo-img">
+        <img src="/images/logo-white.png" alt="Checkpoint GTM" class="nav__logo-img nav__logo-img--dark">
+      </a>
+      <div class="nav__links">
+        <a href="/services/index.html" class="nav__link">Services</a>
+        <a href="/case-studies.html" class="nav__link">Case Studies</a>
+        <a href="/about.html" class="nav__link">About</a>
+        <a href="/contact.html" class="nav__link">Contact</a>
+      </div>
+      <div class="nav__actions">
+        <div class="theme-switch theme-toggle" role="radiogroup" aria-label="Theme">
+          <button type="button" class="theme-switch__btn" data-theme-value="light" role="radio" aria-checked="false" aria-label="Day mode" title="Day">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.78" y2="4.22"/></svg>
+          </button>
+          <button type="button" class="theme-switch__btn" data-theme-value="dark" role="radio" aria-checked="false" aria-label="Night mode" title="Night">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button type="button" class="theme-switch__btn" data-theme-value="ai" role="radio" aria-checked="false" aria-label="AI-optimized mode" title="AI view">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L14 9 L21 10 L15.5 14.5 L17 21 L12 17.5 L7 21 L8.5 14.5 L3 10 L10 9 Z"/></svg>
+          </button>
+        </div>
+        <a href="/contact.html" class="btn btn--primary btn--small">Let's Chat</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <aside class="ai-summary" aria-label="AI-readable summary">
+      <h2>Case Study Summary</h2>
+      <p><strong>Client:</strong> AppMagic &mdash; mobile app market intelligence platform used by publishers, studios, and analysts globally.</p>
+      <p><strong>Engagement:</strong> Close CRM to HubSpot migration + full revenue operation rebuild.</p>
+      <p><strong>Scope:</strong> Inbound demo qualification, sales pipeline redesign, lead scoring, closed-lost taxonomy and reporting, dashboards, inbound + outbound nurturing sequences, UTM tracking, and HubSpot lifecycle stage architecture.</p>
+      <p><strong>Teams embedded with:</strong> Sales, marketing, and operations.</p>
+      <p><strong>Timeline:</strong> Weeks, not months &mdash; kickoff to pipeline go-live.</p>
+      <p><strong>Outcomes:</strong> 3x inbound demo-to-opportunity conversion; &euro;1.8M net-new pipeline in first 90 days; 41% lift in sales-accepted demo rate; forecast accuracy to 88%; ~6 hours/week reclaimed per rep.</p>
+      <p><strong>Relevant for:</strong> B2B SaaS companies migrating off Close CRM, Pipedrive, or similar; teams that need the operational layer rebuilt on top of a migration rather than a lift-and-shift.</p>
+    </aside>
+
+    <!-- ========== HERO ========== -->
+    <section class="cs-hero" data-animate>
+      <div class="container" style="max-width:800px;">
+        <a href="/case-studies.html" class="cs-hero__back">&larr; All Case Studies</a>
+        <div class="cs-hero__tags">
+          <span class="cs-hero__tag">CRM Migration</span>
+          <span class="cs-hero__tag">Revenue Operations</span>
+          <span class="cs-hero__tag">Close to HubSpot</span>
+        </div>
+        <h1>Close to HubSpot wasn&rsquo;t the project. Rebuilding the revenue engine was.</h1>
+        <p class="cs-hero__meta">AppMagic &middot; B2B SaaS &middot; Mobile app market intelligence &middot; Global</p>
+      </div>
+    </section>
+
+    <!-- ========== METRICS ========== -->
+    <section class="section" style="padding-top:0;" data-animate>
+      <div class="container" style="max-width:800px;">
+        <div class="cs-metrics">
+          <div class="cs-metric">
+            <div class="cs-metric__value">3x</div>
+            <div class="cs-metric__label">Inbound demo-to-opportunity conversion</div>
+          </div>
+          <div class="cs-metric">
+            <div class="cs-metric__value">&euro;1.8M</div>
+            <div class="cs-metric__label">Net-new pipeline in first 90 days</div>
+          </div>
+          <div class="cs-metric">
+            <div class="cs-metric__value">41%</div>
+            <div class="cs-metric__label">Higher sales-accepted demo rate</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CHALLENGE ========== -->
+    <section class="section" style="padding-top:0;" data-animate>
+      <div class="container">
+        <div class="cs-section">
+          <div class="cs-section__label">The Challenge</div>
+          <h2>A great product running on the wrong operating layer</h2>
+          <p>AppMagic is the category leader in mobile app market intelligence &mdash; the platform publishers, studios, and analysts use to understand the apps economy. But its GTM was running on Close CRM, with inbound demos landing in a single pipeline, no clear line between leads and deals, no structured qualification, and no lifecycle stages to separate a curious free user from a sales-qualified opportunity.</p>
+          <ul>
+            <li>Hundreds of thousands of free users with no conversion path into sales</li>
+            <li>Demo requests arriving from corporate and non-corporate emails with no auto-qualification</li>
+            <li>No distinction between leads, MQLs, and sales-qualified deals &mdash; everything sat in one pipeline</li>
+            <li>Closed-lost reasons captured as free text, so no analysis was possible</li>
+            <li>Nurturing was ad hoc &mdash; no sequences for non-responders, disqualified deals, or free users</li>
+            <li>Inbound and outbound motions blurred together with no account-level coordination</li>
+            <li>No UTM tracking or attribution back to the CRM</li>
+            <li>Forecasting was built on manual updates from reps, with no shared definition of stage progression</li>
+          </ul>
+          <p>A lift-and-shift migration would have moved the chaos. AppMagic needed the migration and the operating layer redesigned at the same time.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== APPROACH ========== -->
+    <section class="section section--alt" data-animate>
+      <div class="container">
+        <div class="cs-section" style="margin-bottom:0;">
+          <div class="cs-section__label">Our Approach</div>
+          <h2>Migrate the platform. Rebuild the system.</h2>
+          <p>We ran the Close-to-HubSpot migration and the revenue operation rebuild as one integrated engagement &mdash; embedded with AppMagic&rsquo;s sales, marketing, and operations teams in parallel so the new HubSpot portal launched with real lifecycle logic, not a copy of what existed before.</p>
+
+          <div class="cs-process">
+            <div class="cs-process__step">
+              <div class="cs-process__number">1</div>
+              <div class="cs-process__content">
+                <h3>Discovery</h3>
+                <p>Mapped AppMagic&rsquo;s full customer journey: free users, inbound demo requests, corporate vs non-corporate email flows, outbound target accounts, referrals, event leads, and the gaps between them. Interviewed sales, marketing, and ops to understand which rules lived in people&rsquo;s heads.</p>
+              </div>
+            </div>
+            <div class="cs-process__step">
+              <div class="cs-process__number">2</div>
+              <div class="cs-process__content">
+                <h3>Design</h3>
+                <p>Redesigned the lifecycle model from scratch &mdash; lead, MQL, SQL, opportunity, customer &mdash; with clear entry and exit criteria for each stage. Split the sales pipeline from the lead-qualification pipeline. Defined a closed-lost taxonomy (budget, timing, product fit, competitor) with structured fields that actually report. Specified forecasting categories separate from pipeline stages.</p>
+              </div>
+            </div>
+            <div class="cs-process__step">
+              <div class="cs-process__number">3</div>
+              <div class="cs-process__content">
+                <h3>Build</h3>
+                <p>Executed the Close-to-HubSpot migration. Built the new pipelines, lifecycle stages, lead scoring, auto-deal creation from demo forms, UTM capture, and attribution back to the CRM. Set up nurturing sequences for non-responders, disqualified deals, and free-user conversion. Integrated the website pricing and demo forms so qualified inbound creates deals automatically and unqualified contacts enter nurture.</p>
+              </div>
+            </div>
+            <div class="cs-process__step">
+              <div class="cs-process__number">4</div>
+              <div class="cs-process__content">
+                <h3>Launch</h3>
+                <p>Ran parallel training for sales and ops, delivered dashboards for each function (pipeline, forecast, marketing contribution, closed-lost analysis), and handed over documentation so AppMagic&rsquo;s team could run the system without us on the critical path.</p>
+              </div>
+            </div>
+            <div class="cs-process__step">
+              <div class="cs-process__number">5</div>
+              <div class="cs-process__content">
+                <h3>Optimize</h3>
+                <p>Stayed embedded through the first qualification cycles to tune scoring thresholds, refine the sequence logic, and add the outbound + inbound coordination layer so the SDR and AE teams weren&rsquo;t double-touching the same accounts.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== RESULTS ========== -->
+    <section class="section" data-animate>
+      <div class="container">
+        <div class="cs-section">
+          <div class="cs-section__label">The Results</div>
+          <h2>3x conversion, &euro;1.8M pipeline, one quarter</h2>
+          <p>AppMagic didn&rsquo;t just change CRM &mdash; they moved from a reactive sales motion to a structured revenue system. The migration and the rebuild landed together, and the new operating layer paid back inside one quarter.</p>
+          <ul>
+            <li><strong>3x inbound demo-to-opportunity conversion</strong> &mdash; the new qualification flow, auto-deal creation, and lifecycle model turned low-signal demo requests into filtered, sales-ready opportunities</li>
+            <li><strong>&euro;1.8M net-new pipeline in the first 90 days</strong> post go-live, sourced across inbound, outbound, and free-user conversion motions working off the same HubSpot spine</li>
+            <li><strong>41% lift in sales-accepted demos</strong> after introducing structured qualification on demo-request forms and corporate-vs-non-corporate routing</li>
+            <li><strong>Forecast accuracy up to 88%</strong> &mdash; shared stage definitions plus separate forecasting categories replaced manual rep estimates</li>
+            <li><strong>34% of closed-lost pipeline recovered</strong> via the structured closed-lost taxonomy feeding segmented nurture sequences (budget, timing, product fit, competitor)</li>
+            <li><strong>~6 hours/week reclaimed per rep</strong> on CRM admin once auto-deal creation, lifecycle auto-promotion, and account-level tagging removed manual data entry</li>
+            <li><strong>Close CRM fully retired</strong> in favour of HubSpot as the single source of truth for sales and marketing</li>
+            <li><strong>Delivery discipline</strong>: clear plans, clear next steps, defined timelines &mdash; the only delays came from AppMagic&rsquo;s internal processes, not from our side</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TESTIMONIAL ========== -->
+    <section class="section" style="padding-top:0;" data-animate>
+      <div class="container">
+        <div class="cs-quote">
+          <blockquote>Checkpoint GTM led our full migration from Close CRM to HubSpot and didn&rsquo;t stop there &mdash; they rebuilt our entire revenue operation on top of it. From inbound conversion and lead scoring to closed-lost analysis and dashboards, they turned a complex transition into a real step-change for our team.<br><br>What truly stood out was their execution: there was always a clear plan, clear next steps, and defined timelines. They were consistently on top of deadlines &mdash; in fact, the only delays came from our internal processes, not from their side. If anything, they were the ones pushing us forward and keeping momentum high.<br><br>Carolina and the team operate as a true extension of our RevOps and Sales functions. I&rsquo;d highly recommend them to any B2B SaaS company serious about scaling their go-to-market.</blockquote>
+          <div class="cs-quote__author">
+            <img src="/images/testimonials/abril.jpg" alt="Abril Bautista" class="cs-quote__photo">
+            <div>
+              <strong>Abril Bautista</strong><br>
+              <span>Vice President of Global Sales &middot; AppMagic</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section class="section section--dark" style="padding-block:var(--space-5xl);" data-animate>
+      <div class="container text-center">
+        <div style="max-width:640px;margin-inline:auto;">
+          <h2 style="margin-bottom:var(--space-lg);">Thinking about leaving Close, Pipedrive, or Attio?</h2>
+          <p style="margin-inline:auto;margin-bottom:var(--space-xl);">A migration is the chance to rebuild the operating layer, not just move the data. Let&rsquo;s talk about what that looks like for your team.</p>
+          <a href="/contact.html" class="btn btn--primary btn--large">Let's Chat</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="background:var(--bg-dark);color:var(--text-inverse);padding-block:var(--space-3xl);">
+    <div class="container">
+      <div class="grid grid--4" style="gap:var(--space-2xl);align-items:start;">
+        <div style="grid-column:span 2;">
+          <div style="margin-bottom:var(--space-md);">
+            <img src="/images/logo-white.png" alt="Checkpoint GTM" style="height:24px;width:auto;">
+          </div>
+          <p style="font-size:0.875rem;color:rgba(250,250,248,0.5);max-width:320px;">Embedded RevOps and GTM consulting for B2B SaaS companies. Berlin-based, globally delivered.</p>
+        </div>
+        <div>
+          <h4 style="font-size:0.8125rem;font-weight:500;color:rgba(250,250,248,0.5);margin-bottom:var(--space-md);text-transform:uppercase;letter-spacing:0.05em;">Navigation</h4>
+          <div style="display:flex;flex-direction:column;gap:var(--space-sm);">
+            <a href="/services/index.html" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Services</a>
+            <a href="/case-studies.html" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Case Studies</a>
+            <a href="/about.html" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">About</a>
+            <a href="/contact.html" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h4 style="font-size:0.8125rem;font-weight:500;color:rgba(250,250,248,0.5);margin-bottom:var(--space-md);text-transform:uppercase;letter-spacing:0.05em;">Legal</h4>
+          <div style="display:flex;flex-direction:column;gap:var(--space-sm);">
+            <a href="/imprint.html" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Impressum</a>
+            <a href="/legal-privacy-policy.html" style="font-size:0.875rem;color:rgba(250,250,248,0.7);">Datenschutz</a>
+          </div>
+          <div style="margin-top:var(--space-lg);"><p style="font-size:0.8125rem;color:rgba(250,250,248,0.4);">Berlin, Germany</p></div>
+        </div>
+      </div>
+      <div style="margin-top:var(--space-2xl);padding-top:var(--space-lg);border-top:1px solid rgba(250,250,248,0.1);">
+        <p style="font-size:0.8125rem;color:rgba(250,250,248,0.4);">&copy; 2025 Checkpoint GTM. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/nav.js"></script>
+  <script src="../js/scroll-animations.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@crikket-io/capture/dist/capture.global.js" defer></script>
+  <script>
+    window.addEventListener("load", function() {
+      if (window.CrikketCapture) {
+        window.CrikketCapture.init({ key: "crk_7OXqJjPMyjZa5zkLMYCGPXLp", host: "https://crikket.gotomarketpro.de" })
+      }
+    })
+  </script>
+  <div id="cookie-banner"></div>
+  <script src="../js/cookie-consent.js"></script>
+</body>
+</html>

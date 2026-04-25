@@ -37,6 +37,7 @@ Checkpoint GTM partners with B2B SaaS companies (seed to Series C) across Europe
 ## Proof
 
 ### Case Studies
+- [AppMagic — Close to HubSpot migration + RevOps rebuild](https://checkpointgtm.com/case-studies/appmagic-crm-migration.html): 3x inbound demo-to-opportunity conversion, €1.8M net-new pipeline in 90 days, forecast accuracy to 88%
 - [Series A revenue system build](https://checkpointgtm.com/case-studies/series-a-revops.html): 3x pipeline visibility, 68% faster deal cycle
 - [Series B RevOps transformation](https://checkpointgtm.com/case-studies/series-b-transformation.html): 4.2x revenue per rep, 92% forecast accuracy
 - [Salesforce to HubSpot migration](https://checkpointgtm.com/case-studies/crm-migration.html): 50K records, zero downtime, 40% cost reduction

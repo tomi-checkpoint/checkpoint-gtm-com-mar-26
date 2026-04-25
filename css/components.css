@@ -3,6 +3,22 @@
    Cards, Buttons, Badges, Section-specific styles
    ========================================================================== */
 
+/* --- Nav dropdown: hover-gap bridge ---
+   Adds an invisible hoverable strip between the nav link and its dropdown menu
+   so the dropdown doesn't close when the cursor crosses the 8px gap. Applies
+   globally to every page's inline .nav__dropdown markup. */
+.nav__dropdown::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 14px;
+  pointer-events: auto;
+}
+.nav__dropdown:hover::after,
+.nav__dropdown:focus-within::after { pointer-events: auto; }
+
 /* --- Buttons --- */
 .btn {
   display: inline-flex;
@@ -324,7 +340,17 @@
 .testimonial__author {
   margin-top: auto;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.testimonial__photo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
 }
 
 .testimonial__meta {
