@@ -116,6 +116,61 @@
     .link-list{display:flex;flex-wrap:wrap;gap:var(--space-sm) var(--space-md);margin-top:var(--space-md);}
     .link-list a{color:var(--accent);font-weight:500;font-size:0.9375rem;text-decoration:none;border-bottom:1px solid transparent;transition:border-color var(--transition-fast);}
     .link-list a:hover{border-bottom-color:var(--accent);}
+
+    /* --- Berlin hero: Brandenburg Gate dotted graphic --- */
+    .berlin-hero {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      padding-top: calc(var(--nav-height) + var(--space-3xl));
+      padding-bottom: var(--space-3xl);
+      text-align: center;
+    }
+    .berlin-hero__canvas-wrap {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: calc(var(--nav-height) + var(--space-md));
+    }
+    .berlin-hero__svg {
+      width: min(900px, 92vw);
+      height: auto;
+      max-height: 60vh;
+      opacity: 0.95;
+    }
+    [data-theme="dark"] .berlin-hero__svg { opacity: 0.85; }
+    [data-theme="ai"] .berlin-hero__canvas-wrap { display: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .berlin-hero__svg circle { transition: none !important; }
+    }
+    .berlin-hero__canvas-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(180deg, transparent 0%, transparent 60%, var(--bg-primary) 100%);
+    }
+    .berlin-hero > .container { position: relative; z-index: 1; }
+
+    /* --- Logo marquee: text-only mark fallback (no asset yet) --- */
+    .logo-scroll__textmark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      padding: 0 var(--space-sm);
+      color: inherit;
+      opacity: 0.85;
+    }
   </style>
 </head>
 <body>
@@ -191,7 +246,10 @@
     <p><strong>CTA:</strong> Book a discovery call at /contact.html.</p>
     </aside>
     <!-- ========== HERO ========== -->
-    <section class="section" style="padding-top:calc(var(--nav-height) + var(--space-4xl));text-align:center;">
+    <section class="section berlin-hero">
+      <div class="berlin-hero__canvas-wrap" aria-hidden="true">
+        <svg class="berlin-hero__svg" id="berlin-gate-svg" viewBox="0 0 900 520" preserveAspectRatio="xMidYMid meet"></svg>
+      </div>
       <div class="container">
         <nav class="breadcrumbs" aria-label="Breadcrumb" style="justify-content:center;">
           <a href="/">Home</a>
@@ -210,6 +268,61 @@
             <a href="/services/index.html" class="btn btn--secondary btn--large">See our services</a>
           </div>
         </div>
+      </div>
+    </section>
+
+
+    <!-- ========== BERLIN CLIENT LOGO SCROLL ========== -->
+    <section class="logo-scroll" aria-label="Berlin companies we've worked with">
+      <div class="container">
+        <p class="logo-scroll__heading" style="text-align:center;">Companies we've built revenue systems for in Berlin</p>
+      </div>
+      <div class="logo-scroll__wrapper">
+
+        <div class="logo-scroll__row">
+          <div class="logo-scroll__track">
+            <span class="logo-scroll__item"><img src="/images/clients/sellerx.png" alt="SellerX — Checkpoint GTM client" class="logo-scroll__logo"></span>
+            <span class="logo-scroll__item"><img src="/images/clients/choco.png" alt="Choco — Checkpoint GTM client" class="logo-scroll__logo"></span>
+            <span class="logo-scroll__item"><img src="/images/clients/circula.png" alt="Circula — Checkpoint GTM client" class="logo-scroll__logo"></span>
+            <span class="logo-scroll__item"><span class="logo-scroll__textmark">Purpose Green</span></span>
+            <span class="logo-scroll__item"><img src="/images/clients/sanity-group.png" alt="Sanity Group — Checkpoint GTM client" class="logo-scroll__logo"></span>
+            <span class="logo-scroll__item"><span class="logo-scroll__textmark">Lano</span></span>
+            <span class="logo-scroll__item"><img src="/images/clients/uxcam.png" alt="UXCam — Checkpoint GTM client" class="logo-scroll__logo"></span>
+            <span class="logo-scroll__item"><img src="/images/clients/adjust.png" alt="Adjust — Checkpoint GTM client" class="logo-scroll__logo"></span>
+            <!-- duplicate for seamless loop -->
+            <span class="logo-scroll__item" aria-hidden="true"><img src="/images/clients/sellerx.png" alt="" class="logo-scroll__logo"></span>
+            <span class="logo-scroll__item" aria-hidden="true"><img src="/images/clients/choco.png" alt="" class="logo-scroll__logo"></span>
+            <span class="logo-scroll__item" aria-hidden="true"><img src="/images/clients/circula.png" alt="" class="logo-scroll__logo"></span>
+            <span class="logo-scroll__item" aria-hidden="true"><span class="logo-scroll__textmark">Purpose Green</span></span>
+            <span class="logo-scroll__item" aria-hidden="true"><img src="/images/clients/sanity-group.png" alt="" class="logo-scroll__logo"></span>
+            <span class="logo-scroll__item" aria-hidden="true"><span class="logo-scroll__textmark">Lano</span></span>
+            <span class="logo-scroll__item" aria-hidden="true"><img src="/images/clients/uxcam.png" alt="" class="logo-scroll__logo"></span>
+            <span class="logo-scroll__item" aria-hidden="true"><img src="/images/clients/adjust.png" alt="" class="logo-scroll__logo"></span>
+          </div>
+        </div>
+
+        <div class="logo-scroll__row">
+          <div class="logo-scroll__track logo-scroll__track--reverse">
+            <span class="logo-scroll__item"><span class="logo-scroll__textmark">Rasa</span></span>
+            <span class="logo-scroll__item"><span class="logo-scroll__textmark">WunderFlats</span></span>
+            <span class="logo-scroll__item"><span class="logo-scroll__textmark">HeyJobs</span></span>
+            <span class="logo-scroll__item"><img src="/images/clients/mondu.png" alt="Mondu — Checkpoint GTM client" class="logo-scroll__logo"></span>
+            <span class="logo-scroll__item"><span class="logo-scroll__textmark">Root Global</span></span>
+            <span class="logo-scroll__item"><img src="/images/clients/sennder.png" alt="Sennder — Checkpoint GTM client" class="logo-scroll__logo"></span>
+            <span class="logo-scroll__item"><span class="logo-scroll__textmark">Voize</span></span>
+            <span class="logo-scroll__item"><span class="logo-scroll__textmark">LIQID Finance</span></span>
+            <!-- duplicate for seamless loop -->
+            <span class="logo-scroll__item" aria-hidden="true"><span class="logo-scroll__textmark">Rasa</span></span>
+            <span class="logo-scroll__item" aria-hidden="true"><span class="logo-scroll__textmark">WunderFlats</span></span>
+            <span class="logo-scroll__item" aria-hidden="true"><span class="logo-scroll__textmark">HeyJobs</span></span>
+            <span class="logo-scroll__item" aria-hidden="true"><img src="/images/clients/mondu.png" alt="" class="logo-scroll__logo"></span>
+            <span class="logo-scroll__item" aria-hidden="true"><span class="logo-scroll__textmark">Root Global</span></span>
+            <span class="logo-scroll__item" aria-hidden="true"><img src="/images/clients/sennder.png" alt="" class="logo-scroll__logo"></span>
+            <span class="logo-scroll__item" aria-hidden="true"><span class="logo-scroll__textmark">Voize</span></span>
+            <span class="logo-scroll__item" aria-hidden="true"><span class="logo-scroll__textmark">LIQID Finance</span></span>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -340,7 +453,7 @@
 
           <div class="faq-item">
             <h3>What languages does your team work in?</h3>
-            <p>We deliver in four languages: English, German, Italian, and French. That's not a marketing claim &mdash; it's how we actually staff engagements. German-speaking buyers get German discovery calls. French scaleups get French training sessions. Italian teams get Italian documentation when they need it. For pan-European RevOps rollouts, this lets us run a single program across DACH, the UK, France, Italy, and the Nordics without losing nuance in translation.</p>
+            <p>We deliver in five languages: American English, British English, German, Italian, and French. That's not a marketing claim &mdash; it's how we actually staff engagements. German-speaking buyers get German discovery calls. French scaleups get French training sessions. Italian teams get Italian documentation when they need it. For pan-European RevOps rollouts, this lets us run a single program across DACH, the UK, France, Italy, and the Nordics without losing nuance in translation.</p>
           </div>
 
           <div class="faq-item">
@@ -496,7 +609,7 @@
         "name": "What languages does your team work in?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We deliver in four languages: English, German, Italian, and French. German-speaking buyers get German discovery calls. French scaleups get French training sessions. Italian teams get Italian documentation when they need it. For pan-European RevOps rollouts, this lets us run a single program across DACH, the UK, France, Italy, and the Nordics without losing nuance in translation."
+          "text": "We deliver in five languages: American English, British English, German, Italian, and French. German-speaking buyers get German discovery calls. French scaleups get French training sessions. Italian teams get Italian documentation when they need it. For pan-European RevOps rollouts, this lets us run a single program across DACH, the UK, France, Italy, and the Nordics without losing nuance in translation."
         }
       },
       {
@@ -514,6 +627,187 @@
   <!-- Scripts -->
   <script src="../js/nav.js"></script>
   <script src="../js/scroll-animations.js"></script>
+
+  <!-- Brandenburg Gate dotted hero with scroll explosion -->
+  <script>
+  (function () {
+    var svg = document.getElementById('berlin-gate-svg');
+    if (!svg) return;
+    var heroSection = document.querySelector('.berlin-hero');
+    if (!heroSection) return;
+
+    var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    var SVG_NS = 'http://www.w3.org/2000/svg';
+    var W = 900, H = 520;
+    var ACCENT = (getComputedStyle(document.documentElement).getPropertyValue('--accent') || '#2D6A4F').trim();
+    var WARM = (getComputedStyle(document.documentElement).getPropertyValue('--accent-warm') || '#E8985E').trim();
+
+    // Seeded RNG for stable explosion vectors across reloads
+    var seed = 1337;
+    function rand() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+
+    // ---- Build a Brandenburg Gate silhouette mask using an offscreen canvas, then sample dots ----
+    var off = document.createElement('canvas');
+    off.width = W; off.height = H;
+    var ox = off.getContext('2d');
+    ox.fillStyle = '#000';
+
+    // Origin: gate centered horizontally, base sits near bottom
+    var baseY = 480; // bottom of plinth
+    var topOfPodium = 120; // top of attic / where quadriga sits
+    var totalWidth = 720;
+    var leftX = (W - totalWidth) / 2;
+
+    // Plinth (low platform under columns)
+    ox.fillRect(leftX - 18, baseY - 30, totalWidth + 36, 30);
+
+    // Six columns (5 gaps -> classic Brandenburg). Columns are slim vertical bars.
+    var columnCount = 6;
+    var columnTop = 170;
+    var columnBottomY = baseY - 30;
+    var columnHeight = columnBottomY - columnTop;
+    var colW = 36;
+    var spacing = (totalWidth - colW * columnCount) / (columnCount - 1);
+    for (var i = 0; i < columnCount; i++) {
+      var cxCol = leftX + i * (colW + spacing);
+      ox.fillRect(cxCol, columnTop, colW, columnHeight);
+      // Capital flare
+      ox.fillRect(cxCol - 4, columnTop, colW + 8, 10);
+      // Base flare
+      ox.fillRect(cxCol - 4, columnBottomY - 10, colW + 8, 10);
+    }
+
+    // Architrave / entablature spanning across the top of columns
+    ox.fillRect(leftX - 14, topOfPodium + 30, totalWidth + 28, 40);
+    // Attic block (the rectangle the quadriga stands on)
+    var atticW = 360, atticH = 50;
+    ox.fillRect((W - atticW) / 2, topOfPodium - 10, atticW, atticH);
+
+    // Quadriga: simplified silhouette — chariot + 4 horses + Victoria
+    // Horses: 4 stylized rounded rectangles
+    var horseY = topOfPodium - 70;
+    var horseW = 50, horseH = 50;
+    var horseGroupLeft = (W - (horseW * 4 + 14)) / 2 + 6;
+    for (var h = 0; h < 4; h++) {
+      var hx = horseGroupLeft + h * (horseW + 4);
+      // body
+      roundedRect(ox, hx, horseY, horseW, horseH, 10);
+      // head
+      ox.fillRect(hx + horseW - 12, horseY - 18, 14, 22);
+      // legs hint
+      ox.fillRect(hx + 8, horseY + horseH, 6, 18);
+      ox.fillRect(hx + horseW - 18, horseY + horseH, 6, 18);
+    }
+    // Chariot wheel/box behind horses
+    ox.fillRect(horseGroupLeft - 50, horseY + 6, 50, horseH - 8);
+    // Victoria figure standing in chariot
+    var vx = horseGroupLeft - 30, vy = horseY - 50;
+    ox.fillRect(vx, vy, 18, 36); // body
+    ox.beginPath(); ox.arc(vx + 9, vy - 8, 10, 0, Math.PI * 2); ox.fill(); // head
+    // Staff/standard raised
+    ox.fillRect(vx + 22, vy - 30, 4, 50);
+
+    function roundedRect(c, x, y, w, hgt, r) {
+      c.beginPath();
+      c.moveTo(x + r, y);
+      c.lineTo(x + w - r, y);
+      c.quadraticCurveTo(x + w, y, x + w, y + r);
+      c.lineTo(x + w, y + hgt - r);
+      c.quadraticCurveTo(x + w, y + hgt, x + w - r, y + hgt);
+      c.lineTo(x + r, y + hgt);
+      c.quadraticCurveTo(x, y + hgt, x, y + hgt - r);
+      c.lineTo(x, y + r);
+      c.quadraticCurveTo(x, y, x + r, y);
+      c.closePath();
+      c.fill();
+    }
+
+    // ---- Sample dots from the silhouette on a grid ----
+    var img = ox.getImageData(0, 0, W, H).data;
+    var step = 9; // grid spacing between dots
+    var dots = [];
+    var centerX = W / 2;
+    var centerY = (topOfPodium + baseY) / 2;
+    for (var y = 0; y < H; y += step) {
+      for (var x = 0; x < W; x += step) {
+        var idx = (y * W + x) * 4;
+        if (img[idx + 3] > 128) {
+          var px = x + (rand() - 0.5) * 1.5;
+          var py = y + (rand() - 0.5) * 1.5;
+          var dx = px - centerX, dy = py - centerY;
+          var dist = Math.sqrt(dx * dx + dy * dy) || 1;
+          // explosion vector: mostly outward from center, slight randomness
+          var angle = Math.atan2(dy, dx) + (rand() - 0.5) * 0.6;
+          var explodeMag = 480 + rand() * 520;
+          var ex = Math.cos(angle) * explodeMag;
+          var ey = Math.sin(angle) * explodeMag - 60; // bias upward slightly
+          var isWarm = rand() < 0.14;
+          var r = 2 + rand() * 1.4;
+          var c = document.createElementNS(SVG_NS, 'circle');
+          c.setAttribute('cx', px.toFixed(1));
+          c.setAttribute('cy', py.toFixed(1));
+          c.setAttribute('r', r.toFixed(2));
+          c.setAttribute('fill', isWarm ? WARM : ACCENT);
+          c.setAttribute('opacity', (0.75 + rand() * 0.25).toFixed(2));
+          svg.appendChild(c);
+          dots.push({ el: c, hx: px, hy: py, ex: ex, ey: ey, baseR: r });
+        }
+      }
+    }
+
+    // ---- Scroll-driven explosion ----
+    function scrollProgress() {
+      var rect = heroSection.getBoundingClientRect();
+      var h = heroSection.offsetHeight;
+      // Progress: 0 when hero fully in view at top, 1 when hero fully scrolled past
+      var scrolled = -rect.top;
+      var range = h; // explode over the height of the hero
+      if (range <= 0) return 0;
+      return Math.max(0, Math.min(1, scrolled / range));
+    }
+
+    function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var p = scrollProgress();
+      var eased = easeOutCubic(p);
+      // Start explosion almost immediately, complete by ~85%
+      var t = Math.max(0, Math.min(1, eased / 0.85));
+      var fadeStart = 0.55;
+      var alphaScale = t < fadeStart ? 1 : Math.max(0, 1 - (t - fadeStart) / (1 - fadeStart));
+      for (var i = 0; i < dots.length; i++) {
+        var d = dots[i];
+        var nx = d.hx + d.ex * t;
+        var ny = d.hy + d.ey * t;
+        d.el.setAttribute('cx', nx.toFixed(1));
+        d.el.setAttribute('cy', ny.toFixed(1));
+        var rNow = d.baseR * (1 + t * 0.8);
+        d.el.setAttribute('r', rNow.toFixed(2));
+        d.el.setAttribute('opacity', (alphaScale * 0.9).toFixed(2));
+      }
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+
+    if (prefersReducedMotion) {
+      // Keep the gate static (no explosion), just render once
+      update();
+    } else {
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      update();
+    }
+  })();
+  </script>
+
   <!-- Crikket bug-reporting widget -->
   <script src="https://crikket.gotomarketpro.de/sdk/capture.global.js" defer></script>
   <script>

@@ -110,41 +110,222 @@
     .page-hero h1 { margin-bottom: var(--space-md); font-size: clamp(2rem, 4vw, 2.75rem); }
     .page-hero p { margin-inline: auto; max-width: 560px; }
 
+    /* ===== Services grid redesign (Bug 004) ===== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-xl);
+    }
     .service-card {
+      position: relative;
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       padding: var(--space-2xl);
-      transition: all var(--transition-base);
+      transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
       display: flex;
       flex-direction: column;
       text-decoration: none;
       color: inherit;
+      overflow: hidden;
+      isolation: isolate;
+      min-height: 320px;
     }
+    /* Top accent bar — alternates green/warm via nth-child */
+    .service-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent);
+      transform: scaleX(0.18);
+      transform-origin: left center;
+      transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+      z-index: 1;
+    }
+    .service-card--warm::before { background: var(--accent-warm); }
+    .service-card:hover::before { transform: scaleX(1); }
     .service-card:hover {
-      box-shadow: var(--shadow-md);
-      border-color: var(--accent-subtle);
-      transform: translateY(-2px);
+      box-shadow: 0 18px 40px -18px rgba(26,26,26,0.18), 0 4px 14px -8px rgba(26,26,26,0.08);
+      border-color: rgba(45,106,79,0.35);
+      transform: translateY(-4px);
     }
+    .service-card--warm:hover { border-color: rgba(232,152,94,0.45); }
+
+    .service-card__num {
+      font-family: var(--font-display);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      color: rgba(45,106,79,0.55);
+      margin-bottom: var(--space-md);
+    }
+    .service-card--warm .service-card__num { color: rgba(232,152,94,0.7); }
+
     .service-card__icon {
-      width: 52px; height: 52px;
+      width: 56px; height: 56px;
       display: flex; align-items: center; justify-content: center;
-      border-radius: var(--radius-md);
-      background: var(--accent-subtle);
+      border-radius: 14px;
+      background: rgba(45,106,79,0.08);
       color: var(--accent);
       margin-bottom: var(--space-lg);
+      transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s;
     }
+    .service-card--warm .service-card__icon {
+      background: rgba(232,152,94,0.12);
+      color: var(--accent-warm);
+    }
+    .service-card:hover .service-card__icon { transform: translateY(-2px) scale(1.04); }
     [data-theme="dark"] .service-card__icon { background: rgba(82,183,136,0.15); }
-    .service-card__icon svg { width: 24px; height: 24px; }
-    .service-card h3 { margin-bottom: var(--space-sm); }
-    .service-card p { font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.6; flex: 1; }
-    .service-card__link {
-      display: inline-flex; align-items: center; gap: 0.375rem;
-      margin-top: var(--space-lg); font-size: 0.875rem; font-weight: 500;
-      color: var(--accent); transition: gap var(--transition-fast);
-    }
-    .service-card:hover .service-card__link { gap: 0.625rem; }
+    [data-theme="dark"] .service-card--warm .service-card__icon { background: rgba(232,152,94,0.18); }
+    .service-card__icon svg { width: 28px; height: 28px; }
 
+    .service-card__tag {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted, var(--text-secondary));
+      margin-bottom: var(--space-xs);
+    }
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 1.8vw, 1.65rem);
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      margin-bottom: var(--space-sm);
+      color: var(--text-primary);
+    }
+    .service-card p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      flex: 1;
+      margin-bottom: var(--space-lg);
+    }
+    .service-card__link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      margin-top: auto;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.01em;
+    }
+    .service-card--warm .service-card__link { color: var(--accent-warm); }
+    .service-card__link .arrow {
+      display: inline-block;
+      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .service-card:hover .service-card__link .arrow { transform: translateX(8px); }
+
+    /* ===== Top strips: HubSpot Platinum + Salesforce (Bugs 005/006) ===== */
+    .partner-strip {
+      grid-column: 1 / -1;
+      position: relative;
+      border-radius: var(--radius-lg);
+      padding: var(--space-2xl);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: var(--space-2xl);
+      align-items: center;
+      overflow: hidden;
+      text-decoration: none;
+      transition: transform var(--transition-base), box-shadow var(--transition-base);
+      min-height: 220px;
+    }
+    .partner-strip:hover { transform: translateY(-3px); box-shadow: 0 22px 45px -22px rgba(0,0,0,0.35); }
+
+    .partner-strip--hubspot {
+      background: linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%);
+      color: #FAFAF8;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .partner-strip--salesforce {
+      background: linear-gradient(135deg, #0E4F73 0%, #1879A8 100%);
+      color: #FAFAF8;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .partner-strip__body { max-width: 640px; }
+    .partner-strip__icon {
+      width: 56px; height: 56px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 14px;
+      margin-bottom: var(--space-lg);
+    }
+    .partner-strip--hubspot .partner-strip__icon { background: rgba(232,152,94,0.18); color: #E8985E; }
+    .partner-strip--salesforce .partner-strip__icon { background: rgba(255,255,255,0.14); color: #FAFAF8; }
+    .partner-strip__icon svg { width: 28px; height: 28px; }
+    .partner-strip__tag {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-sm);
+    }
+    .partner-strip--hubspot .partner-strip__tag { color: #E8985E; }
+    .partner-strip--salesforce .partner-strip__tag { color: #B9E3F5; }
+    .partner-strip h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2vw, 1.75rem);
+      font-weight: 600;
+      line-height: 1.2;
+      color: #FAFAF8;
+      margin-bottom: var(--space-sm);
+      letter-spacing: -0.015em;
+    }
+    .partner-strip p {
+      color: rgba(250,250,248,0.78);
+      font-size: 0.975rem;
+      line-height: 1.55;
+      margin-bottom: var(--space-md);
+    }
+    .partner-strip__link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.9rem; font-weight: 600;
+    }
+    .partner-strip--hubspot .partner-strip__link { color: #E8985E; }
+    .partner-strip--salesforce .partner-strip__link { color: #FAFAF8; }
+    .partner-strip__link .arrow { transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); display: inline-block; }
+    .partner-strip:hover .partner-strip__link .arrow { transform: translateX(8px); }
+
+    .partner-strip__visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 200px;
+    }
+    .partner-strip__logo {
+      height: 80px;
+      width: auto;
+      max-width: 240px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 24px rgba(0,0,0,0.35));
+    }
+    .partner-strip__cloud {
+      width: 130px;
+      height: 130px;
+      color: rgba(255,255,255,0.85);
+    }
+
+    @media (max-width: 768px) {
+      .services-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
+      .partner-strip {
+        grid-template-columns: 1fr;
+        text-align: left;
+        padding: var(--space-xl);
+        gap: var(--space-lg);
+        min-height: 0;
+      }
+      .partner-strip__visual { justify-content: flex-start; }
+      .partner-strip__logo { height: 60px; }
+      .partner-strip__cloud { width: 88px; height: 88px; }
+      .service-card { padding: var(--space-xl); min-height: 0; }
+      .service-card h3 { font-size: 1.25rem; }
+    }
     @media (max-width: 640px) {
       .grid--2 { grid-template-columns: 1fr !important; }
     }
@@ -237,97 +418,137 @@
     <!-- Services Grid -->
     <section class="section">
       <div class="container">
-        <div class="grid grid--2" style="gap: var(--space-xl);">
+        <div class="services-grid">
 
-          <a href="/services/hubspot-platinum-partner.html" class="service-card" data-animate style="grid-column: 1 / -1; background: linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%); color: #FAFAF8; border-color: rgba(255,255,255,0.08);">
-            <div class="service-card__icon" style="background: rgba(232,152,94,0.15); color: #E8985E;">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 7v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V7l-8-5z"/><path d="m9 12 2 2 4-4"/></svg>
+          <!-- HubSpot Platinum Partner strip (Bug 006: add Platinum Cream logo) -->
+          <a href="/services/hubspot-platinum-partner.html" class="partner-strip partner-strip--hubspot" data-animate>
+            <div class="partner-strip__body">
+              <div class="partner-strip__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 7v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V7l-8-5z"/><path d="m9 12 2 2 4-4"/></svg>
+              </div>
+              <div class="partner-strip__tag">HubSpot Platinum Partner</div>
+              <h3>Enterprise &amp; complex HubSpot implementations</h3>
+              <p>Platinum-tier HubSpot Solutions Partner. We handle the complex migrations, enterprise rollouts, CPQ, and multi-hub deployments &mdash; with direct access to HubSpot's sales and solutions engineering teams.</p>
+              <span class="partner-strip__link">Explore Platinum capabilities <span class="arrow">&rarr;</span></span>
             </div>
-            <div style="font-family: var(--font-display); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #E8985E; margin-bottom: var(--space-sm);">HubSpot Platinum Partner</div>
-            <h3 style="color: #FAFAF8;">Enterprise &amp; complex HubSpot implementations</h3>
-            <p style="color: rgba(250,250,248,0.72);">Platinum-tier HubSpot Solutions Partner. Salesforce Advanced Admin certified. We handle the complex migrations, enterprise rollouts, CPQ, and multi-hub deployments &mdash; with direct access to HubSpot's sales and solutions engineering teams.</p>
-            <span class="service-card__link" style="color: #E8985E;">Explore Platinum capabilities <span class="arrow">&rarr;</span></span>
+            <div class="partner-strip__visual">
+              <img src="/images/certifications/hubspot-platinum-cream.png" alt="HubSpot Platinum Solutions Partner" class="partner-strip__logo" loading="lazy">
+            </div>
+          </a>
+
+          <!-- Salesforce Advanced Admin strip (Bug 005) -->
+          <a href="/services/crm-migration.html" class="partner-strip partner-strip--salesforce" data-animate>
+            <div class="partner-strip__body">
+              <div class="partner-strip__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 18.5a4.5 4.5 0 0 1-1.2-8.84A5 5 0 0 1 11 6a5 5 0 0 1 4.6 3.05A4 4 0 0 1 21 13a4 4 0 0 1-4 4H8a3 3 0 0 1-.5-.04"/></svg>
+              </div>
+              <div class="partner-strip__tag">Salesforce Advanced Admin</div>
+              <h3>Migrations and complex Salesforce work</h3>
+              <p>Salesforce Advanced Administrator certified. Platform agnostic &mdash; we play nice with your stack. Same five-phase delivery (Discovery &rarr; Design &rarr; Build &rarr; Launch &rarr; Optimize) for Salesforce orgs, migrations, and integrations.</p>
+              <span class="partner-strip__link">See migration capabilities <span class="arrow">&rarr;</span></span>
+            </div>
+            <div class="partner-strip__visual">
+              <svg class="partner-strip__cloud" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 18.5a4.5 4.5 0 0 1-1.2-8.84A5 5 0 0 1 11 6a5 5 0 0 1 4.6 3.05A4 4 0 0 1 21 13a4 4 0 0 1-4 4H8a3 3 0 0 1-.5-.04"/></svg>
+            </div>
           </a>
 
           <a href="/services/hubspot-implementation.html" class="service-card" data-animate>
+            <div class="service-card__num">01</div>
             <div class="service-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
             </div>
-            <h3>HubSpot Implementation & Optimization</h3>
+            <span class="service-card__tag">HubSpot</span>
+            <h3>HubSpot Implementation &amp; Optimization</h3>
             <p>Portal setup, pipeline design, automation, integrations, and reporting. We make HubSpot the engine behind your GTM motion — not just a database.</p>
             <span class="service-card__link">Learn more <span class="arrow">&rarr;</span></span>
           </a>
 
-          <a href="/services/revenue-operations.html" class="service-card" data-animate>
+          <a href="/services/revenue-operations.html" class="service-card service-card--warm" data-animate>
+            <div class="service-card__num">02</div>
             <div class="service-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
             </div>
+            <span class="service-card__tag">RevOps</span>
             <h3>Revenue Operations Consulting</h3>
             <p>Process design, data architecture, forecasting, and tech stack optimization. The connective tissue between marketing, sales, and CS.</p>
             <span class="service-card__link">Learn more <span class="arrow">&rarr;</span></span>
           </a>
 
           <a href="/services/gtm-strategy.html" class="service-card" data-animate>
+            <div class="service-card__num">03</div>
             <div class="service-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
             </div>
-            <h3>GTM Strategy & Execution</h3>
+            <span class="service-card__tag">Strategy</span>
+            <h3>GTM Strategy &amp; Execution</h3>
             <p>ICP definition, channel strategy, messaging frameworks, sales motion design, and launch planning. Strategy that becomes reality.</p>
             <span class="service-card__link">Learn more <span class="arrow">&rarr;</span></span>
           </a>
 
-          <a href="/services/crm-migration.html" class="service-card" data-animate>
+          <a href="/services/crm-migration.html" class="service-card service-card--warm" data-animate>
+            <div class="service-card__num">04</div>
             <div class="service-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
             </div>
+            <span class="service-card__tag">Migration</span>
             <h3>CRM Migration</h3>
             <p>Full-service migration from Salesforce, Pipedrive, Attio, and others to HubSpot. Data mapping, automation rebuild, and team training.</p>
             <span class="service-card__link">Learn more <span class="arrow">&rarr;</span></span>
           </a>
 
           <a href="/services/marketing-operations.html" class="service-card" data-animate>
+            <div class="service-card__num">05</div>
             <div class="service-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
             </div>
-            <h3>Marketing Operations & Attribution</h3>
+            <span class="service-card__tag">Marketing Ops</span>
+            <h3>Marketing Operations &amp; Attribution</h3>
             <p>Campaign infrastructure, attribution modeling, lifecycle management, and marketing analytics that connect activity to revenue.</p>
             <span class="service-card__link">Learn more <span class="arrow">&rarr;</span></span>
           </a>
 
-          <a href="/services/ai-automation.html" class="service-card" data-animate>
+          <a href="/services/ai-automation.html" class="service-card service-card--warm" data-animate>
+            <div class="service-card__num">06</div>
             <div class="service-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             </div>
-            <h3>AI & Automation Integration</h3>
+            <span class="service-card__tag">Automation</span>
+            <h3>AI &amp; Automation Integration</h3>
             <p>Lead enrichment, workflow automation, predictive analytics, and custom AI workflows integrated into your GTM stack.</p>
             <span class="service-card__link">Learn more <span class="arrow">&rarr;</span></span>
           </a>
 
           <a href="/services/programmatic-outbound.html" class="service-card" data-animate>
+            <div class="service-card__num">07</div>
             <div class="service-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             </div>
+            <span class="service-card__tag">Outbound</span>
             <h3>Programmatic Outbound</h3>
             <p>Cold email infrastructure, waterfall enrichment, parallel dialers, and multi-channel sequences &mdash; the full outbound machine, built without burning domains.</p>
             <span class="service-card__link">Learn more <span class="arrow">&rarr;</span></span>
           </a>
 
-          <a href="/services/ai-gtm-consulting.html" class="service-card" data-animate>
+          <a href="/services/ai-gtm-consulting.html" class="service-card service-card--warm" data-animate>
+            <div class="service-card__num">08</div>
             <div class="service-card__icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 2.5 1.3 4.7 3.3 6 .5.3.7.9.7 1.5V18a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-1.5c0-.6.2-1.2.7-1.5 2-1.3 3.3-3.5 3.3-6a7 7 0 0 0-7-7z"/><line x1="10" y1="22" x2="14" y2="22"/></svg>
             </div>
+            <span class="service-card__tag">AI Strategy</span>
             <h3>AI Consulting for GTM</h3>
             <p>Strategy, governance, and embedded implementation. Turn AI from pilot purgatory into production infrastructure. For teams past the "what tool should we try" stage.</p>
             <span class="service-card__link">Learn more <span class="arrow">&rarr;</span></span>
           </a>
 
-          <a href="/services/vc-portfolio-support.html" class="service-card" data-animate style="grid-column: 1 / -1;">
-            <div class="service-card__icon" style="background:rgba(232,152,94,0.12);">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent-warm)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <a href="/services/vc-portfolio-support.html" class="service-card service-card--warm" data-animate style="grid-column: 1 / -1;">
+            <div class="service-card__num">09</div>
+            <div class="service-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
             </div>
+            <span class="service-card__tag">Portfolio</span>
             <h3>VC Portfolio Support</h3>
             <p>Standardized GTM infrastructure across your portfolio — assessments, HubSpot setup, fractional RevOps, founder coaching, and portfolio-level reporting. One partner for your entire fund.</p>
-            <span class="service-card__link" style="color:var(--accent-warm);">Learn more <span class="arrow">&rarr;</span></span>
+            <span class="service-card__link">Learn more <span class="arrow">&rarr;</span></span>
           </a>
 
         </div>

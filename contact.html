@@ -211,6 +211,33 @@
       color: #16a34a;
     }
 
+    /* --- Meetings embed sizing --- */
+    .contact-meetings {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .contact-meetings .meetings-iframe-container {
+      width: 100%;
+      min-height: 720px;
+      flex: 1 1 auto;
+    }
+    .contact-meetings .meetings-iframe-container iframe {
+      width: 100% !important;
+      min-width: 100% !important;
+      min-height: 720px !important;
+      height: 720px !important;
+      border: 0;
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .contact-meetings .meetings-iframe-container,
+      .contact-meetings .meetings-iframe-container iframe {
+        min-height: 760px !important;
+        height: 760px !important;
+      }
+    }
+
     /* --- Contact Info --- */
     .contact-info {
       display: flex;

@@ -215,35 +215,200 @@
       .nav__actions .btn { display: none; }
     }
 
-    /* Service Hero — centered variant */
-    .service-hero--centered {
-      padding-top: calc(var(--nav-height) + var(--space-4xl));
+    /* Service Hero — split 2-col variant */
+    .service-hero--split {
+      padding-top: calc(var(--nav-height) + var(--space-3xl));
       padding-bottom: var(--space-4xl);
-      text-align: center;
     }
-    .service-hero--centered .overline {
+    .service-hero--split .service-hero__grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: var(--space-3xl);
+      align-items: center;
+    }
+    .service-hero--split .overline {
       display: inline-block;
       margin-bottom: var(--space-md);
     }
-    .service-hero--centered h1 {
+    .service-hero--split h1 {
       font-size: clamp(2rem, 4vw, 2.75rem);
-      max-width: 760px;
-      margin-inline: auto;
       margin-bottom: var(--space-lg);
     }
-    .service-hero--centered p {
+    .service-hero--split p {
       font-size: 1.1875rem;
       line-height: 1.6;
       color: var(--text-secondary);
-      max-width: 640px;
-      margin-inline: auto;
       margin-bottom: var(--space-xl);
+      max-width: 540px;
     }
     .service-hero__ctas {
       display: flex;
       gap: var(--space-md);
-      justify-content: center;
       flex-wrap: wrap;
+    }
+    .service-hero__media {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-lg);
+    }
+    .service-hero__media img {
+      width: 100%;
+      max-width: 340px;
+      height: auto;
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .service-hero--split .service-hero__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+      }
+      .service-hero__media {
+        order: 2;
+        padding: 0;
+      }
+      .service-hero__media img { max-width: 260px; }
+    }
+
+    /* 3x3 deliverables blocks */
+    .deliverables-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+      margin-top: var(--space-xl);
+    }
+    .deliverable-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+    }
+    .deliverable-block:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--accent);
+    }
+    .deliverable-block__icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: var(--accent-subtle);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-md);
+    }
+    .deliverable-block:nth-child(3n+2) .deliverable-block__icon {
+      background: rgba(232, 152, 94, 0.12);
+      color: #E8985E;
+    }
+    .deliverable-block__icon svg { width: 26px; height: 26px; }
+    .deliverable-block h3 {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: var(--space-sm);
+      color: var(--text-primary);
+    }
+    .deliverable-block p {
+      font-size: 0.9375rem;
+      line-height: 1.55;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+    @media (max-width: 900px) {
+      .deliverables-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .deliverables-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Process accordion */
+    .process-accordion {
+      max-width: 820px;
+      margin: var(--space-xl) auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .process-accordion details {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+    .process-accordion details[open] {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-sm);
+    }
+    .process-accordion summary {
+      list-style: none;
+      cursor: pointer;
+      padding: var(--space-lg);
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.0625rem;
+      color: var(--text-primary);
+    }
+    .process-accordion summary::-webkit-details-marker { display: none; }
+    .process-accordion__num {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.9375rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .process-accordion__label { flex: 1; }
+    .process-accordion__chev {
+      width: 20px;
+      height: 20px;
+      transition: transform var(--transition-fast);
+      color: var(--text-secondary);
+      flex-shrink: 0;
+    }
+    .process-accordion details[open] .process-accordion__chev { transform: rotate(180deg); }
+    .process-accordion__body {
+      padding: 0 var(--space-lg) var(--space-lg) calc(var(--space-lg) + 36px + var(--space-md));
+      color: var(--text-secondary);
+      line-height: 1.65;
+      font-size: 0.9875rem;
+    }
+    @media (max-width: 600px) {
+      .process-accordion__body {
+        padding-left: var(--space-lg);
+      }
+    }
+
+    /* Final CTA — green variant */
+    .cta-banner--green {
+      background: var(--accent);
+      color: #fff;
+      padding-block: var(--space-5xl);
+    }
+    .cta-banner--green h2 { color: #fff; }
+    .cta-banner--green p { color: rgba(255, 255, 255, 0.85); }
+    .cta-banner--green .btn--cream {
+      background: #FAFAF8;
+      color: #1A1A1A;
+      border: 1px solid #FAFAF8;
+    }
+    .cta-banner--green .btn--cream:hover {
+      background: #E8985E;
+      border-color: #E8985E;
+      color: #1A1A1A;
     }
 
     /* Card icon */
@@ -511,14 +676,21 @@
     <p><strong>CTA:</strong> Book a HubSpot discovery call at /contact.html.</p>
     </aside>
     <!-- ========== HERO ========== -->
-    <section class="service-hero--centered" data-animate>
+    <section class="service-hero--split" data-animate>
       <div class="container">
-        <span class="overline">HubSpot Implementation &amp; Optimization</span>
-        <h1>Your HubSpot should work as hard as your team does</h1>
-        <p>We build, configure, and optimize HubSpot portals that actually drive revenue &mdash; not just store contacts. From first setup to advanced automation, we make HubSpot the engine behind your GTM motion.</p>
-        <div class="service-hero__ctas">
-          <a href="/contact.html" class="btn btn--primary btn--large">Let's Chat</a>
-          <a href="#process" class="btn btn--ghost btn--large">See Our Process</a>
+        <div class="service-hero__grid">
+          <div class="service-hero__copy">
+            <span class="overline">HubSpot Implementation &amp; Optimization</span>
+            <h1>Your HubSpot should work as hard as your team does</h1>
+            <p>We build, configure, and optimize HubSpot portals that actually drive revenue &mdash; not just store contacts. From first setup to advanced automation, we make HubSpot the engine behind your GTM motion.</p>
+            <div class="service-hero__ctas">
+              <a href="/contact.html" class="btn btn--primary btn--large">Let's Chat</a>
+              <a href="#process" class="btn btn--ghost btn--large">See Our Process</a>
+            </div>
+          </div>
+          <div class="service-hero__media">
+            <img src="/images/certifications/hubspot-platinum-teal.png" alt="HubSpot Platinum Solutions Partner" loading="eager">
+          </div>
         </div>
       </div>
     </section>
@@ -532,53 +704,77 @@
           <h2>What we deliver</h2>
         </div>
 
-        <div class="grid--3" style="margin-top: var(--space-xl);">
-          <div class="card">
-            <div class="card__icon-wrap">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        <div class="deliverables-grid">
+          <div class="deliverable-block">
+            <div class="deliverable-block__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
             </div>
-            <h3 class="card__title">Portal Setup &amp; Architecture</h3>
-            <p class="card__description">CRM object configuration, pipeline design, lifecycle stages, lead scoring models, and property architecture built around your actual sales process.</p>
+            <h3>Portal Setup &amp; Architecture</h3>
+            <p>CRM objects, pipelines, lifecycle stages, and properties built around your real sales process.</p>
           </div>
 
-          <div class="card">
-            <div class="card__icon-wrap">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <div class="deliverable-block">
+            <div class="deliverable-block__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </div>
-            <h3 class="card__title">Marketing Hub Optimization</h3>
-            <p class="card__description">Email workflows, lead nurturing sequences, form strategy, landing pages, and campaign attribution that connects marketing activity to revenue.</p>
+            <h3>Marketing Hub Optimization</h3>
+            <p>Email workflows, nurture sequences, forms, and campaign attribution tied to revenue.</p>
           </div>
 
-          <div class="card">
-            <div class="card__icon-wrap">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <div class="deliverable-block">
+            <div class="deliverable-block__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
-            <h3 class="card__title">Sales Hub Enablement</h3>
-            <p class="card__description">Deal pipeline automation, sequence templates, meeting scheduling, quote workflows, and reporting dashboards your sales team will actually use.</p>
+            <h3>Sales Hub Enablement</h3>
+            <p>Deal automation, sequence templates, meeting scheduling, and dashboards reps actually use.</p>
           </div>
 
-          <div class="card">
-            <div class="card__icon-wrap">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div class="deliverable-block">
+            <div class="deliverable-block__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
             </div>
-            <h3 class="card__title">Service Hub Configuration</h3>
-            <p class="card__description">Ticket pipelines, knowledge base setup, customer feedback loops, and SLA tracking that scales your support without scaling headcount.</p>
+            <h3>Service Hub Configuration</h3>
+            <p>Ticket pipelines, knowledge base, feedback loops, and SLA tracking that scale support.</p>
           </div>
 
-          <div class="card">
-            <div class="card__icon-wrap">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <div class="deliverable-block">
+            <div class="deliverable-block__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
             </div>
-            <h3 class="card__title">Custom Integrations</h3>
-            <p class="card__description">API connections, middleware configuration, and data sync between HubSpot and your existing stack &mdash; Stripe, Intercom, Slack, and beyond.</p>
+            <h3>Custom Integrations</h3>
+            <p>API connections and middleware between HubSpot and Stripe, Intercom, Slack, and beyond.</p>
           </div>
 
-          <div class="card">
-            <div class="card__icon-wrap">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          <div class="deliverable-block">
+            <div class="deliverable-block__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
             </div>
-            <h3 class="card__title">Reporting &amp; Dashboards</h3>
-            <p class="card__description">Custom reports, attribution models, and executive dashboards that answer real business questions &mdash; not just show vanity metrics.</p>
+            <h3>Reporting &amp; Dashboards</h3>
+            <p>Custom reports, attribution models, and executive dashboards that answer real questions.</p>
+          </div>
+
+          <div class="deliverable-block">
+            <div class="deliverable-block__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.22-8.56"/><polyline points="21 4 12 13 9 10"/></svg>
+            </div>
+            <h3>Data Migration &amp; Cleanup</h3>
+            <p>Clean migrations from Salesforce, Pipedrive, or Attio with zero downtime and a verified record map.</p>
+          </div>
+
+          <div class="deliverable-block">
+            <div class="deliverable-block__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="m16.24 7.76 2.83-2.83"/></svg>
+            </div>
+            <h3>AI &amp; Automation</h3>
+            <p>Breeze, AI agents, and custom workflows that take the manual work out of GTM operations.</p>
+          </div>
+
+          <div class="deliverable-block">
+            <div class="deliverable-block__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <h3>Training &amp; Enablement</h3>
+            <p>Live workshops, recorded SOPs, and admin handoff so your team owns the portal long-term.</p>
           </div>
         </div>
       </div>
@@ -593,32 +789,47 @@
           <h2>How we work</h2>
         </div>
 
-        <div class="process-steps">
-          <div class="process-step">
-            <div class="process-step__number">1</div>
-            <div class="process-step__title">Discovery</div>
-            <p class="process-step__desc">Audit your current HubSpot portal, map your GTM process, identify gaps and quick wins.</p>
-          </div>
-          <div class="process-step">
-            <div class="process-step__number">2</div>
-            <div class="process-step__title">Design</div>
-            <p class="process-step__desc">Architect the technical solution: objects, properties, automations, integrations, and reporting.</p>
-          </div>
-          <div class="process-step">
-            <div class="process-step__number">3</div>
-            <div class="process-step__title">Build</div>
-            <p class="process-step__desc">Configure everything in HubSpot. Clean data, set up automations, connect integrations.</p>
-          </div>
-          <div class="process-step">
-            <div class="process-step__number">4</div>
-            <div class="process-step__title">Launch</div>
-            <p class="process-step__desc">Go live with training, documentation, and a structured rollout to your team.</p>
-          </div>
-          <div class="process-step">
-            <div class="process-step__number">5</div>
-            <div class="process-step__title">Optimize</div>
-            <p class="process-step__desc">Ongoing iteration based on real usage data. Monthly reviews, quarterly roadmaps.</p>
-          </div>
+        <div class="process-accordion">
+          <details>
+            <summary>
+              <span class="process-accordion__num">1</span>
+              <span class="process-accordion__label">Discovery</span>
+              <svg class="process-accordion__chev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="process-accordion__body">Audit your current HubSpot portal, map your GTM process end-to-end, and identify the gaps and quick wins that will move revenue fastest.</div>
+          </details>
+          <details>
+            <summary>
+              <span class="process-accordion__num">2</span>
+              <span class="process-accordion__label">Design</span>
+              <svg class="process-accordion__chev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="process-accordion__body">Architect the technical solution: objects, properties, pipelines, automations, integrations, and reporting &mdash; documented before a single setting changes.</div>
+          </details>
+          <details>
+            <summary>
+              <span class="process-accordion__num">3</span>
+              <span class="process-accordion__label">Build</span>
+              <svg class="process-accordion__chev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="process-accordion__body">Configure everything in HubSpot. Clean and migrate data, ship automations, connect integrations, and stage QA inside a sandbox before promotion.</div>
+          </details>
+          <details>
+            <summary>
+              <span class="process-accordion__num">4</span>
+              <span class="process-accordion__label">Launch</span>
+              <svg class="process-accordion__chev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="process-accordion__body">Go live with live training, role-specific documentation, and a structured rollout that gets your team adopting the new portal from day one.</div>
+          </details>
+          <details>
+            <summary>
+              <span class="process-accordion__num">5</span>
+              <span class="process-accordion__label">Optimize</span>
+              <svg class="process-accordion__chev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="process-accordion__body">Ongoing iteration based on real usage data. Monthly reviews, quarterly roadmaps, and an embedded admin to keep the system compounding.</div>
+          </details>
         </div>
       </div>
     </section>
@@ -696,12 +907,12 @@
 
 
     <!-- ========== CTA BANNER ========== -->
-    <section class="section section--dark" style="padding-block: var(--space-5xl);" data-animate>
+    <section class="section cta-banner--green" data-animate>
       <div class="container text-center">
         <div style="max-width: 640px; margin-inline: auto;">
           <h2 style="margin-bottom: var(--space-lg);">Ready to make HubSpot actually work?</h2>
           <p style="margin-inline: auto; margin-bottom: var(--space-xl);">Let's have a chat. We'll audit your portal and show you where the gaps are.</p>
-          <a href="/contact.html" class="btn btn--primary btn--large">Let's Chat</a>
+          <a href="/contact.html" class="btn btn--cream btn--large">Let's Chat</a>
         </div>
       </div>
     </section>

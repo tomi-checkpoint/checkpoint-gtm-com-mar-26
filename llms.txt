@@ -51,7 +51,7 @@ Checkpoint GTM partners with B2B SaaS companies (seed to Series C) across Europe
 - 80+ GTM implementations shipped
 - 100+ B2B SaaS companies scaled
 - 12+ countries served
-- 4 languages delivered (EN, DE, IT, FR)
+- 5 languages delivered (American English, British English, German, Italian, French)
 - HubSpot Platinum Partner
 - Salesforce Advanced Administrator certified
 
