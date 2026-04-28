@@ -460,30 +460,15 @@
       .meetings-modal__card { transition: none; }
     }
 
-    /* --- Nav: AI bot icon button (next to Let's Chat) --- */
-    .nav__ai-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      border-radius: var(--radius-full);
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      color: var(--text-secondary);
-      transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast);
-      flex-shrink: 0;
+    /* --- Nav: triple-switch (sun | moon | bot) ---
+       The bot segment is an <a> styled exactly like .theme-switch__btn
+       (sun/moon are real radio buttons that toggle theme; bot navigates to /ai/). */
+    .theme-switch__btn--ai {
+      text-decoration: none;
     }
-    .nav__ai-btn:hover {
+    .theme-switch__btn--ai:hover {
       color: var(--text-primary);
-      border-color: var(--accent);
-      background: var(--bg-card);
     }
-    .nav__ai-btn:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 2px;
-    }
-    .nav__ai-btn svg { display: block; }
 
     /* --- Logo marquee: text-only mark fallback (no asset yet) --- */
     .logo-scroll__textmark {
@@ -491,13 +476,48 @@
       align-items: center;
       justify-content: center;
       font-family: var(--font-display);
-      font-weight: 500;
-      font-size: 1rem;
-      letter-spacing: -0.01em;
+      font-weight: 600;
+      font-size: 1.125rem;
+      letter-spacing: 0.02em;
       white-space: nowrap;
       padding: 0 var(--space-sm);
-      color: inherit;
-      opacity: 0.85;
+      color: rgba(255, 255, 255, 0.85);
+      text-transform: none;
+      height: 32px;
+      line-height: 32px;
+    }
+
+    /* --- Per-logo overrides: marquee --- */
+    /* Some logos render visually heavier/lighter than others — normalize. */
+    .logo-scroll__logo[data-mark="liqid"] { height: 24px; }
+    .logo-scroll__logo[data-mark="voize"] { height: 30px; }
+    .logo-scroll__logo[data-mark="rasa"] { height: 34px; }
+    .logo-scroll__logo[data-mark="lano"] { height: 26px; }
+    .logo-scroll__logo[data-mark="alva"] { height: 28px; }
+    .logo-scroll__logo[data-mark="trawa"] { height: 28px; }
+    .logo-scroll__logo[data-mark="camunda"] { height: 22px; }
+    .logo-scroll__logo[data-mark="teleclinic"] { height: 26px; }
+    .logo-scroll__logo[data-mark="sharpist"] { height: 26px; }
+
+    /* White-on-transparent client logos already render correctly under the marquee
+       filter chain (it inverts to a green tint). No extra override needed. */
+
+    /* --- Per-logo overrides: technology partner grid --- */
+    .partner-grid__card img[data-mark="hubspot"] { height: 36px; }
+    .partner-grid__card img[data-mark="salesforce"] { height: 48px; }
+    .partner-grid__card img[data-mark="apollo"] { height: 32px; }
+    .partner-grid__card img[data-mark="clay"] { height: 40px; }
+    .partner-grid__card img[data-mark="pandadoc"] { height: 28px; }
+    .partner-grid__card img[data-mark="elevenlabs"] { height: 30px; }
+    .partner-grid__card img[data-mark="lemlist"] { height: 26px; }
+    .partner-grid__card img[data-mark="unify"] { height: 32px; }
+    .partner-grid__card img[data-mark="dreamdata"] { height: 52px; }
+    .partner-grid__card img[data-mark="n8n"] { height: 32px; }
+    .partner-grid__card img[data-mark="heyreach"] { height: 30px; }
+    .partner-grid__card img[data-mark="partner-misc"] { height: 36px; }
+    @media (max-width: 640px) {
+      .partner-grid__card img[data-mark="dreamdata"] { height: 40px; }
+      .partner-grid__card img[data-mark="salesforce"] { height: 34px; }
     }
 
     /* --- Engagement card: center icon + lift-on-reveal --- */
@@ -680,10 +700,10 @@
           <button type="button" class="theme-switch__btn" data-theme-value="dark" role="radio" aria-checked="false" aria-label="Night mode" title="Night">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           </button>
+          <a href="/ai/" class="theme-switch__btn theme-switch__btn--ai" aria-label="AI-readable view" title="AI-readable view">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v3"/><circle cx="12" cy="5" r="1"/><rect x="4" y="8" width="16" height="12" rx="3"/><circle cx="9" cy="14" r="1.25"/><circle cx="15" cy="14" r="1.25"/><path d="M2 14h2"/><path d="M20 14h2"/></svg>
+          </a>
         </div>
-        <a href="/ai/" class="nav__ai-btn" aria-label="AI-readable view" title="AI-readable view">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v3"/><circle cx="12" cy="5" r="1"/><rect x="4" y="8" width="16" height="12" rx="3"/><circle cx="9" cy="14" r="1.25"/><circle cx="15" cy="14" r="1.25"/><path d="M2 14h2"/><path d="M20 14h2"/></svg>
-        </a>
         <a href="/contact.html" class="btn btn--primary btn--small">Let's Chat</a>
 
         <button class="nav__mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -771,19 +791,19 @@
       <div class="container">
         <span class="overline text-center" style="display:block;margin-bottom:var(--space-xl);color:var(--text-muted);">Technology Partners</span>
         <div class="partner-grid__cards">
-          <div class="partner-grid__card partner-grid__card--from-left"><img src="images/partners/unnamed-6.png" alt="HubSpot — technology partner" loading="lazy"></div>
-          <div class="partner-grid__card partner-grid__card--from-bottom"><img src="images/partners/unnamed-4.png" alt="Salesforce — technology partner" loading="lazy"></div>
-          <div class="partner-grid__card partner-grid__card--from-right"><img src="images/partners/apollo.png" alt="Apollo — technology partner" loading="lazy"></div>
-          <div class="partner-grid__card partner-grid__card--from-left"><img src="images/partners/unnamed-5.png" alt="Clay — technology partner" loading="lazy"></div>
-          <div class="partner-grid__card partner-grid__card--from-bottom"><img src="images/partners/pandadoc.png" alt="PandaDoc — technology partner" loading="lazy"></div>
-          <div class="partner-grid__card partner-grid__card--from-right"><img src="images/partners/elevenlabs.png" alt="ElevenLabs — technology partner" loading="lazy"></div>
+          <div class="partner-grid__card partner-grid__card--from-left"><img src="images/partners/unnamed-6.png" alt="HubSpot — technology partner" loading="lazy" data-mark="hubspot"></div>
+          <div class="partner-grid__card partner-grid__card--from-bottom"><img src="images/partners/unnamed-4.png" alt="Salesforce — technology partner" loading="lazy" data-mark="salesforce"></div>
+          <div class="partner-grid__card partner-grid__card--from-right"><img src="images/partners/apollo.png" alt="Apollo — technology partner" loading="lazy" data-mark="apollo"></div>
+          <div class="partner-grid__card partner-grid__card--from-left"><img src="images/partners/unnamed-5.png" alt="Clay — technology partner" loading="lazy" data-mark="clay"></div>
+          <div class="partner-grid__card partner-grid__card--from-bottom"><img src="images/partners/pandadoc.png" alt="PandaDoc — technology partner" loading="lazy" data-mark="pandadoc"></div>
+          <div class="partner-grid__card partner-grid__card--from-right"><img src="images/partners/elevenlabs.png" alt="ElevenLabs — technology partner" loading="lazy" data-mark="elevenlabs"></div>
 
-          <div class="partner-grid__card partner-grid__card--from-left"><img src="images/partners/lemlist.png" alt="Lemlist — technology partner" loading="lazy"></div>
-          <div class="partner-grid__card partner-grid__card--from-bottom"><img src="images/partners/unnamed-2.png" alt="Unify — technology partner" loading="lazy"></div>
-          <div class="partner-grid__card partner-grid__card--from-right"><img src="images/partners/unnamed-3.png" alt="Dreamdata — technology partner" loading="lazy"></div>
-          <div class="partner-grid__card partner-grid__card--from-left"><img src="images/partners/unnamed-7.png" alt="n8n — technology partner" loading="lazy"></div>
-          <div class="partner-grid__card partner-grid__card--from-bottom"><img src="images/partners/anthropic.svg" alt="Anthropic — technology partner" loading="lazy"></div>
-          <div class="partner-grid__card partner-grid__card--from-right"><img src="images/partners/partner-misc.jpg" alt="Checkpoint GTM technology partner" loading="lazy"></div>
+          <div class="partner-grid__card partner-grid__card--from-left"><img src="images/partners/lemlist.png" alt="Lemlist — technology partner" loading="lazy" data-mark="lemlist"></div>
+          <div class="partner-grid__card partner-grid__card--from-bottom"><img src="images/partners/unnamed-2.png" alt="Unify — technology partner" loading="lazy" data-mark="unify"></div>
+          <div class="partner-grid__card partner-grid__card--from-right"><img src="images/partners/unnamed-3.png" alt="Dreamdata — technology partner" loading="lazy" data-mark="dreamdata"></div>
+          <div class="partner-grid__card partner-grid__card--from-left"><img src="images/partners/unnamed-7.png" alt="n8n — technology partner" loading="lazy" data-mark="n8n"></div>
+          <div class="partner-grid__card partner-grid__card--from-bottom"><img src="images/partners/heyreach.svg" alt="HeyReach — technology partner" loading="lazy" data-mark="heyreach"></div>
+          <div class="partner-grid__card partner-grid__card--from-right"><img src="images/partners/partner-misc.jpg" alt="Checkpoint GTM technology partner" loading="lazy" data-mark="partner-misc"></div>
         </div>
       </div>
     </section>
@@ -805,9 +825,11 @@
             <span class="logo-scroll__item"><img src="images/clients/sanity-group.png" alt="Sanity Group — Checkpoint GTM client" class="logo-scroll__logo"></span>
             <span class="logo-scroll__item"><img src="images/clients/circula.png" alt="Circula — Checkpoint GTM client" class="logo-scroll__logo"></span>
             <span class="logo-scroll__item"><img src="images/clients/adjust.png" alt="Adjust — Checkpoint GTM client" class="logo-scroll__logo"></span>
+            <span class="logo-scroll__item"><img src="images/clients/Lano.png" alt="Lano — Checkpoint GTM client" class="logo-scroll__logo" data-mark="lano"></span>
+            <span class="logo-scroll__item"><img src="images/clients/Rasa.png" alt="Rasa — Checkpoint GTM client" class="logo-scroll__logo" data-mark="rasa"></span>
+            <span class="logo-scroll__item"><img src="images/clients/camunda.png" alt="Camunda — Checkpoint GTM client" class="logo-scroll__logo" data-mark="camunda"></span>
+            <span class="logo-scroll__item"><img src="images/clients/teleclinic.png" alt="TeleClinic — Checkpoint GTM client" class="logo-scroll__logo" data-mark="teleclinic"></span>
             <span class="logo-scroll__item"><span class="logo-scroll__textmark">Purpose Green</span></span>
-            <span class="logo-scroll__item"><span class="logo-scroll__textmark">Lano</span></span>
-            <span class="logo-scroll__item"><span class="logo-scroll__textmark">Rasa</span></span>
             <span class="logo-scroll__item"><span class="logo-scroll__textmark">WunderFlats</span></span>
             <!-- Duplicate for seamless loop -->
             <a href="/case-studies/staffbase" class="logo-scroll__item"><img src="images/clients/staffbase.png" alt="Staffbase — Checkpoint GTM client" class="logo-scroll__logo"></a>
@@ -817,9 +839,11 @@
             <span class="logo-scroll__item"><img src="images/clients/sanity-group.png" alt="Sanity Group — Checkpoint GTM client" class="logo-scroll__logo"></span>
             <span class="logo-scroll__item"><img src="images/clients/circula.png" alt="Circula — Checkpoint GTM client" class="logo-scroll__logo"></span>
             <span class="logo-scroll__item"><img src="images/clients/adjust.png" alt="Adjust — Checkpoint GTM client" class="logo-scroll__logo"></span>
+            <span class="logo-scroll__item"><img src="images/clients/Lano.png" alt="Lano — Checkpoint GTM client" class="logo-scroll__logo" data-mark="lano"></span>
+            <span class="logo-scroll__item"><img src="images/clients/Rasa.png" alt="Rasa — Checkpoint GTM client" class="logo-scroll__logo" data-mark="rasa"></span>
+            <span class="logo-scroll__item"><img src="images/clients/camunda.png" alt="Camunda — Checkpoint GTM client" class="logo-scroll__logo" data-mark="camunda"></span>
+            <span class="logo-scroll__item"><img src="images/clients/teleclinic.png" alt="TeleClinic — Checkpoint GTM client" class="logo-scroll__logo" data-mark="teleclinic"></span>
             <span class="logo-scroll__item"><span class="logo-scroll__textmark">Purpose Green</span></span>
-            <span class="logo-scroll__item"><span class="logo-scroll__textmark">Lano</span></span>
-            <span class="logo-scroll__item"><span class="logo-scroll__textmark">Rasa</span></span>
             <span class="logo-scroll__item"><span class="logo-scroll__textmark">WunderFlats</span></span>
           </div>
         </div>
@@ -832,9 +856,12 @@
             <span class="logo-scroll__item"><img src="images/clients/foodji.png" alt="Foodji — Checkpoint GTM client" class="logo-scroll__logo"></span>
             <span class="logo-scroll__item"><img src="images/clients/sennder.png" alt="Sennder — Checkpoint GTM client" class="logo-scroll__logo"></span>
             <span class="logo-scroll__item"><img src="images/clients/mondu.png" alt="Mondu — Checkpoint GTM client" class="logo-scroll__logo"></span>
+            <span class="logo-scroll__item"><img src="images/clients/voize.png" alt="Voize — Checkpoint GTM client" class="logo-scroll__logo" data-mark="voize"></span>
+            <span class="logo-scroll__item"><img src="images/clients/LIQID.png" alt="LIQID Finance — Checkpoint GTM client" class="logo-scroll__logo" data-mark="liqid"></span>
+            <span class="logo-scroll__item"><img src="images/clients/alva.png" alt="ALVA — Checkpoint GTM client" class="logo-scroll__logo" data-mark="alva"></span>
+            <span class="logo-scroll__item"><img src="images/clients/Trawa.png" alt="Trawa — Checkpoint GTM client" class="logo-scroll__logo" data-mark="trawa"></span>
+            <span class="logo-scroll__item"><img src="images/clients/sharpist.png" alt="Sharpist — Checkpoint GTM client" class="logo-scroll__logo" data-mark="sharpist"></span>
             <span class="logo-scroll__item"><span class="logo-scroll__textmark">Root Global</span></span>
-            <span class="logo-scroll__item"><span class="logo-scroll__textmark">Voize</span></span>
-            <span class="logo-scroll__item"><span class="logo-scroll__textmark">LIQID Finance</span></span>
             <!-- Duplicate for seamless loop -->
             <span class="logo-scroll__item"><img src="images/clients/sellerx.png" alt="SellerX — Checkpoint GTM client" class="logo-scroll__logo"></span>
             <span class="logo-scroll__item"><img src="images/clients/heyjobs.png" alt="HeyJobs — Checkpoint GTM client" class="logo-scroll__logo"></span>
@@ -842,9 +869,12 @@
             <span class="logo-scroll__item"><img src="images/clients/foodji.png" alt="Foodji — Checkpoint GTM client" class="logo-scroll__logo"></span>
             <span class="logo-scroll__item"><img src="images/clients/sennder.png" alt="Sennder — Checkpoint GTM client" class="logo-scroll__logo"></span>
             <span class="logo-scroll__item"><img src="images/clients/mondu.png" alt="Mondu — Checkpoint GTM client" class="logo-scroll__logo"></span>
+            <span class="logo-scroll__item"><img src="images/clients/voize.png" alt="Voize — Checkpoint GTM client" class="logo-scroll__logo" data-mark="voize"></span>
+            <span class="logo-scroll__item"><img src="images/clients/LIQID.png" alt="LIQID Finance — Checkpoint GTM client" class="logo-scroll__logo" data-mark="liqid"></span>
+            <span class="logo-scroll__item"><img src="images/clients/alva.png" alt="ALVA — Checkpoint GTM client" class="logo-scroll__logo" data-mark="alva"></span>
+            <span class="logo-scroll__item"><img src="images/clients/Trawa.png" alt="Trawa — Checkpoint GTM client" class="logo-scroll__logo" data-mark="trawa"></span>
+            <span class="logo-scroll__item"><img src="images/clients/sharpist.png" alt="Sharpist — Checkpoint GTM client" class="logo-scroll__logo" data-mark="sharpist"></span>
             <span class="logo-scroll__item"><span class="logo-scroll__textmark">Root Global</span></span>
-            <span class="logo-scroll__item"><span class="logo-scroll__textmark">Voize</span></span>
-            <span class="logo-scroll__item"><span class="logo-scroll__textmark">LIQID Finance</span></span>
           </div>
         </div>
       </div>
