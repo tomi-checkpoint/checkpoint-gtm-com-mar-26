@@ -153,3 +153,23 @@ Or use the `.claude/launch.json` config with preview tools.
 - Client logo scroll uses green background with lighter green recolored logos
 - Motion is restrained and scroll-driven — no autoplay, no gimmicks
 - Neutral palette with strategic use of green (#2D6A4F) and warm orange (#E8985E)
+
+## AI sub-experience (`/ai/`)
+
+The `/ai/` page is the machine-readable, single-document view of the entire site — optimized for ChatGPT / Perplexity / Claude crawlers and humans who skim. It loads in `data-theme="ai"` (monospace, white background, near-black text, max-width 760px). The visual nav has only Day/Night buttons; AI mode is opt-in via:
+
+- **Sub-domain**: hostname starts with `ai.` (e.g. `ai.checkpointgtm.com`)
+- **Path**: starts with `/ai/`
+- **Query param**: `?ai=1` on any page
+
+Detection happens in `js/theme-toggle.js` → `aiContextDetected()` and runs before first paint. AI mode is **never** persisted to localStorage so leaving the AI sub-domain doesn't lock users into AI mode on the main site.
+
+### Wiring `ai.checkpointgtm.com` (sub-domain)
+
+Recommended (simpler) — keep path-based `/ai/` for now. The `/ai/index.html` works under the existing GitHub Pages deploy with no infra changes.
+
+If/when a dedicated sub-domain is desired:
+- **Option A: Cloudflare Worker** (recommended, no second repo). Add a Worker route `ai.checkpointgtm.com/*` that proxies/rewrites to `checkpointgtm.com/ai/$1`. Sub-domain DNS: CNAME `ai` → Cloudflare proxy. The page already self-locks `data-theme="ai"` server-side via the inline boot script, so it renders correctly under either host.
+- **Option B: Separate GitHub Pages repo**. New repo `checkpoint-gtm-ai` with its own `CNAME` file containing `ai.checkpointgtm.com`. DNS: CNAME `ai.checkpointgtm.com` → `tomi-checkpoint.github.io` (matches main domain pattern). Higher maintenance cost (two deploys to keep in sync).
+
+Either option, update the canonical link in `/ai/index.html` from `https://checkpointgtm.com/ai/` to `https://ai.checkpointgtm.com/` once cut over.

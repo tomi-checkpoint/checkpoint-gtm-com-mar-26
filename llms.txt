@@ -2,6 +2,9 @@
 
 > Berlin-based RevOps and GTM consultancy for B2B SaaS companies. HubSpot Platinum Partner delivering strategy tied to implementation — embedded operators, not advisors.
 
+## Canonical AI-readable index
+- [AI view (machine-readable, single document)](https://checkpointgtm.com/ai/): The full Checkpoint GTM site condensed into one structured document — services, case studies, process, proof, and contact. Optimized for LLMs and dense human skim.
+
 ## Company
 Checkpoint GTM partners with B2B SaaS companies (seed to Series C) across Europe and North America to build the operating layer behind growth. We're HubSpot Platinum Partners and Salesforce Advanced Administrator certified, based in Berlin with multilingual delivery (English, German, Italian, French).
 

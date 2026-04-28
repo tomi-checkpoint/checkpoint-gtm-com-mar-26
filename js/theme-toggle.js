@@ -12,9 +12,34 @@
     return VALID_THEMES.indexOf(theme) !== -1;
   }
 
+  function aiContextDetected() {
+    try {
+      // Hostname-based: ai.checkpointgtm.com or any host starting with "ai."
+      if (typeof location !== 'undefined' && location.hostname &&
+          location.hostname.indexOf('ai.') === 0) {
+        return true;
+      }
+      // Path-based: /ai/ or /ai (treat as AI sub-experience)
+      if (typeof location !== 'undefined' && location.pathname &&
+          /^\/ai(\/|$)/.test(location.pathname)) {
+        return true;
+      }
+      // Query-based: ?ai=1
+      if (typeof location !== 'undefined' && location.search &&
+          /[?&]ai=1\b/.test(location.search)) {
+        return true;
+      }
+    } catch (e) { /* ignore */ }
+    return false;
+  }
+
   function getInitialTheme() {
+    // Context-based AI mode wins (sub-domain / /ai/ path / ?ai=1)
+    if (aiContextDetected()) return 'ai';
+
     try {
       var stored = localStorage.getItem(STORAGE_KEY);
+      // Legacy: respect persisted "ai" choice (someone who explicitly opted in before)
       if (isValid(stored)) return stored;
     } catch (e) { /* localStorage blocked */ }
 
@@ -88,7 +113,11 @@
   function setTheme(theme) {
     if (!isValid(theme)) theme = 'light';
     root.setAttribute('data-theme', theme);
-    persist(theme);
+    // Only persist light/dark — AI mode is context-driven (sub-domain / path / query),
+    // so we don't want to leak it into localStorage and follow the user back to the main site.
+    if (theme !== 'ai') {
+      persist(theme);
+    }
 
     if (theme === 'ai' && document.body) {
       ensureBanner();
@@ -101,10 +130,10 @@
   setTheme(getInitialTheme());
 
   function cycleTheme() {
+    // AI mode is opt-in via sub-domain / path / query — never cycled into.
     var current = root.getAttribute('data-theme') || 'light';
-    var idx = VALID_THEMES.indexOf(current);
-    var next = VALID_THEMES[(idx + 1) % VALID_THEMES.length];
-    setTheme(next);
+    if (current === 'ai') return; // don't toggle out of AI sub-experience
+    setTheme(current === 'dark' ? 'light' : 'dark');
   }
 
   function bindControls() {

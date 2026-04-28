@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="ai">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkpoint GTM — AI-readable view</title>
+  <meta name="description" content="Machine-readable view of Checkpoint GTM. Berlin-based RevOps and GTM consultancy. HubSpot Platinum Partner. Services, case studies, process, and contact in a single structured document.">
+  <meta name="robots" content="index, follow">
+  <meta name="ai-content-optimized" content="true">
+
+  <link rel="canonical" href="https://checkpointgtm.com/ai/">
+  <link rel="alternate" type="text/markdown" href="/llms.txt">
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Checkpoint GTM — AI-readable view">
+  <meta property="og:description" content="The Checkpoint GTM site condensed into one structured, machine-readable document.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://checkpointgtm.com/ai/">
+
+  <!-- Lock theme to AI before any paint -->
+  <script>
+    (function () {
+      try { document.documentElement.setAttribute('data-theme', 'ai'); } catch (e) {}
+    })();
+  </script>
+
+  <!-- JSON-LD: WebSite + Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://checkpointgtm.com/#website",
+        "url": "https://checkpointgtm.com/",
+        "name": "Checkpoint GTM",
+        "description": "Berlin-based RevOps and GTM consultancy for B2B SaaS companies.",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://checkpointgtm.com/#org",
+        "name": "Checkpoint GTM",
+        "url": "https://checkpointgtm.com/",
+        "email": "noah@checkpointgtm.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Berlin",
+          "addressCountry": "DE"
+        },
+        "areaServed": ["EU", "EMEA", "DACH", "North America"],
+        "sameAs": [
+          "https://www.linkedin.com/company/checkpoint-gtm"
+        ],
+        "knowsAbout": [
+          "HubSpot Implementation",
+          "CRM Migration",
+          "Revenue Operations",
+          "Go-to-Market Strategy",
+          "Marketing Operations",
+          "Sales Enablement",
+          "Customer Success Operations",
+          "AI and Automation in GTM",
+          "VC Portfolio Support"
+        ],
+        "hasCredential": [
+          "HubSpot Platinum Solutions Partner",
+          "Salesforce Advanced Administrator"
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* ============================================================
+       AI sub-experience — standalone styling, no global.css.
+       Monospace, white bg, near-black text, tight max-width.
+       ============================================================ */
+    :root {
+      --bg: #ffffff;
+      --bg-soft: #f7f7f5;
+      --ink: #0a0a0a;
+      --ink-2: #2a2a2a;
+      --ink-muted: #5a5a5a;
+      --border: #d8d8d4;
+      --accent: #2D6A4F;
+      --accent-warm: #E8985E;
+      --max: 760px;
+      --radius: 4px;
+      --mono: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: #1d4a36; }
+    code, pre { font-family: var(--mono); }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 4rem;
+    }
+
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.75rem 0 1.25rem;
+      border-bottom: 1px dashed var(--border);
+      margin-bottom: 2rem;
+      font-size: 13px;
+      color: var(--ink-muted);
+    }
+    .topbar a { color: var(--ink-muted); }
+
+    h1, h2, h3, h4 { font-family: var(--mono); font-weight: 600; line-height: 1.3; }
+    h1 { font-size: 1.5rem; margin: 0 0 0.5rem; letter-spacing: -0.01em; }
+    h2 {
+      font-size: 1.05rem; margin: 2.5rem 0 0.75rem;
+      padding-bottom: 0.4rem; border-bottom: 1px solid var(--border);
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    h3 { font-size: 0.95rem; margin: 1.25rem 0 0.35rem; }
+    p { margin: 0.5rem 0 0.85rem; }
+    ul { padding-left: 1.25rem; margin: 0.5rem 0 1rem; }
+    li { margin: 0.25rem 0; }
+
+    .lead {
+      color: var(--ink-2);
+      font-size: 0.95rem;
+      max-width: 60ch;
+      margin: 0 auto 0;
+    }
+
+    .header-block {
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      gap: 1rem; padding: 0.5rem 0 1.5rem;
+    }
+
+    .meta-line {
+      font-size: 12px; color: var(--ink-muted); letter-spacing: 0.04em;
+    }
+
+    .item {
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .item:last-child { border-bottom: none; }
+    .item__title { font-weight: 600; color: var(--ink); }
+    .item__meta { color: var(--ink-muted); font-size: 13px; margin-top: 0.15rem; }
+    .item__metric { color: var(--accent); font-weight: 600; }
+
+    .grid-2 {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.5rem;
+    }
+    @media (max-width: 560px) { .grid-2 { grid-template-columns: 1fr; } }
+
+    .kvline { font-size: 13px; color: var(--ink-2); }
+    .kvline strong { color: var(--ink); font-weight: 600; }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 0.15rem 0.5rem;
+      margin-right: 0.35rem;
+    }
+
+    footer.foot {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--border);
+      font-size: 12px; color: var(--ink-muted);
+      display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between;
+    }
+
+    /* ============================================================
+       HERO BOT — relocated from services/index.html
+       ============================================================ */
+    .hero-bot-wrap {
+      display: flex; justify-content: center;
+      margin: 0.5rem 0 1rem;
+    }
+    .hero-bot {
+      --bot-green: var(--accent);
+      --bot-warm: var(--accent-warm);
+      position: relative;
+      width: clamp(180px, 30vw, 220px);
+      aspect-ratio: 1 / 1;
+      transform-origin: 50% 60%;
+      will-change: transform, opacity;
+      opacity: 0;
+      animation: botBoot 1s .2s cubic-bezier(.22,1,.36,1) forwards;
+    }
+    .hero-bot__svg {
+      width: 100%; height: 100%; overflow: visible;
+      filter: drop-shadow(0 20px 40px rgba(26,26,26,0.08)) drop-shadow(0 6px 12px rgba(26,26,26,0.05));
+    }
+    .hero-bot__aura {
+      position: absolute;
+      inset: -18% -12% -12% -12%;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center,
+        rgba(45,106,79,0.10) 0%,
+        rgba(232,152,94,0.06) 42%,
+        transparent 68%);
+      filter: blur(8px);
+      opacity: 0;
+      animation: botAuraIn 1.2s .25s ease-out forwards, botAuraPulse 7s 1.4s ease-in-out infinite;
+      z-index: -1;
+    }
+    @keyframes botBoot {
+      0%   { opacity: 0; transform: translateY(14px) scale(0.94); }
+      60%  { opacity: 1; }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes botAuraIn { to { opacity: 1; } }
+    @keyframes botAuraPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50%      { transform: scale(1.04); opacity: 0.75; }
+    }
+    .hero-bot__body { transform-origin: 50% 62%; animation: botBreathe 5.5s ease-in-out infinite; }
+    @keyframes botBreathe {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50%      { transform: translateY(-4px) scale(1.012); }
+    }
+    .hero-bot__antenna-dot { transform-origin: center; animation: botAntenna 2.4s ease-in-out infinite; }
+    @keyframes botAntenna {
+      0%, 60%, 100% { opacity: 1; transform: scale(1); }
+      70%           { opacity: 0.25; transform: scale(0.7); }
+      80%           { opacity: 1; transform: scale(1.15); }
+    }
+    .hero-bot__lid { transform-origin: center; transform: scaleY(0); animation: botBlink 6s 1.8s ease-in-out infinite; }
+    @keyframes botBlink {
+      0%, 92%, 100% { transform: scaleY(0); }
+      94%           { transform: scaleY(1); }
+      96%           { transform: scaleY(0); }
+    }
+    .hero-bot__pupils { transform-origin: center; animation: botLook 9s ease-in-out infinite; }
+    @keyframes botLook {
+      0%, 100% { transform: translate(0, 0); }
+      20%      { transform: translate(3px, -1px); }
+      45%      { transform: translate(-3px, 1px); }
+      70%      { transform: translate(2px, 2px); }
+    }
+    .hero-bot__status { transform-origin: center; animation: botStatus 3.2s ease-in-out infinite; }
+    @keyframes botStatus {
+      0%, 100% { opacity: 0.55; }
+      50%      { opacity: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-bot, .hero-bot__body, .hero-bot__aura, .hero-bot__antenna-dot,
+      .hero-bot__lid, .hero-bot__pupils, .hero-bot__status {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .hero-bot__lid { transform: scaleY(0) !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="topbar">
+      <span>checkpointgtm.com / ai</span>
+      <a href="/" aria-label="Back to main site">&larr; Back to main site</a>
+    </div>
+
+    <!-- ============== HEADER ============== -->
+    <header class="header-block">
+      <div class="hero-bot-wrap">
+        <div class="hero-bot" role="img" aria-label="Checkpoint GTM assistant bot">
+          <div class="hero-bot__aura"></div>
+          <svg class="hero-bot__svg" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <defs>
+              <linearGradient id="botShellGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%"  stop-color="#FFFFFF"/>
+                <stop offset="100%" stop-color="#F2EFE9"/>
+              </linearGradient>
+              <linearGradient id="botVisorGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%"  stop-color="#1A1A1A"/>
+                <stop offset="100%" stop-color="#2a2a2a"/>
+              </linearGradient>
+            </defs>
+            <g class="hero-bot__body">
+              <line x1="130" y1="36" x2="130" y2="58" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" opacity="0.75"/>
+              <circle class="hero-bot__antenna-dot" cx="130" cy="32" r="5" fill="#E8985E"/>
+              <rect x="60" y="58" width="140" height="110" rx="28" fill="url(#botShellGrad)" stroke="#1A1A1A" stroke-opacity="0.12" stroke-width="1.5"/>
+              <rect x="52" y="96" width="10" height="30" rx="3" fill="#1A1A1A" opacity="0.12"/>
+              <rect x="198" y="96" width="10" height="30" rx="3" fill="#1A1A1A" opacity="0.12"/>
+              <rect x="78" y="86" width="104" height="62" rx="20" fill="url(#botVisorGrad)"/>
+              <rect x="84" y="92" width="40" height="8" rx="4" fill="#FFFFFF" opacity="0.08"/>
+              <g>
+                <g class="hero-bot__pupils">
+                  <circle cx="108" cy="118" r="7.5" fill="#2D6A4F"/>
+                  <circle cx="152" cy="118" r="7.5" fill="#2D6A4F"/>
+                  <circle cx="111" cy="115" r="1.8" fill="#FAFAF8" opacity="0.9"/>
+                  <circle cx="155" cy="115" r="1.8" fill="#FAFAF8" opacity="0.9"/>
+                </g>
+                <rect class="hero-bot__lid" x="98" y="108" width="20" height="20" rx="4" fill="url(#botVisorGrad)"/>
+                <rect class="hero-bot__lid" x="142" y="108" width="20" height="20" rx="4" fill="url(#botVisorGrad)" style="animation-delay:0s"/>
+              </g>
+              <circle class="hero-bot__status" cx="176" cy="146" r="3.2" fill="#E8985E"/>
+              <rect x="118" y="156" width="24" height="3" rx="1.5" fill="#1A1A1A" opacity="0.18"/>
+              <rect x="116" y="168" width="28" height="10" rx="3" fill="#1A1A1A" opacity="0.14"/>
+              <rect x="72" y="178" width="116" height="58" rx="18" fill="url(#botShellGrad)" stroke="#1A1A1A" stroke-opacity="0.10" stroke-width="1.5"/>
+              <circle cx="130" cy="207" r="14" fill="none" stroke="#2D6A4F" stroke-width="1.5" opacity="0.7"/>
+              <path d="M122 207 L128 213 L139 201" stroke="#2D6A4F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <h1>Checkpoint GTM — machine-readable view</h1>
+      <p class="lead">
+        You're reading the Checkpoint GTM machine-readable view. This page summarizes the full site as a single, structured document. Built for LLMs and humans who skim.
+        &nbsp;<a href="/">&rarr; Visit the full site</a>
+      </p>
+      <div class="meta-line">
+        Markdown source: <a href="/llms.txt">/llms.txt</a> &nbsp;&middot;&nbsp;
+        Last updated: 2026-04-28
+      </div>
+    </header>
+
+    <!-- ============== AGENCY OVERVIEW ============== -->
+    <section>
+      <h2>Agency overview</h2>
+      <p><strong>Checkpoint GTM</strong> is a Berlin-based RevOps and GTM consultancy for B2B SaaS companies, startups, and VC-backed teams. We embed into client teams to build the operating layer behind growth — strategy tied to implementation, every time. We are HubSpot Platinum Solutions Partners and Salesforce Advanced Administrator certified.</p>
+      <ul>
+        <li><strong>Audiences:</strong> seed and Series A/B founders, revenue and marketing leaders, customer success and ops leaders, VC platform teams, companies migrating to HubSpot, buyers exploring AI and automation in GTM.</li>
+        <li><strong>Coverage:</strong> EMEA-native (Berlin HQ), serves North America. 12+ countries, 4 delivery languages: EN, DE, IT, FR.</li>
+        <li><strong>Differentiators:</strong> embedded operator model (not strategy theater); implementation depth; technical plus business acumen; stage-appropriate solutions; transparent packages.</li>
+      </ul>
+    </section>
+
+    <!-- ============== SERVICES ============== -->
+    <section>
+      <h2>Services</h2>
+
+      <div class="item">
+        <div class="item__title"><a href="/services/hubspot-platinum-partner.html">HubSpot Platinum Partner</a></div>
+        <p>Platinum-tier HubSpot Solutions Partner. Enterprise and complex implementations: CPQ, multi-hub deployments, custom objects, and Salesforce-to-HubSpot consolidations. Direct access to HubSpot sales and solutions engineering.</p>
+      </div>
+      <div class="item">
+        <div class="item__title"><a href="/services/hubspot-implementation.html">HubSpot Implementation &amp; Optimization</a></div>
+        <p>Portal setup, pipeline design, automation, integrations, and reporting. We make HubSpot the engine behind your GTM motion — Sales, Marketing, Service, and Operations Hub buildouts for B2B SaaS at Series A through enterprise.</p>
+      </div>
+      <div class="item">
+        <div class="item__title"><a href="/services/revenue-operations.html">Revenue Operations Consulting</a></div>
+        <p>Operating-model design, process automation, data architecture, forecasting, and tech-stack optimization. The connective tissue between marketing, sales, and customer success — built as one operating system.</p>
+      </div>
+      <div class="item">
+        <div class="item__title"><a href="/services/gtm-strategy.html">GTM Strategy</a></div>
+        <p>Go-to-market strategy and execution for B2B SaaS: ICP definition, channel strategy, messaging frameworks, segmentation, and the operational scaffolding to actually run them.</p>
+      </div>
+      <div class="item">
+        <div class="item__title"><a href="/services/crm-migration.html">CRM Migration</a></div>
+        <p>Salesforce, Pipedrive, Close, and Attio to HubSpot migrations. Zero-downtime cutovers, data integrity, workflow rebuild, and rep enablement on the new system.</p>
+      </div>
+      <div class="item">
+        <div class="item__title"><a href="/services/marketing-operations.html">Marketing Operations</a></div>
+        <p>Attribution, lifecycle stages, lead scoring, and campaign infrastructure that connects marketing activity to pipeline and revenue, not vanity metrics.</p>
+      </div>
+      <div class="item">
+        <div class="item__title"><a href="/services/ai-gtm-consulting.html">AI Consulting for GTM</a></div>
+        <p>AI strategy, governance, and embedded implementation for B2B SaaS GTM teams. From pilot purgatory to production infrastructure — done with your team, not handed over as a deck.</p>
+      </div>
+      <div class="item">
+        <div class="item__title"><a href="/services/ai-automation.html">AI &amp; Automation</a></div>
+        <p>Tactical AI workflows: enrichment, routing, content generation, custom MCPs, agent stacks. We build production systems, not demos.</p>
+      </div>
+      <div class="item">
+        <div class="item__title"><a href="/services/programmatic-outbound.html">Programmatic Outbound</a></div>
+        <p>Cold outbound at scale: waterfall enrichment, rotated infrastructure, multi-channel orchestration, and measurable reply-to-meeting conversion.</p>
+      </div>
+      <div class="item">
+        <div class="item__title"><a href="/services/vc-portfolio-support.html">VC Portfolio Support</a></div>
+        <p>Standardized RevOps and GTM support across portfolio companies — from seed-stage GTM setup to Series B revenue operations. Consistent diligence, consistent build.</p>
+      </div>
+    </section>
+
+    <!-- ============== CASE STUDIES ============== -->
+    <section>
+      <h2>Case studies</h2>
+
+      <div class="item">
+        <div class="item__title"><a href="/case-studies/appmagic-crm-migration.html">AppMagic — Close to HubSpot migration + RevOps rebuild</a></div>
+        <div class="item__meta">B2B SaaS &middot; Mobile app intelligence</div>
+        <p><span class="item__metric">3x</span> inbound demo-to-opportunity conversion; <span class="item__metric">€1.8M</span> net-new pipeline in 90 days; forecast accuracy to <span class="item__metric">88%</span>.</p>
+      </div>
+      <div class="item">
+        <div class="item__title"><a href="/case-studies/series-a-revops.html">Series A revenue system build</a></div>
+        <div class="item__meta">B2B SaaS &middot; Series A</div>
+        <p><span class="item__metric">3x</span> pipeline visibility, <span class="item__metric">68%</span> faster deal cycle.</p>
+      </div>
+      <div class="item">
+        <div class="item__title"><a href="/case-studies/series-b-transformation.html">Series B RevOps transformation</a></div>
+        <div class="item__meta">B2B SaaS &middot; Series B</div>
+        <p><span class="item__metric">4.2x</span> revenue per rep, <span class="item__metric">92%</span> forecast accuracy.</p>
+      </div>
+      <div class="item">
+        <div class="item__title"><a href="/case-studies/crm-migration.html">Salesforce to HubSpot migration</a></div>
+        <div class="item__meta">B2B SaaS &middot; Mid-market</div>
+        <p><span class="item__metric">50K</span> records, zero downtime, <span class="item__metric">40%</span> cost reduction.</p>
+      </div>
+      <div class="item">
+        <div class="item__title"><a href="/case-studies/gtm-market-entry.html">EU to US market entry</a></div>
+        <div class="item__meta">B2B SaaS &middot; Cross-border GTM</div>
+        <p><span class="item__metric">€2.1M</span> pipeline in 90 days.</p>
+      </div>
+      <div class="item">
+        <div class="item__title"><a href="/case-studies/vc-portfolio.html">VC portfolio GTM infrastructure</a></div>
+        <div class="item__meta">VC platform &middot; 8 portfolio companies</div>
+        <p><span class="item__metric">8</span> companies, <span class="item__metric">6 weeks</span> to first dashboard, repeatable build.</p>
+      </div>
+    </section>
+
+    <!-- ============== ENGAGEMENT MODELS ============== -->
+    <section>
+      <h2>How we engage</h2>
+      <ul>
+        <li><strong>Project-based</strong> — fixed scope, defined timeline. Typical range €15K–€90K.</li>
+        <li><strong>Retainer</strong> — ongoing monthly support and operating cadence. Typical range €6K–€25K/month.</li>
+        <li><strong>Fractional / Embedded</strong> — senior operators inside your team for a defined period.</li>
+        <li><strong>Workshop / Training</strong> — focused team enablement: HubSpot, RevOps, AI for GTM.</li>
+      </ul>
+    </section>
+
+    <!-- ============== PROCESS ============== -->
+    <section>
+      <h2>Process</h2>
+      <p>Every engagement runs through the same five-phase delivery model:</p>
+      <ul>
+        <li><strong>Discovery</strong> — interviews, system audit, data model review, current-state map.</li>
+        <li><strong>Design</strong> — operating model, pipeline structure, lifecycle, attribution, automation blueprint.</li>
+        <li><strong>Build</strong> — implementation in HubSpot (or target system), integrations, data migration, automation, dashboards.</li>
+        <li><strong>Launch</strong> — enablement, training, go-live cutover, hyper-care.</li>
+        <li><strong>Optimize</strong> — measurement, iteration, ongoing operating cadence with the team.</li>
+      </ul>
+    </section>
+
+    <!-- ============== PROOF ============== -->
+    <section>
+      <h2>Proof</h2>
+      <p>
+        <span class="badge">HubSpot Platinum Partner</span>
+        <span class="badge">Salesforce Advanced Admin</span>
+      </p>
+      <div class="grid-2">
+        <div class="kvline"><strong>80+</strong> GTM implementations shipped</div>
+        <div class="kvline"><strong>100+</strong> B2B SaaS companies scaled</div>
+        <div class="kvline"><strong>12+</strong> countries served</div>
+        <div class="kvline"><strong>4</strong> delivery languages: EN, DE, IT, FR</div>
+      </div>
+      <p style="margin-top: 1rem;"><strong>Selected clients:</strong> Staffbase, Duel, Rasa, Voize, Professional.me, re-green, LIQID Finance.</p>
+    </section>
+
+    <!-- ============== CONTACT ============== -->
+    <section>
+      <h2>Contact</h2>
+      <ul>
+        <li><strong>Email:</strong> <a href="mailto:noah@checkpointgtm.com">noah@checkpointgtm.com</a></li>
+        <li><strong>Location:</strong> Berlin, Germany</li>
+        <li><strong>Book a meeting:</strong> <a href="https://meetings-eu1.hubspot.com/noah-richter">meetings-eu1.hubspot.com/noah-richter</a></li>
+        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/checkpoint-gtm" rel="noopener">linkedin.com/company/checkpoint-gtm</a></li>
+        <li><strong>Office:</strong> <a href="/locations/berlin.html">Berlin office page</a></li>
+      </ul>
+    </section>
+
+    <!-- ============== FOOTER ============== -->
+    <footer class="foot">
+      <span>&copy; 2026 Checkpoint GTM. All rights reserved.</span>
+      <span><a href="/">Main site</a> &middot; <a href="/llms.txt">llms.txt</a> &middot; <a href="/sitemap.xml">sitemap.xml</a></span>
+    </footer>
+
+  </div>
+</body>
+</html>
