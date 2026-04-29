@@ -157,6 +157,25 @@
     }
     .berlin-hero > .container { position: relative; z-index: 1; }
 
+    /* Translucent backdrop behind hero text so the dot-pattern Brandenburg gate
+       fades behind the copy without disappearing. */
+    .berlin-hero__copy {
+      background: rgba(250, 250, 248, 0.85);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(26, 26, 26, 0.06);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl) var(--space-2xl);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+    [data-theme="dark"] .berlin-hero__copy {
+      background: rgba(15, 15, 15, 0.7);
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+    @media (max-width: 600px) {
+      .berlin-hero__copy { padding: var(--space-lg); }
+    }
+
     /* --- Logo marquee: text-only mark fallback (no asset yet) --- */
     .logo-scroll__textmark {
       display: inline-flex;
@@ -199,6 +218,7 @@
             <a href="/services/vc-portfolio-support.html" class="nav__dropdown-item" role="menuitem">VC Portfolio Support</a>
           </div>
         </div>
+        <a href="/services/hubspot-implementation.html" class="nav__link">HubSpot</a>
         <a href="/services/ai-gtm-consulting.html" class="nav__link">AI Consulting</a>
         <a href="/services/programmatic-outbound.html" class="nav__link">Outbound</a>
         <a href="/case-studies.html" class="nav__link">Case Studies</a>
@@ -232,6 +252,7 @@
   <!-- Mobile menu -->
   <div class="nav__mobile-menu">
     <a href="/services/index.html" class="nav__mobile-link">Services</a>
+    <a href="/services/hubspot-implementation.html" class="nav__mobile-link">HubSpot</a>
     <a href="/services/ai-gtm-consulting.html" class="nav__mobile-link">AI Consulting</a>
     <a href="/services/programmatic-outbound.html" class="nav__mobile-link">Outbound</a>
     <a href="/case-studies.html" class="nav__mobile-link">Case Studies</a>
@@ -262,7 +283,7 @@
           <span aria-current="page">Berlin</span>
         </nav>
 
-        <div class="reveal" style="max-width:820px;margin-inline:auto;">
+        <div class="reveal berlin-hero__copy" style="max-width:820px;margin-inline:auto;">
           <span class="overline">Berlin, Germany</span>
           <h1 style="margin-top:var(--space-md);margin-bottom:var(--space-lg);font-size:clamp(2rem, 4.2vw, 3rem);">HubSpot Partners in Berlin — built for B2B SaaS</h1>
           <p class="text-large" style="margin-inline:auto;">Checkpoint GTM is a HubSpot Platinum Partner headquartered in Berlin. We design, build, and operate the RevOps and GTM infrastructure behind B2B SaaS scaleups across Germany and EMEA &mdash; in English, German, Italian, and French. Platinum certified, embedded by design, stage-appropriate by default.</p>
@@ -277,9 +298,6 @@
 
     <!-- ========== BERLIN CLIENT LOGO SCROLL ========== -->
     <section class="logo-scroll" aria-label="Berlin companies we've worked with">
-      <div class="container">
-        <p class="logo-scroll__heading" style="text-align:center;">Companies we've built revenue systems for in Berlin</p>
-      </div>
       <div class="logo-scroll__wrapper">
 
         <div class="logo-scroll__row">
@@ -489,7 +507,7 @@
         <!-- Logo & tagline -->
         <div style="grid-column:span 2;">
           <div style="margin-bottom:var(--space-md);">
-            <img src="/images/logo-white.png" alt="Checkpoint GTM" style="height:24px;width:auto;">
+            <img src="/images/logo-white.png" alt="Checkpoint GTM GmbH" style="height:24px;width:auto;">
           </div>
           <p style="font-size:0.875rem;color:rgba(250,250,248,0.5);max-width:320px;">Embedded RevOps and GTM consulting for B2B SaaS companies. Berlin-based, globally delivered.</p>
         </div>
@@ -521,7 +539,7 @@
 
       <!-- Bottom bar -->
       <div style="margin-top:var(--space-2xl);padding-top:var(--space-lg);border-top:1px solid rgba(250,250,248,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-md);">
-        <p style="font-size:0.8125rem;color:rgba(250,250,248,0.4);">&copy; 2025 Checkpoint GTM. All rights reserved.</p>
+        <p style="font-size:0.8125rem;color:rgba(250,250,248,0.4);">&copy; 2025 Checkpoint GTM GmbH. All rights reserved.</p>
         <div style="display:flex;align-items:center;gap:var(--space-lg);">
           <a href="/ai/" style="font-size:0.8125rem;color:rgba(250,250,248,0.5);">AI view</a>
           <a href="https://www.linkedin.com/company/checkpoint-gtm/" target="_blank" rel="noopener" style="color:rgba(250,250,248,0.5);" aria-label="LinkedIn">

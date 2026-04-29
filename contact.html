@@ -113,7 +113,9 @@
       align-items: start;
     }
 
-    @media (max-width: 768px) {
+    /* Stack to single column below 1024px so the meetings calendar gets the full
+       page width and renders fewer rows (no internal scrollbar). */
+    @media (max-width: 1024px) {
       .contact-hero { grid-template-columns: 1fr; }
     }
 
@@ -211,7 +213,10 @@
       color: #16a34a;
     }
 
-    /* --- Meetings embed sizing --- */
+    /* --- Meetings embed sizing ---
+       Let HubSpot's MeetingsEmbedCode.js autosize the iframe via postMessage:
+       no fixed height, just a sensible min-height so the calendar lays out
+       without an internal scrollbar at desktop widths. */
     .contact-meetings {
       display: flex;
       flex-direction: column;
@@ -219,22 +224,19 @@
     }
     .contact-meetings .meetings-iframe-container {
       width: 100%;
-      min-height: 720px;
-      flex: 1 1 auto;
+      min-height: 640px;
     }
     .contact-meetings .meetings-iframe-container iframe {
       width: 100% !important;
       min-width: 100% !important;
-      min-height: 720px !important;
-      height: 720px !important;
+      min-height: 640px;
+      height: auto;
       border: 0;
       display: block;
     }
     @media (max-width: 768px) {
-      .contact-meetings .meetings-iframe-container,
-      .contact-meetings .meetings-iframe-container iframe {
-        min-height: 760px !important;
-        height: 760px !important;
+      .contact-meetings .meetings-iframe-container {
+        min-height: 720px;
       }
     }
 
@@ -299,6 +301,7 @@
             <a href="/services/vc-portfolio-support.html" class="nav__dropdown-item" role="menuitem">VC Portfolio Support</a>
           </div>
         </div>
+        <a href="/services/hubspot-implementation.html" class="nav__link">HubSpot</a>
         <a href="/services/ai-gtm-consulting.html" class="nav__link">AI Consulting</a>
         <a href="/services/programmatic-outbound.html" class="nav__link">Outbound</a>
         <a href="/case-studies.html" class="nav__link">Case Studies</a>
@@ -332,6 +335,7 @@
   <!-- Mobile menu -->
   <div class="nav__mobile-menu">
     <a href="/services/index.html" class="nav__mobile-link">Services</a>
+    <a href="/services/hubspot-implementation.html" class="nav__mobile-link">HubSpot</a>
     <a href="/services/ai-gtm-consulting.html" class="nav__mobile-link">AI Consulting</a>
     <a href="/services/programmatic-outbound.html" class="nav__mobile-link">Outbound</a>
     <a href="/case-studies.html" class="nav__mobile-link">Case Studies</a>
@@ -394,7 +398,7 @@
               </div>
               <div class="contact-info-item">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                We respond within 24 hours
+                We respond within 2 hours
               </div>
             </div>
           </div>
@@ -403,7 +407,7 @@
           <div class="contact-form contact-meetings">
             <h3>Pick a time that works</h3>
             <p class="form-note" style="text-align:left;margin-top:0;margin-bottom:var(--space-lg);">Grab a 30-minute discovery call directly on our calendar — no back-and-forth email.</p>
-            <div class="meetings-iframe-container" data-src="https://checkpointgtm.com/meetings/ncharak/first-call?embed=true"></div>
+            <div class="meetings-iframe-container" data-src="https://checkpointgtm.com/meetings/ncharak/first-call?embed=true&showLogo=false&hideHeader=true"></div>
             <script type="text/javascript" src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"></script>
             <p class="form-note">Free. No commitment. 30 minutes on a calendar slot of your choice.</p>
           </div>
@@ -420,7 +424,7 @@
         <!-- Logo & tagline -->
         <div style="grid-column:span 2;">
           <div style="margin-bottom:var(--space-md);">
-            <img src="/images/logo-white.png" alt="Checkpoint GTM" style="height:24px;width:auto;">
+            <img src="/images/logo-white.png" alt="Checkpoint GTM GmbH" style="height:24px;width:auto;">
           </div>
           <p style="font-size:0.875rem;color:rgba(250,250,248,0.5);max-width:320px;">Embedded RevOps and GTM consulting for B2B SaaS companies. Berlin-based, globally delivered.</p>
         </div>
@@ -452,7 +456,7 @@
 
       <!-- Bottom bar -->
       <div style="margin-top:var(--space-2xl);padding-top:var(--space-lg);border-top:1px solid rgba(250,250,248,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-md);">
-        <p style="font-size:0.8125rem;color:rgba(250,250,248,0.4);">&copy; 2025 Checkpoint GTM. All rights reserved.</p>
+        <p style="font-size:0.8125rem;color:rgba(250,250,248,0.4);">&copy; 2025 Checkpoint GTM GmbH. All rights reserved.</p>
         <div style="display:flex;align-items:center;gap:var(--space-lg);">
           <a href="/ai/" style="font-size:0.8125rem;color:rgba(250,250,248,0.5);">AI view</a>
           <a href="https://www.linkedin.com/company/checkpoint-gtm/" target="_blank" rel="noopener" style="color:rgba(250,250,248,0.5);" aria-label="LinkedIn">
